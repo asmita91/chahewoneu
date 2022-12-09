@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'icons_and_text_widget.dart';
+import 'icons_text_widget.dart';
 
 class AppColumn extends StatelessWidget {
   const AppColumn({Key? key}) : super(key: key);

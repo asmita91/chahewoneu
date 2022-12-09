@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../Navpages/Homepage.dart';
+import '../Navpages/Home.dart';
 import '../Navpages/NotificationPage.dart';
 import '../Navpages/ProfilePage.dart';
 import '../Navpages/RateandReviewpage.dart';
@@ -14,7 +14,7 @@ class AdminDashboard extends StatefulWidget {
 
 class _AdminDashboardState extends State<AdminDashboard> {
   List pages=[
-    HomePage(),
+    Home(),
     RateandReviewPage(),
     NotificationPage(),
     ProfilePage(),

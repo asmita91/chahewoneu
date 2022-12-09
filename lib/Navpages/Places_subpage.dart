@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'app_column.dart';
-import 'app_icons.dart';
+import 'app_icon.dart';
 
 class PlaceDescription extends StatelessWidget {
   final String text;
