@@ -9,8 +9,9 @@ class _RegisterScreen extends State<RegisterScreen> {
   TextEditingController username = new TextEditingController();
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
+  TextEditingController confirmpassword = new TextEditingController();
   bool changePaswordState = false;
-  final _formkey = GlobalKey<FormState>();
+  final formkeyy = GlobalKey<FormState>();
   showHidePassword() {
     setState(() {
       changePaswordState = !changePaswordState;
@@ -25,14 +26,14 @@ class _RegisterScreen extends State<RegisterScreen> {
             changePaswordState = !changePaswordState;
           });
         },
-        child: Icon(Icons.hide_source_outlined))
+        child: Icon(Icons.key))
         : InkWell(
         onTap: () {
           setState(() {
             changePaswordState = !changePaswordState;
           });
         },
-        child: Icon(Icons.remove_red_eye));
+        child: Icon(Icons.key_off));
   }
 
   hintStyle() {
@@ -51,11 +52,11 @@ class _RegisterScreen extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-
-              image: AssetImage('images/regepage.jpg'), fit: BoxFit.cover)
-      ),
+      // decoration: const BoxDecoration(
+      //     image: DecorationImage(
+      //
+      //         image: AssetImage('images/regepage.jpg'), fit: BoxFit.cover)
+      // ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
@@ -74,7 +75,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                       color: Colors.grey.withOpacity(0.6),
                       borderRadius: BorderRadius.circular(20)),
                   child: Form(
-                    key: _formkey,
+                    key: formkeyy,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -85,7 +86,6 @@ class _RegisterScreen extends State<RegisterScreen> {
                               prefixIcon: Icon(Icons.man),
 
                             ),
-
                           ),
                           TextFormField(
                             style: TextStyle(color: Colors.white70),
@@ -116,8 +116,8 @@ class _RegisterScreen extends State<RegisterScreen> {
                             validator: (String? value) {
                               if (value == null || value.isEmpty) {
                                 return "password is required";                               }
-                              if (value.length < 5 || value.length > 10) {
-                                return "enter password of 5 to 10 characters";                               }
+                              if (value.length < 8 || value.length > 10) {
+                                return "enter password of 8 to 10 characters";                               }
                               return null; // null return garyo vane chai pass vako ho
                             },
                             obscureText: !changePaswordState,
@@ -133,12 +133,12 @@ class _RegisterScreen extends State<RegisterScreen> {
                           ),
                           TextFormField(
                             style: TextStyle(color: Colors.white70),
-                            controller: password,
+                            controller: confirmpassword,
                             validator: (String? value) {
                               if (value == null || value.isEmpty) {
                                 return "password is required";                               }
-                              if (value.length < 5 || value.length > 10) {
-                                return "enter password of 5 to 10 characters";                               }
+                              if (value.length < 8 || value.length > 10) {
+                                return "enter password of 8 to 10 characters";                               }
                               return null; // null return garyo vane chai pass vako ho
                             },
                             obscureText: !changePaswordState,
@@ -159,7 +159,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                             style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.lightGreen),
                             onPressed: () {
-                              if (_formkey.currentState!.validate()) {
+                              if (formkeyy.currentState!.validate()) {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
                                   content: Text("Login validation successful"),
