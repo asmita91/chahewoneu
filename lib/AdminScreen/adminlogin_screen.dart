@@ -161,7 +161,48 @@ class _AdminLoginScreen extends State<AdminLoginScreen> {
                                 showVisibilityIcon(password_view)),
                             // validator: Validators(),
                           ),
-
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ElevatedButton(
+                            style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.lightGreen),
+                            onPressed: () {
+                              if (form.currentState!.validate()) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text("Login validation successful"),
+                                ));
+                                Navigator.of(context).pushNamed("/admindashboard");
+                              } else {
+                                print("Invalid form");
+                              }
+                            },
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Forgot Password?",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),],
+                            ),
+                          ),
                         ]),
                   ))],
           ),
