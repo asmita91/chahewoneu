@@ -1,10 +1,12 @@
-import 'package:dashboard/pages/bar_page.dart';
-import 'package:dashboard/pages/navpages/Homepage.dart';
-import 'package:dashboard/pages/navpages/my_page.dart';
-import 'package:dashboard/pages/navpages/search_page.dart';
+
+import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
+import 'Homepage.dart';
+import 'bar_page.dart';
+import 'my_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

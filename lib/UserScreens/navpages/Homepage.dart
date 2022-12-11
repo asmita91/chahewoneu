@@ -3,7 +3,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import '../Colors.dart';
+
+import '../../Colors.dart';
+
+
 
 
 class HomePage extends StatefulWidget {
@@ -20,10 +23,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     "Pokhara.jpg",
     "Chitwan.jpg",
     "Ghandruk.jpg",
-// "Ghoshaikunda.jpg",
-// "Mustang.jpg",
-// "Kathmandu.jpg"
+
   ];
+  List <String> img=[
+    "Ghoshaikunda.jpg",
+    "Mustang.jpg",
+    "Kathmandu.jpg"
+  ];
+
+  // List<String>
 
 
   @override
@@ -126,9 +134,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.white,
                                     image: DecorationImage(
-                                      // image: AssetImage("images/Pokhara.jpg"),
-                                        image: AssetImage(
-                                            "images" + image[index]),
+                                      image: AssetImage("images/${image[index]}"),
+                                      //   image: AssetImage("images" + image[index]),
                                         // image:AssetImage("images"+image.elementAt(index)),
                                         fit: BoxFit.cover)
 
@@ -165,7 +172,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.white,
                                     image: DecorationImage(
-                                        image: AssetImage("images/bugati.jpg"),
+                                        image: AssetImage("images/${img[index]}"),
                                         fit: BoxFit.cover)
                                 ),
                               );

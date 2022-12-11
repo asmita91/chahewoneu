@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dashboard/pages/navpages/main_page.dart';
+
+import 'UserScreens/navpages/Main_page.dart';
 void main() {
   runApp(const MyApp());
 }
