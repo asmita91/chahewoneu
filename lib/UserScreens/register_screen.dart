@@ -52,11 +52,10 @@ class _RegisterScreen extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // decoration: const BoxDecoration(
-      //     image: DecorationImage(
-      //
-      //         image: AssetImage('images/regepage.jpg'), fit: BoxFit.cover)
-      // ),
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('Assets/images/register.jpg'), fit: BoxFit.cover)
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
@@ -64,12 +63,12 @@ class _RegisterScreen extends State<RegisterScreen> {
             children: [
               Container(
                   margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.6,
-                    right: 25,
-                    left: 25,
-                    bottom: MediaQuery.of(context).size.height * 0.2,
+                    top: MediaQuery.of(context).size.height * 0.5,
+                    right: 15,
+                    left: 15,
+                    bottom: MediaQuery.of(context).size.height * 0.1,
                   ),
-                  height: MediaQuery.of(context).size.height * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.6,
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(0.6),
@@ -84,8 +83,15 @@ class _RegisterScreen extends State<RegisterScreen> {
                               label: Text("username"),
                               hintText: "Please enter your username",
                               prefixIcon: Icon(Icons.man),
-
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 1,color: Colors.white,
+                                ),
+                              ),
                             ),
+                          ),
+                          SizedBox(
+                            height: 10,
                           ),
                           TextFormField(
                             style: TextStyle(color: Colors.white70),
@@ -100,16 +106,22 @@ class _RegisterScreen extends State<RegisterScreen> {
                                 return "Please enter valid email";                               }
                               return null;                             },
                             decoration: InputDecoration(
-                                enabledBorder: outlineForInputField(),
-                                prefixIcon: Icon(
-                                  Icons.email,
-                                  color: Colors.black,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 1,color: Colors.white,
                                 ),
-                                hintText: "Email",
-                                hintStyle: hintStyle()),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: Colors.black,
+                              ),
+                              hintText: "Email",
+                              hintStyle: hintStyle(),
+                            ),
                           ),
                           SizedBox(
-                            height: 10,                           ),
+                            height: 10,
+                          ),
                           TextFormField(
                             style: TextStyle(color: Colors.white70),
                             controller: password,
@@ -122,7 +134,11 @@ class _RegisterScreen extends State<RegisterScreen> {
                             },
                             obscureText: !changePaswordState,
                             decoration: InputDecoration(
-                                enabledBorder: outlineForInputField(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 1,color: Colors.white,
+                                  ),
+                                ),
                                 prefixIcon:
                                 Icon(Icons.password, color: Colors.black),
                                 hintText: "Password",
@@ -130,6 +146,9 @@ class _RegisterScreen extends State<RegisterScreen> {
                                 suffixIcon:
                                 showVisibilityIcon(changePaswordState)),
                             // validator: Validators(),
+                          ),
+                          SizedBox(
+                            height: 10,
                           ),
                           TextFormField(
                             style: TextStyle(color: Colors.white70),
@@ -143,7 +162,11 @@ class _RegisterScreen extends State<RegisterScreen> {
                             },
                             obscureText: !changePaswordState,
                             decoration: InputDecoration(
-                                enabledBorder: outlineForInputField(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 1,color: Colors.white,
+                                  ),
+                                ),
                                 prefixIcon:
                                 Icon(Icons.password, color: Colors.black),
                                 hintText: "Confirm Password",
@@ -169,7 +192,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                                 print("Invalid form");                               }
                             },
                             child: Text(
-                              "Login",
+                              "Register",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -184,7 +207,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Forgot Password?",
+                                  "Go to Log In ?",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
