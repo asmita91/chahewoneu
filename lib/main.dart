@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'AdminScreens/adminlogin_screen.dart';
 import 'UserScreens/register_screen.dart';
 
 void main() {
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       ),
       home:
       // const MyHomePage(title: 'Flutter Demo Home Page'),
-      RegisterScreen(),
+      // RegisterScreen(),
+      AdminLoginScreen(),
     );
   }
 }

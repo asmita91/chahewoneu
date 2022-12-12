@@ -11,6 +11,7 @@ class AdminLoginScreen extends StatefulWidget {
   State<AdminLoginScreen> createState() => _AdminLoginScreen();
 }
 
+
 class _AdminLoginScreen extends State<AdminLoginScreen> {
   TextEditingController email = new TextEditingController();
   TextEditingController username = new TextEditingController();
@@ -50,7 +51,8 @@ class _AdminLoginScreen extends State<AdminLoginScreen> {
 
   formsOutline() {
     OutlineInputBorder(
-        borderSide: BorderSide(width: 2, color: Colors.white),
+        borderSide: BorderSide(
+            width: 2, color: Colors.white),
         borderRadius: BorderRadius.circular(30));
   }
   @override
@@ -58,7 +60,7 @@ class _AdminLoginScreen extends State<AdminLoginScreen> {
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/adminlogin.jpg'), fit:BoxFit.cover)
+              image: AssetImage('Assets/Images/admin login.jpg'), fit:BoxFit.cover)
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -76,7 +78,7 @@ class _AdminLoginScreen extends State<AdminLoginScreen> {
                   height: MediaQuery.of(context).size.height * 0.5,
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
-                      color: Colors.transparent.withOpacity(0.2),
+                      color: Colors.transparent.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(30)),
                   child: Form(
                     key: form,
@@ -93,14 +95,18 @@ class _AdminLoginScreen extends State<AdminLoginScreen> {
                                 return "Email is required";
                               }
                               if (!RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+.com")
                                   .hasMatch(value)) {
                                 return "Please enter valid email";
                               }
                               return null;
                             },
                             decoration: InputDecoration(
-                                enabledBorder: formsOutline(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 1, color: Colors.white,
+                                  ),
+                                ),
                                 prefixIcon: Icon(
                                   Icons.email,
                                   color: Colors.white,
@@ -126,7 +132,11 @@ class _AdminLoginScreen extends State<AdminLoginScreen> {
                               return null;
                             },
                             decoration: InputDecoration(
-                                enabledBorder: formsOutline(),
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      width: 1, color: Colors.white,
+                                    )
+                                ),
                                 prefixIcon: Icon(
                                   Icons.person,
                                   color: Colors.white,
@@ -152,7 +162,11 @@ class _AdminLoginScreen extends State<AdminLoginScreen> {
                             },
                             obscureText: !password_view,
                             decoration: InputDecoration(
-                                enabledBorder: formsOutline(),
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      width: 1, color: Colors.white,
+                                    )
+                                ),
                                 prefixIcon:
                                 Icon(Icons.key, color: Colors.white),
                                 hintText: "Password",
