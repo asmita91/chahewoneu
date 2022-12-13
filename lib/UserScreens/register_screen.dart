@@ -54,7 +54,7 @@ class _RegisterScreen extends State<RegisterScreen> {
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('Assets/images/register.jpg'), fit: BoxFit.cover)
+              image: AssetImage('assets/images/register.jpg'), fit: BoxFit.cover)
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -185,7 +185,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                               if (formkeyy.currentState!.validate()) {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
-                                  content: Text("Login validation successful"),
+                                  content: Text("registration validation successful"),
                                 ));
                                 Navigator.of(context).pushNamed("/dashboard");
                               } else {
