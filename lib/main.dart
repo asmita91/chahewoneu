@@ -1,3 +1,4 @@
+import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
 import 'package:flutter/material.dart';
 
 import 'UserScreens/navpages/Main_page.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MainPage(),
+      home:AdminDashboard(),
     );
   }
 }
