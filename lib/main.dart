@@ -8,6 +8,7 @@
 // import 'UserScreens/navpages/Home.dart';
 // import 'UserScreens/navpages/Main_page.dart';
 import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
+import 'package:chahewoneu/Navpages/CustomerDetails.dart';
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:chahewoneu/UserScreens/navpages/Places.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      initialRoute: "/UserHomePage",
+      initialRoute: "/AdminDashboard",
       routes: {
         "/UserHomePage": (context) => UserHomePage(),
         "/Places": (context) => PlaceDetails(),
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
         "/Mainpage": (context) => MainPage(),
         "/AdminDashboard": (context) => AdminDashboard(),
         "/sidebar": (context) => NavBar(),
+        "/CustomerDetails":(context)=>CustomerDetails(),
       },
       // MainPage(),
       // UserLoginPage()
