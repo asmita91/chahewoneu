@@ -8,6 +8,7 @@
 // import 'UserScreens/UserLogin.dart';
 // import 'UserScreens/navpages/Home.dart';
 // import 'UserScreens/navpages/Main_page.dart';
+import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,9 +41,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      home:
+      home: AdminDashboard(),
         // MainPage(),
-      UserLoginPage()
+      // UserLoginPage()
+
       // HomePage(),
 
     );
