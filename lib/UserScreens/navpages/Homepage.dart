@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   ];
   List <String> img=[
-    "Ghoshaikunda.jpg",
+    "Goshaikunda.jpg",
     "Mustang.jpg",
     "Kathmandu.jpg"
   ];

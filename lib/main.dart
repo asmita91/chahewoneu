@@ -1,5 +1,8 @@
+import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
 import 'package:flutter/material.dart';
 
+import 'UserScreens/UserLogin.dart';
+import 'UserScreens/navpages/Homepage.dart';
 import 'UserScreens/navpages/Main_page.dart';
 void main() {
   runApp(const MyApp());
@@ -25,7 +28,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MainPage(),
+      home:
+      // MainPage(),
+      HomePage(),
     );
   }
 }
