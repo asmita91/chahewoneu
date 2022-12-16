@@ -13,6 +13,11 @@ class AdminDashboard extends StatefulWidget {
 class _AdminDashboardState extends State<AdminDashboard> {
   List pages=[
     Home(),
+<<<<<<< HEAD
+=======
+    RateandReviewPage(),
+    NotificationService(),
+>>>>>>> 21b388833fddb63324fd474b867fbde79846542f
     ProfilePage(),
 
   ];
@@ -46,11 +51,14 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home),label:"Home"),
+<<<<<<< HEAD
+=======
+          BottomNavigationBarItem(icon: Icon(Icons.rate_review),label:"Rate and Review"),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications ),label: "Notifications"),
+>>>>>>> 21b388833fddb63324fd474b867fbde79846542f
           BottomNavigationBarItem(icon: Icon(Icons.person),label:"Admin Profile" ),
         ],
       ),
-
-
     );
   }
 }

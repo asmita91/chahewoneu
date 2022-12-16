@@ -1,7 +1,8 @@
+import 'package:chahewoneu/main.dart';
 import 'package:flutter/material.dart';
 
-class NavBar extends StatelessWidget {
-  const NavBar({Key? key}) : super(key: key);
+class UserNavBar extends StatelessWidget {
+  const UserNavBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +15,23 @@ class NavBar extends StatelessWidget {
             accountEmail: Text('example@gmail.com'),
             currentAccountPicture:CircleAvatar(
               child:ClipOval(
-                child:Image.network('https://www.peacenepaltreks.com/public/uploads/HIMALAYAN-PEAKS-OF-NEPAL.png',
-               // decoration:BoxDecoration(
-               //   image:DecorationImage(
-                   fit:BoxFit.cover,
-                   // image:AssetImage("Images/Goshaikunda.jpg"),
-                   width:60,
-                   height:60 ,
-               ),
+                child:Image.network(
+               'https://www.peacenepaltreks.com/public/uploads/HIMALAYAN-PEAKS-OF-NEPAL.png',
+                  width:60,
+                  height:60 ,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             decoration: BoxDecoration(
               color : Colors.blue,
               image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("Images/Goshaikunda.jpg")),
+                image: NetworkImage(
+                'https://www.peacenepaltreks.com/public/uploads/HIMALAYAN-PEAKS-OF-NEPAL.png'),
+                fit: BoxFit.cover,
               ),
             ),
+          ),
           ListTile(
             leading: Icon(Icons.cloud_circle),
             title: Text('Weather'),
@@ -55,7 +56,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Exit'),
-            onTap: () => null,
+            onTap: () => MyHomePage(title: 'HomePage'),
           ) ,
           Divider(),
 
