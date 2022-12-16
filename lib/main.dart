@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "admineditprofile",
+      initialRoute: "admindashboard",
       routes: {
         "userlogin": (context) => UserLoginPage(),
         "adminlogin": (context) => AdminLoginScreen(),
