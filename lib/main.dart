@@ -11,7 +11,7 @@ import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/ChooseBusSeat",
+      initialRoute: "/ChooseAirplaneSeat",
       routes: {
         "userlogin": (context) => UserLoginPage(),
         "adminlogin": (context) => AdminLoginScreen(),

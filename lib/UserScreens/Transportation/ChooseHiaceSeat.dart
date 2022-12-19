@@ -82,9 +82,6 @@ class _ChooseHiaceSeatState extends State<ChooseHiaceSeat> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-      ),
       body: Container(
         width: MediaQuery
             .of(context)
@@ -94,10 +91,15 @@ class _ChooseHiaceSeatState extends State<ChooseHiaceSeat> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              child: Text("Hiace Seat Booking"),
+              child: Text("Hiace Seat Booking",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w500,
+                height: 3.5,
+              ),),
             ),
             SizedBox(
-              height: 20,
+              height: 250,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),

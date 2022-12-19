@@ -89,9 +89,7 @@ class _AirplaneState extends State<Airplane> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-      ),
+
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -101,13 +99,14 @@ class _AirplaneState extends State<Airplane> {
               margin: EdgeInsets.only(top: 15),
               child: Text("Airplane Seat Booking",
                   style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
                     color: Colors.black,
+                    height: 2.5,
                   )),
             ),
             SizedBox(
-              height: 20,
+              height: 220,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
