@@ -134,8 +134,83 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Edit profile'),
+        ),
+        body: SingleChildScrollView(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Stack(
+                children: [
+                  Container(
+                    child: ClipOval(
+                      child: pickedImage != null
+                          ? Image.file(
+                              pickedImage!,
+                              width: 170,
+                              height: 170,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.network(
+                              'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Upload_free_image_notext.svg/287px-Upload_free_image_notext.svg.png?20120912083242',
+                              width: 170,
+                              height: 170,
+                              fit: BoxFit.cover,
+                            ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 5,
+                    child: IconButton(
+                      onPressed: imagePickerOption,
+                      icon: const Icon(
+                        Icons.add_a_photo_outlined,
+                        color: Colors.black,
+                        size: 30,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                  onPressed: imagePickerOption,
+                  icon: const Icon(Icons.add_a_photo_sharp),
+                  label: const Text('UPLOAD IMAGE')),
+            ),
+            Container(
+                margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.05,
+                  right: 10,
+                  left: 10,
+                  bottom: MediaQuery.of(context).size.height * 0.4,
+                ),
+                child: Form(
+                  key: form,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                  ),
+                ))
+          ]),
+        ),
+      ),
+    );
   }
 }
