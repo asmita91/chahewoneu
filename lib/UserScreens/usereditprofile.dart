@@ -134,7 +134,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -206,6 +205,129 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   key: form,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextFormField(
+                        style: TextStyle(color: Colors.black),
+                        controller: name,
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return "full name is required";
+                          }
+                          if (!RegExp(r"^[a-zA-Z]").hasMatch(value)) {
+                            return "Please enter your full name";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              width: 1,
+                              color: Colors.white,
+                            ),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Colors.black,
+                          ),
+                          hintText: "full name",
+                          hintStyle: hintStyle(),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        style: TextStyle(color: Colors.black),
+                        controller: email,
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return "email is required";
+                          }
+                          if (!RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value)) {
+                            return "Please enter your email";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Colors.black,
+                          ),
+                          hintText: "email",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        style: TextStyle(color: Colors.black),
+                        controller: contact,
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return "contact number is required";
+                          }
+                          if (!RegExp(r"^[0-9.0-9]").hasMatch(value)) {
+                            return "Please enter your contact number";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            Icons.phone,
+                            color: Colors.black,
+                          ),
+                          hintText: "contact no:",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        style: TextStyle(color: Colors.white70),
+                        controller: password,
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return "password is required";
+                          }
+                          if (value.length < 5 || value.length > 10) {
+                            return "enter password of 5 to 10 characters";
+                          }
+                          return null; // if its null pass bhako
+                        },
+                        obscureText: !changePaswordState,
+                        decoration: InputDecoration(
+                            prefixIcon:
+                                Icon(Icons.password, color: Colors.black),
+                            hintText: "Password",
+                            suffixIcon: showVisibilityIcon(changePaswordState)),
+                        // validator: Validators(),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton.icon(
+                            onPressed: () {
+                              if (form.currentState!.validate()) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text("validation successful"),
+                                ));
+                                Navigator.of(context).pushNamed("/profile");
+                              } else {
+                                print("Invalid form");
+                              }
+                            },
+                            icon: const Icon(Icons.save),
+                            label: const Text('Save')),
+                      ),
+                      
+                    ],
                   ),
                 ))
           ]),
