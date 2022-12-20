@@ -86,19 +86,23 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              child: Text("Bus Seat Booking"),
+              child: Text("Bus Seat Booking",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                  height: 4,
+
+                ),
+              ),
             ),
             SizedBox(
-              height: 20,
+              height: 280,
 
             ),
             Container(
@@ -121,6 +125,8 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
                             margin: EdgeInsets.only(left: 10),
                             child: Text(
                               "Booked",
+
+
                             ),
                           ),
                         ],
