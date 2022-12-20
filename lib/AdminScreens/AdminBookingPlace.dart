@@ -95,6 +95,40 @@ class  _BookingPlace extends State< BookingPlace> {
         centerTitle: true,
         title: const Text('Add place'),
       ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+        const SizedBox(
+        height: 10,
+      ),
+      Align(
+        alignment: Alignment.center,
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                    color: Colors.grey.withOpacity(0.6), width: 2),
+              ),
+              child: ClipRect(
+                child: pickedImage != null
+                    ? Image.file(
+                  pickedImage!,
+                  width: 500,
+                  height: 200,
+                  fit: BoxFit.cover,
+                )
+                    : Image.network(
+                  'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png?20220802103107',
+                  // width: 500,
+                  // height: 800,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
