@@ -181,6 +181,17 @@ class  _BookingPlace extends State< BookingPlace> {
               hintText: "place details",
             ),
           ),
+          SizedBox(
+            height: 10,
+            width:10,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.location_city),
+                label: const Text('Add place')),
+          ),
         ],
       ),
     );
