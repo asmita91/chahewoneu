@@ -98,36 +98,90 @@ class  _BookingPlace extends State< BookingPlace> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-        const SizedBox(
-        height: 10,
-      ),
-      Align(
-        alignment: Alignment.center,
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                    color: Colors.grey.withOpacity(0.6), width: 2),
-              ),
-              child: ClipRect(
-                child: pickedImage != null
-                    ? Image.file(
-                  pickedImage!,
-                  width: 500,
-                  height: 200,
-                  fit: BoxFit.cover,
-                )
-                    : Image.network(
-                  'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png?20220802103107',
-                  // width: 500,
-                  // height: 800,
-                  fit: BoxFit.cover,
+          const SizedBox(
+            height: 10,
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Colors.grey.withOpacity(0.6), width: 2),
+                  ),
+                  child: ClipRect(
+                    child: pickedImage != null
+                        ? Image.file(
+                      pickedImage!,
+                      width: 500,
+                      height: 200,
+                      fit: BoxFit.cover,
+                    )
+                        : Image.network(
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png?20220802103107',
+                      // width: 500,
+                      // height: 800,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton.icon(
+                onPressed: imagePickerOption,
+                icon: const Icon(Icons.add_a_photo_sharp),
+                label: const Text('Destination')),
+          ),
+          TextFormField(
+            style: TextStyle(color: Colors.black),
+            controller: place,
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Place";
+              }
+              if (!RegExp(r"^[a-zA-Z]").hasMatch(value)) {
+                return "Please enter the place name";
+              }
+              return null;
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(),
+              prefixIcon: Icon(
+                Icons.place_sharp,
+                color: Colors.black,
+              ),
+              hintText: "place name",
+            ),
+          ),
+          SizedBox(
+            height: 20,
+            width: 10,
+          ),
+          TextFormField(
+            style: TextStyle(color: Colors.black),
+            controller: place_description,
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "place_description is required";
+              }
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(),
+              prefixIcon: Icon(
+                Icons.description,
+                color: Colors.black,
+              ),
+              hintText: "place details",
+            ),
+          ),
+        ],
       ),
     );
   }
