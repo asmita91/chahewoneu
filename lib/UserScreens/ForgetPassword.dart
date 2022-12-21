@@ -35,9 +35,35 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                     left: MediaQuery.of(context).size.width * 0.05,
                     right: MediaQuery.of(context).size.width * 0.05,
                   ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                      TextFormField(
+                      // style: styleOfText(),
+                  controller: newPassword,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Password is required";
+                    }
+                    if (value.length < 5 || value.length > 10){
+                      return "Please enter  password of 5 to 10 character";
+                    }
+                    return null;
+                  },
+                  obscureText: !changePaswordState,
+                  decoration: InputDecoration(
+                      // enabledBorder: outlineForInputField(),
+                      prefixIcon: Icon(
+                        Icons.password_outlined,
+                        color: Colors.black,
+                      ),
+                      // hintText: "New Password",
+                      // hintStyle: hintStyle(),
+                      // suffixIcon: showVisibilityIcon(changePaswordState)),
+                ),
 
                 ),
-              ),
-            )));
+              ]),
+            )))));
   }
 }
