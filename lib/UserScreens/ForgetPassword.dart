@@ -63,7 +63,34 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                 ),
 
                 ),
-              ]),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          // style: styleOfText(),
+                          controller: Confirmpassword,
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return "Password is required";
+                            }
+
+                            if (value!=newPassword) {
+                              return "Re-check your password";
+                            }
+
+                            return null; // null return garyo vane chai pass vako ho
+                          },
+                          obscureText: !changePaswordState,
+                          decoration: InputDecoration(
+                              // enabledBorder: outlineForInputField(),
+                              prefixIcon:
+                              Icon(Icons.password, color: Colors.black),
+                              hintText: " Confirm Password",
+                              // hintStyle: hintStyle(),
+                              // suffixIcon: showVisibilityIcon(changePaswordState)),
+                          // validator: Validators(),
+                        ),
+                        )]),
             )))));
   }
 }
