@@ -1,7 +1,8 @@
-import 'dart:html';
+import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HotelAddPlace extends StatefulWidget {
   const  HotelAddPlace ({super.key});
@@ -139,9 +140,103 @@ class  _HotelPlace  extends State< HotelAddPlace > {
                 icon: const Icon(Icons.add_a_photo_sharp),
                 label: const Text('Hotel Image')),
           ),
+          TextFormField(
+            style: TextStyle(color: Colors.black),
+            controller: place,
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Place";
+              }
+              if (!RegExp(r"^[a-zA-Z]").hasMatch(value)) {
+                return "Please enter the hotel name";
+              }
+              return null;
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(),
+              prefixIcon: Icon(
+                Icons.place_sharp,
+                color: Colors.black,
+              ),
+              hintText: "Hotel Name",
+            ),
+          ),
+          SizedBox(
+            height: 20,
+            width: 10,
+          ),
+          TextFormField(
+            style: TextStyle(color: Colors.black),
+            controller: place_description,
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Hotel Name is required";
+              }
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(),
+              prefixIcon: Icon(
+                Icons.description,
+                color: Colors.black,
+              ),
+              hintText: "Hotel Location",
+            ),
+          ),
+          SizedBox(
+            height: 10,
+            width:10,
+          ),
+          TextFormField(
+            style: TextStyle(color: Colors.black),
+            controller: place_description,
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Hotel Location is needed";
+              }
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(),
+              prefixIcon: Icon(
+                Icons.description,
+                color: Colors.black,
+              ),
+              hintText: "Hotel Price",
+            ),
+          ),
+          SizedBox(
+            height: 10,
+            width:10,
+          ),
+          TextFormField(
+            style: TextStyle(color: Colors.black),
+            controller: place_description,
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Hotel description is required";
+              }
+            },
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(),
+              prefixIcon: Icon(
+                Icons.description,
+                color: Colors.black,
+              ),
+              hintText: "Hotel description",
+            ),
+          ),
+          SizedBox(
+            height: 10,
+            width:10,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.location_city),
+                label: const Text('Add Hotel')),
+          ),
         ],
       ),
     );
   }
 }
-
