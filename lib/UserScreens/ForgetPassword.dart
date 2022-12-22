@@ -92,7 +92,26 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                           SizedBox(
                             height: 10,
                           ),
-
+                          ElevatedButton(
+                            style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.lightGreen),
+                            onPressed: () {
+                              if (_formkey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                  content: Text("Login validation successful"),
+                                ));
+                                Navigator.of(context).pushNamed("/dashboard");
+                              } else {
+                                print("Invalid form");
+                              }
+                            },
+                            child: Text(
+                              "Done",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                           SizedBox(
                             height: 10,
                           ),
