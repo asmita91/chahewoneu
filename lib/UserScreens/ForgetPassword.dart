@@ -61,7 +61,6 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       // hintStyle: hintStyle(),
                       // suffixIcon: showVisibilityIcon(changePaswordState)),
                 ),
-
                 ),
                         SizedBox(
                           height: 10,
@@ -88,9 +87,19 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                               hintText: " Confirm Password",
                               // hintStyle: hintStyle(),
                               // suffixIcon: showVisibilityIcon(changePaswordState)),
-                          // validator: Validators(),
                         ),
-                        )]),
-            )))));
+                        ),
+                          SizedBox(
+                            height: 10,
+                          ),
+
+                          SizedBox(
+                            height: 10,
+                          ),
+
+                        ]),
+              ),
+            ),
+    )));
   }
 }
