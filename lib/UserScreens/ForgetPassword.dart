@@ -54,7 +54,12 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
 
   }
 
-
+  styleOfText() {
+    TextStyle(
+      color: Colors.white70,
+      fontSize: 18,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +87,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextFormField(
-                        // style: styleOfText(),
+                        style: styleOfText(),
                         controller: newPassword,
                         validator: (String? value) {
                           if (value == null || value.isEmpty) {
@@ -108,7 +113,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         height: 10,
                       ),
                       TextFormField(
-                        // style: styleOfText(),
+                        style: styleOfText(),
                         controller: Confirmpassword,
                         validator: (String? value) {
                           if (value == null || value.isEmpty) {
