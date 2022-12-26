@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 
-class UserWeatherScreen extends StatefulWidget {
+class WeatherScreen extends StatefulWidget {
   @override
-  _UserWeatherScreenState createState() => _UserWeatherScreenState();
+  _WeatherScreenState createState() => _WeatherScreenState();
 }
 
-class _UserWeatherScreenState extends State<UserWeatherScreen> {
+class _WeatherScreenState extends State<WeatherScreen> {
   int _currentPage = 0;
   late String bgImg;
 
