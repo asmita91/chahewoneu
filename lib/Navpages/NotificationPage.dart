@@ -11,7 +11,15 @@ class NotificationService{
   static final FlutterLocalNotificationsPlugin
   _notificationsPlugin = FlutterLocalNotificationsPlugin();
 
-
-
-
+  static void initialize() {
+    final InitializationSettings initializationSettings =
+    InitializationSettings(
+        android: AndroidInitializationSettings("@mipmap/ic_launcher"),
+        iOS: DarwinInitializationSettings(
+            requestAlertPermission: false,
+            requestBadgePermission: false,
+            requestSoundPermission: false
+        )
+    );
+  }
     }
