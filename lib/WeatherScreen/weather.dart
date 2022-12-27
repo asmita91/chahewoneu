@@ -49,10 +49,32 @@ class _WeatherScreenState extends State<WeatherScreen> {
             margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
             child: GestureDetector(
               onTap: () => print('Menu Clicked!'),
+              child: SvgPicture.asset(
+                'assets/images/register.jpg',
+                height: 30,
+                width: 30,
+                color: Colors.white,
+              ),
             ),
           ),
         ],
       ),
+      body: Container(
+        child: Stack(
+          children: [
+            Image.asset(
+              bgImg,
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+            ),
+            Container(
+              decoration: BoxDecoration(color: Colors.black38),
+            ),
+          ],
+        ),
+      ),
+
     );
   }
 }

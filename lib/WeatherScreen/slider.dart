@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 
-class UserSlider extends StatefulWidget {
-  const UserSlider({Key? key}) : super(key: key);
+class SliderDot extends StatelessWidget {
+  bool isActive;
+  SliderDot(this.isActive);
 
-  @override
-  State<UserSlider> createState() => _UserSliderState();
-}
-
-class _UserSliderState extends State<UserSlider> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 150),
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      width: isActive ? 12 : 5,
+      height: 5,
+      decoration: BoxDecoration(
+        color: isActive ? Colors.white : Colors.white54,
+        borderRadius: BorderRadius.all(
+          Radius.circular(5),
+        ),
+      ),
+    );
   }
 }
