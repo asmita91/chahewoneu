@@ -24,7 +24,7 @@ class _AirplaneState extends State<Airplane> {
     // third param is for naming value every seat //look line 38
     initSeatValueToList(listSeatLeft, countSeatLeft, "l");
     initSeatValueToList(listSeatRight, countSeatRight, "r");
-
+    setVisiblitySeat();
     super.initState();
   }
 
@@ -46,6 +46,43 @@ class _AirplaneState extends State<Airplane> {
       });
     }
     print(data);
+  }
+
+  setVisiblitySeat() {
+    setState(() {
+      listSeatLeft[2]["isVisible"] = false; // left column index 0
+      listSeatLeft[2]["isVisible"] = false; // left column index 1
+      listSeatLeft[2]["isVisible"] = false; // left column index 0
+      listSeatRight[2]["isVisible"] = false; // right column index 1
+      listSeatRight[2]["isVisible"] = false; // right column index 2
+      listSeatRight[2]["isVisible"] = false; // right column index 5
+    });
+    //this function to set where's the position of the seat that should be invisible
+  }
+
+  setSelectedToBooked() {
+    listSeatLeft.forEach((seat) {
+      if (seat["isSelected"]) {
+        setState(() {
+          seat["isBooked"] = true;
+        });
+      }
+    });
+    listSeatCenter.forEach((seat) {
+      if (seat["isSelected"]) {
+        setState(() {
+          seat["isBooked"] = true;
+        });
+      }
+    });
+    listSeatRight.forEach((seat) {
+      if (seat["isSelected"]) {
+        setState(() {
+          seat["isBooked"] = true;
+        });
+      }
+    });
+    //this function to loop every side of seat, from selected to booked, u also can this function to send to u'r serves side
   }
 
   @override
@@ -167,7 +204,9 @@ class _AirplaneState extends State<Airplane> {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                setSelectedToBooked();
+              },
               child: Text("Book"),
             ),
           ],
