@@ -1,3 +1,4 @@
+import 'package:chahewoneu/WeatherScreen/weather_location.dart';
 import 'package:flutter/material.dart';
 
 
@@ -18,6 +19,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    if(locationList[_currentPage].weatherType == 'Sunny') {
+      bgImg = 'assets/images/regepage.jpg';
+    } else if(locationList[_currentPage].weatherType == 'Night') {
+      bgImg = 'assets/images/regepage.jpg';
+    } else if(locationList[_currentPage].weatherType == 'Rainy') {
+      bgImg = 'assets/images/regepage.jpg';
+    } else if(locationList[_currentPage].weatherType == 'Cloudy') {
+      bgImg = 'assets/images/regepage.jpg';
+    }
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -32,6 +44,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
             color: Colors.white,
           ),
         ),
+        actions: [
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+            child: GestureDetector(
+              onTap: () => print('Menu Clicked!'),
+            ),
+          ),
+        ],
       ),
     );
   }
