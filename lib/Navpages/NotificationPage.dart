@@ -54,4 +54,8 @@ final bigpicture = await getImageFilePathFromAssets(
 final smallpicture = await getImageFilePathFromAssets(
 'assets/images/logoicon.png', 'smallpicture');
 
-
+//scroll garesi aaune image
+final styleinformationDesign = BigPictureStyleInformation(
+  FilePathAndroidBitmap(smallpicture),
+  largeIcon: FilePathAndroidBitmap(bigpicture),
+);
