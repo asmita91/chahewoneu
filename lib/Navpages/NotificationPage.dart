@@ -43,3 +43,11 @@ await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byte
 
 return file.path;
 }
+static void display(String title,String body,String payload,BuildContext _context) async{
+context=_context;
+// if image from asset
+//big picture title ko tala
+final bigpicture = await getImageFilePathFromAssets(
+'assets/images/logoicon.png', 'bigpicture');
+
+
