@@ -50,4 +50,8 @@ context=_context;
 final bigpicture = await getImageFilePathFromAssets(
 'assets/images/logoicon.png', 'bigpicture');
 
+//title ko side ma aaune simple image
+final smallpicture = await getImageFilePathFromAssets(
+'assets/images/logoicon.png', 'smallpicture');
+
 
