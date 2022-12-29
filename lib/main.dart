@@ -27,20 +27,6 @@ import 'Navpages/NotificationPage.dart';
 import 'UserScreens/navpages/Main_page.dart';
 
 
-// const AndroidNotificationChannel channel =AndroidNotificationChannel(
-//     'high_importance_channel',
-//      'High Importance Notifications',
-//      // 'This channel is used for important notifications',
-//      importance: Importance.high,
-//      playSound: true);
-
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   NotificationService.initialize();
-//   runApp(const MyApp());
-// }
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
