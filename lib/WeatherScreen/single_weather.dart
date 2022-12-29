@@ -1,7 +1,6 @@
 import 'package:chahewoneu/WeatherScreen/weather_location.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 class SingleWeather extends StatelessWidget {
   final int index;
   SingleWeather(this.index);

@@ -2,12 +2,12 @@ import 'package:chahewoneu/WeatherScreen/slider.dart';
 import 'package:chahewoneu/WeatherScreen/weather_location.dart';
 import 'package:flutter/material.dart';
 
-class WeatherApp extends StatefulWidget {
+class WeatherScreen extends StatefulWidget {
   @override
-  _WeatherAppState createState() => _WeatherAppState();
+  _WeatherScreenState createState() => _WeatherScreenState();
 }
 
-class _WeatherAppState extends State<WeatherApp> {
+class _WeatherScreenState extends State<WeatherScreen> {
   int _currentPage = 0;
   late String bgImg;
 
