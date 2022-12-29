@@ -59,3 +59,23 @@ final styleinformationDesign = BigPictureStyleInformation(
   FilePathAndroidBitmap(smallpicture),
   largeIcon: FilePathAndroidBitmap(bigpicture),
 );
+final id=DateTime.now().millisecondsSinceEpoch ~/1000;
+final NotificationDetails notificationDetails=
+
+NotificationDetails(
+
+    android :AndroidNotificationDetails(
+      //yo app ko anusra change garna parcha
+      //myapp channel andriod ma huncha so dinaiparne huncha
+        "myapp",
+        "myapp channel",
+        channelDescription:"Channel Description",
+        //importance and priority chai high and max rakhe vane notification background ma aaune ki pop up hune
+        importance : Importance.max,
+        priority:Priority.high,
+        styleInformation: styleinformationDesign
+    ),
+
+
+    iOS:DarwinNotificationDetails()
+);
