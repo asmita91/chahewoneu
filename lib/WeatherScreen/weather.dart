@@ -1,13 +1,13 @@
+import 'package:chahewoneu/WeatherScreen/slider.dart';
 import 'package:chahewoneu/WeatherScreen/weather_location.dart';
 import 'package:flutter/material.dart';
 
-
-class WeatherScreen extends StatefulWidget {
+class WeatherApp extends StatefulWidget {
   @override
-  _WeatherScreenState createState() => _WeatherScreenState();
+  _WeatherAppState createState() => _WeatherAppState();
 }
 
-class _WeatherScreenState extends State<WeatherScreen> {
+class _WeatherAppState extends State<WeatherApp> {
   int _currentPage = 0;
   late String bgImg;
 
@@ -50,7 +50,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             child: GestureDetector(
               onTap: () => print('Menu Clicked!'),
               child: SvgPicture.asset(
-                'assets/images/register.jpg',
+                'assets/images/regepage.jpg',
                 height: 30,
                 width: 30,
                 color: Colors.white,
@@ -71,10 +71,29 @@ class _WeatherScreenState extends State<WeatherScreen> {
             Container(
               decoration: BoxDecoration(color: Colors.black38),
             ),
+            Container(
+              margin: EdgeInsets.only(top: 140, left: 15),
+              child: Row(
+                children: [
+                  for(int i = 0; i<locationList.length; i++)
+                    if( i == _currentPage )
+                      SliderDot(true)
+                    else
+                      SliderDot(false)
+                ],
+              ),
+            ),
+            TransformerPageView(
+              scrollDirection: Axis.horizontal,
+              transformer: ScaleAndFadeTransformer(),
+              viewportFraction: 0.8,
+              onPageChanged: _onPageChanged,
+              itemCount: locationList.length,
+              itemBuilder: (ctx, i) => SingleWeather(i),
+            ),
           ],
         ),
       ),
-
     );
   }
 }
