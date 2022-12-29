@@ -79,3 +79,5 @@ NotificationDetails(
 
     iOS:DarwinNotificationDetails()
 );
+_notificationsPlugin.show(id, title, body, notificationDetails,payload: payload);
+}
