@@ -5,13 +5,13 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BookingPlace extends StatefulWidget {
-  const  BookingPlace({super.key});
+  const BookingPlace({super.key});
 
   @override
-  State< BookingPlace> createState() => _BookingPlace();
+  State<BookingPlace> createState() => _BookingPlace();
 }
 
-class  _BookingPlace extends State< BookingPlace> {
+class _BookingPlace extends State<BookingPlace> {
   TextEditingController place = new TextEditingController();
   TextEditingController place_description = new TextEditingController();
   File? pickedImage;
@@ -113,17 +113,17 @@ class  _BookingPlace extends State< BookingPlace> {
                   child: ClipRect(
                     child: pickedImage != null
                         ? Image.file(
-                      pickedImage!,
-                      width: 500,
-                      height: 200,
-                      fit: BoxFit.cover,
-                    )
+                            pickedImage!,
+                            width: 500,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          )
                         : Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png?20220802103107',
-                      // width: 500,
-                      // height: 800,
-                      fit: BoxFit.cover,
-                    ),
+                            'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png?20220802103107',
+                            // width: 500,
+                            // height: 800,
+                            fit: BoxFit.cover,
+                          ),
                   ),
                 ),
               ],
@@ -183,7 +183,7 @@ class  _BookingPlace extends State< BookingPlace> {
           ),
           SizedBox(
             height: 10,
-            width:10,
+            width: 10,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
