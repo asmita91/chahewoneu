@@ -172,7 +172,7 @@ class _AirplaneState extends State<Airplane> {
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 10),
-                            child: Text("A3vailable"),
+                            child: Text("Available"),
                           ),
                         ],
                       ),

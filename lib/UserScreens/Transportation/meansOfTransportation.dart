@@ -47,7 +47,7 @@ class _TransportationState extends State<Transportation> {
                                   BorderRadius.all(Radius.circular(10)))),
                       onPressed: () {
                         timeDilation = 0.4;
-                        Navigator.of(context).pushNamed("/Buspage");
+                        Navigator.of(context).pushNamed("/ChooseBusSeat");
                       },
                       child: Text("View More"),
                     ))),
@@ -68,7 +68,7 @@ class _TransportationState extends State<Transportation> {
                                   BorderRadius.all(Radius.circular(10)))),
                       onPressed: () {
                         timeDilation = 0.4;
-                        Navigator.of(context).pushNamed("/Hiacepage");
+                        Navigator.of(context).pushNamed("/ChooseHiaceSeat");
                       },
                       child: Text("View More"),
                     ))),
@@ -89,7 +89,7 @@ class _TransportationState extends State<Transportation> {
                                   BorderRadius.all(Radius.circular(10)))),
                       onPressed: () {
                         timeDilation = 0.4;
-                        Navigator.of(context).pushNamed("/Airplane.png");
+                        Navigator.of(context).pushNamed("/Airplane");
                       },
                       child: Text("View More"),
                     )))
