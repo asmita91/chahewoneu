@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../Colors.dart';
 import 'Places.dart';
-import 'meansOfTransportation.dart';
+// import 'meansOfTransportation.dart';
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({Key? key}) : super(key: key);
@@ -91,7 +91,8 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
           SizedBox(height: 10),
           Container(
             child: TabBarView(
-              children: [PlaceDetails(), Transportation(), Text("Contents")],
+              children: [PlaceDetails(),  Text("Contents")],
+              // Transportation(),
             ),
           )
         ]));
