@@ -1,5 +1,9 @@
+
 import 'package:flutter/material.dart';
-import '../Colors.dart' as color;
+import '../Navpages/Home.dart';
+import '../Navpages/NotificationPage.dart';
+import '../Navpages/ProfilePage.dart';
+import '../Navpages/RateandReviewpage.dart';
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({Key? key}) : super(key: key);
@@ -9,103 +13,50 @@ class AdminDashboard extends StatefulWidget {
 }
 
 class _AdminDashboardState extends State<AdminDashboard> {
+  List pages=[
+    Home(),
+    RateandReviewPage(),
+    NotificationPage(),
+    ProfilePage(),
+
+  ];
+
+  int currentIndex=0;
+  void onTap(int index){
+    setState(() {
+      currentIndex=index;
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: color.AppColor.AdminDashboardPage,
-      body: Container(
-        // padding: const EdgeInsets.only(top: 30, left:105,),
-        child:Column(
+      backgroundColor: Colors.white,
+      body: pages[currentIndex],
 
-          children: [
-            Row(
-              children: [
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.shifting,
+        backgroundColor: Colors.white,
+        onTap: onTap,
+        currentIndex: currentIndex,
 
-                Text(
-                  "Chahewoneu",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700,
-                      color: color.AppColor.DashboardTitle
-                  ),
-                ),
-              ],
+        unselectedFontSize: 0,
+        selectedFontSize: 0,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.black,
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        elevation: 0,
 
-            ),
-
-            SizedBox(height:30,),
-
-            Container(
-              padding: const EdgeInsets.only(right: 0,),
-              child: Column(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Events and Activities",
-                    style: TextStyle(
-                      fontSize: 30,
-                      color:color.AppColor.Events,
-                      fontWeight: FontWeight.w700,
-                    ),
-
-
-                  )
-                ],
-              ),
-            ),
-            Container(
-
-              // child: Container(
-              padding: const EdgeInsets.only(left: 0),
-              margin: EdgeInsets.only(left: 10,right: 200),
-              width: MediaQuery.of(context).size.width,
-              height: 170,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  // image: DecorationImage(
-                  //   image: AssetImage(
-                  //     "assets/paraa.avif"
-                  //   )
-                  // ),
-                  borderRadius: BorderRadius.only(
-
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
-                  ),
-                  boxShadow:[
-                    BoxShadow(
-                      offset: Offset(5,10),
-                      blurRadius: 20,
-                      color: color.AppColor.Shadow.withOpacity(0.2),
-
-                    ),
-                  ]
-
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    "Paragliding",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: color.AppColor.para,
-
-                    ),
-                  )
-                ],
-              ),
-
-
-            )
-
-            // )
-          ],
-
-
-        ),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home),label:"Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.rate_review),label:"Rate and Review"),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications),label: "Notifications"),
+          BottomNavigationBarItem(icon: Icon(Icons.person),label:"Admin Profile" ),
+        ],
       ),
+
+
     );
   }
 }
