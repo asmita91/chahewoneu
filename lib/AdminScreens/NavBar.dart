@@ -32,31 +32,32 @@ class NavBar extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text('Favorites'),
+            leading: Icon(Icons.cloud_circle),
+            title: Text('Weather'),
             onTap: () => null,
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.people),
-            title: Text('Friends'),
+            leading: Icon(Icons.payment),
+            title: Text('Payment'),
             onTap: () => null,
-          ) ,Divider(),
+          ) ,
+          Divider(),
+
+          ListTile(
+            leading: Icon(Icons.rate_review),
+            title: Text('Rate and Review'),
+            onTap: () => null,
+          ),
+
+          Divider(),
+
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Exit'),
             onTap: () => null,
-          ) ,Divider(),
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text('Favorites'),
-            onTap: () => null,
-          ),Divider(),
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text('Favorites'),
-            onTap: () => null,
-          ),Divider(),
+          ) ,
+          Divider(),
 
         ],
       ),
