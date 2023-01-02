@@ -89,7 +89,7 @@ class _TransportationState extends State<Transportation> {
                                   BorderRadius.all(Radius.circular(10)))),
                       onPressed: () {
                         timeDilation = 0.4;
-                        Navigator.of(context).pushNamed("/Airplane");
+                        Navigator.of(context).pushNamed("/ChooseAirplaneSeat");
                       },
                       child: Text("View More"),
                     )))
