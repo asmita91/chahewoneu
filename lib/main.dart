@@ -16,9 +16,9 @@ void main() {
         "userlogin": (context) => UserLoginPage(),
         "adminlogin": (context) => AdminLoginScreen(),
         "admindashboard": (context) => AdminDashboard(),
-        "/ChooseBusseat": (context) => ChooseBusSeat(),
+        "/ChooseBusSeat": (context) => ChooseBusSeat(),
         "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
         "/ChooseAirplaneSeat": (context) => Airplane(),
-        "/MeansOfTransportation":(context)=>Transportation(),
+        "/MeansOfTransportation": (context) => Transportation(),
       }));
 }
