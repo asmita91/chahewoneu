@@ -7,20 +7,24 @@ import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:flutter/material.dart';
 
+import 'AdminScreens/AdminRatingReview.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
+import 'UserScreens/UserRatingReview.dart';
 
 void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/Homepage=",
+      initialRoute: "/Adratingreview",
       routes: {
-        "userlogin": (context) => UserLoginPage(),
-        "adminlogin": (context) => AdminLoginScreen(),
-        "admindashboard": (context) => AdminDashboard(),
-        "/ChooseBusSeat": (context) => ChooseBusSeat(),
-        "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
-        "/ChooseAirplaneSeat": (context) => Airplane(),
-        "/MeansOfTransportation": (context) => Transportation(),
-        "/Homepage":(context)=> HomePage(),
+        // "userlogin": (context) => UserLoginPage(),
+        // "adminlogin": (context) => AdminLoginScreen(),
+        // "admindashboard": (context) => AdminDashboard(),
+        // "/ChooseBusSeat": (context) => ChooseBusSeat(),
+        // "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
+        // "/ChooseAirplaneSeat": (context) => Airplane(),
+        // "/MeansOfTransportation": (context) => Transportation(),
+        // "/Homepage":(context)=> HomePage(),
+        "/Uratingreview":(context)=> UserRatingReview(),
+        "/Adratingreview":(context)=> AdminRatingReview(),
       }));
 }
