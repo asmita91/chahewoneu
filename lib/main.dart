@@ -8,8 +8,8 @@ void main() {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "userlogin": (context) => UserLoginPage(),
-        "adminlogin": (context) => AdminLoginScreen(),
-        "admindashboard": (context) => AdminDashboard(),
+        "/userlogin": (context) => UserLoginPage(),
+        "/adminlogin": (context) => AdminLoginScreen(),
+        "/admindashboard": (context) => AdminDashboard(),
       }));
 }
