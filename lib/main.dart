@@ -1,15 +1,8 @@
-import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
-import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
-import 'package:chahewoneu/UserScreens/Transportation/ChooseAirplaneSeat.dart';
-import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
-import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
-import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 
 import 'UserScreens/Payment/KhaltiTest.dart';
-import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 
 void main() {
   runApp(const Myapp());
@@ -36,4 +29,3 @@ class Myapp extends StatelessWidget {
         });
   }
 }
-
