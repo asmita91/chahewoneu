@@ -34,6 +34,7 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_svg: ^1.1.6
   transformer_page_view: ^0.1.6
+  line_awesome_flutter: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -52,6 +53,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  khalti_flutter: ^2.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
