@@ -43,6 +43,7 @@ class _AdminRatingReviewState extends State<AdminRatingReview> {
                       ratingreview.rating ,
                       style: TextStyle(fontSize: 40),
                     ),
+                    subtitle: Text(ratingreview.review),
                   );
                 }),
               ],
@@ -51,3 +52,4 @@ class _AdminRatingReviewState extends State<AdminRatingReview> {
     );
   }
 }
+
