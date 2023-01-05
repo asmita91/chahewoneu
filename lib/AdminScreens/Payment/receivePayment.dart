@@ -50,6 +50,26 @@ class _AdminPaymentState extends State<AdminPayment> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 55,
+                                height: 55,
+                                color: Colors.lightGreenAccent,
+                                child: CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage("Images/hiace.png"),
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Text(name[index],
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18)),
+                            ],
+                          ),
                           RichText(
                             text: TextSpan(
                               // Here is the explicit parent TextStyle
