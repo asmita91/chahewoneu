@@ -54,7 +54,7 @@ class _KhaltiPaymentState extends State<KhaltiPayment> {
                   khaltiWallet();
                 }, // Image tapped
                 child: Image.asset(
-                  'assets/images/bugati.jpg',
+                  'assets/Images/khalti.png',
                   width: 180,
                 ),
               ),
@@ -80,7 +80,7 @@ class _KhaltiPaymentState extends State<KhaltiPayment> {
                   );
                 },
                 child: Image.asset(
-                  'assets/images/cod.png',
+                  'assets/images/ime.png',
                   width: 100,
                 ),
               ),
