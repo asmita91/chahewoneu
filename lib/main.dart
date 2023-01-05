@@ -4,6 +4,7 @@ import 'package:chahewoneu/UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
+import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:flutter/material.dart';
 
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
@@ -11,7 +12,7 @@ import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/MeansOfTransportation",
+      initialRoute: "/Homepage=",
       routes: {
         "userlogin": (context) => UserLoginPage(),
         "adminlogin": (context) => AdminLoginScreen(),
@@ -20,5 +21,6 @@ void main() {
         "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
         "/ChooseAirplaneSeat": (context) => Airplane(),
         "/MeansOfTransportation": (context) => Transportation(),
+        "/Homepage":(context)=> HomePage(),
       }));
 }
