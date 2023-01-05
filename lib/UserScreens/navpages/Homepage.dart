@@ -26,13 +26,15 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
               right: MediaQuery.of(context).size.width * 0.02,
               left: MediaQuery.of(context).size.width * 0.04,
             ),
-
 // Menu
+
             child: Row(
 // sidebar
               children: [
                 Icon(Icons.menu, size: 30, color: Colors.black54),
-                Expanded(child: Container()),
+                Expanded(child: Container(
+
+                )),
 
 // menu text
                 Container(

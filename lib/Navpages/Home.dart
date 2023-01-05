@@ -1,5 +1,5 @@
+import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:flutter/material.dart';
-import '../../Colors.dart';
 import '../../Colors.dart';
 
 
@@ -17,23 +17,35 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
     TabController tabController = TabController(length: 4, vsync: this);
 
     return Scaffold(
-      body: Column(children: [
-        Container(
-          padding: const EdgeInsets.only(top: 30, left: 20,right: 0),
-          margin: const EdgeInsets.only(top: 20),
-          child: Row(
-            children: [
-              Icon(
-                Icons.menu,
-                size: 30,
-                color: Colors.black54,
-              ),
-            ],
+      drawer: NavBar(),
+      // body: Column(
+      //
+      //     children: [
+        // Container(
+        //   padding: const EdgeInsets.only(top: 30,right: 335),
+        //   margin: const EdgeInsets.only(top: 20),
+        //   child: InkWell(
+        //        child: Icon(
+        //           Icons.menu,
+        //           size: 30,
+        //           color: Colors.black54,
+        //         ),
+        //       onTap: (){
+        //     Navigator.of(context).pushNamed("/sidebar");
+        //   },
+        //   ),
+        // ),
+        appBar:AppBar(
+          elevation:0,
+          backgroundColor: Colors.transparent,
+          iconTheme: IconThemeData(
+            color: AppColor.Events,
           ),
         ),
-        SizedBox(
-          height: 40,
-        ),
+
+      body:Column(children: [
+
+
         //side bar
         Container(
           padding: const EdgeInsets.only(top: 5),
@@ -84,8 +96,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
           ]),
         )
       ]),
-
-    );}
+    );
+  }
 }
 
 class CircleTabIndicator extends Decoration{
