@@ -47,6 +47,48 @@ class _UserRatingReviewState extends State<UserRatingReview> {
           title: Text('Rating and review'),
         ),
         body:  SingleChildScrollView(
+          child: Form(
+            key: form,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text('Rating and Review',style: TextStyle(fontSize: 20.0),),
+                  RatingBar.builder(
+                    initialRating: 3,
+                    minRating: 0,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                    onRatingUpdate: (rating) {
+                     setState(() {
+                       newRating = rating;
+                       print(rating);
+                     });
+                    },
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(onPressed: (){
+                        submitRatingReview();
+                      },child: Text("Submit"))
+                    ],
+
+                  ),
+                ]
+            ),
+          ),
         )
     );
   }
