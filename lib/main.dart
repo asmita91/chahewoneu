@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        initialRoute:"/Uratingreview" ,
+        initialRoute:"/Adratingreview" ,
         routes: {
           // "userlogin": (context) => UserLoginPage(),
           // "adminlogin": (context) => AdminLoginScreen(),
