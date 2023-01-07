@@ -12,6 +12,7 @@ String ratingReviewModelToJson(RatingReviewModel data) => json.encode(data.toJso
 
 class RatingReviewModel {
   RatingReviewModel({
+    
     required this.rating,
     required this.review,
   });
@@ -21,8 +22,8 @@ class RatingReviewModel {
 
   factory RatingReviewModel.fromFirebaseSnapshot(
       DocumentSnapshot<Map<String, dynamic>> json) => RatingReviewModel(
-    rating: json["rating"],
-    review: json["review"],
+    rating: json["Rating"],
+    review: json["Review"],
   );
 
   factory RatingReviewModel.fromJson(Map<String, dynamic> json) => RatingReviewModel(
