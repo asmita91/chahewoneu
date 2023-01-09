@@ -10,14 +10,23 @@
 // import 'UserScreens/navpages/Main_page.dart';
 import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
+import 'package:chahewoneu/UserScreens/User_NavBar.dart';
+import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
+import 'package:chahewoneu/UserScreens/navpages/Places.dart';
+import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
+import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'AdminScreens/NavBar.dart';
 import 'Navpages/Home.dart';
+import 'Navpages/NotificationPage.dart';
 import 'UserScreens/navpages/Main_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  NotificationService.initialize();
   runApp(const MyApp());
 }
 
@@ -27,6 +36,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return MultiProvider(
+      providers:[
+        ChangeNotifierProvider<ProductViewModel>(
+            create: (_)=> ProductViewModel())
+      ],
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -42,10 +56,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-     initialRoute: "/AdminDashboard",
+     initialRoute: "/UserHomePage",
         routes:{
+        "/UserHomePage":(context)=>UserHomePage(),
+          "/Places":(context)=>PlaceDetails(),
+          "/Usersidebar":(context)=>UserNavBar(),
+          "/mypage":(context)=>Mypage(),
+          "/searchpage":(context)=>SearchPage(),
+          "/Mainpage":(context)=>MainPage(),
           "/AdminDashboard":(context)=>AdminDashboard(),
           "/sidebar":(context)=>NavBar(),
+
         }
         // MainPage(),
       // UserLoginPage()

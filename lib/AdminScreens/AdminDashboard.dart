@@ -16,7 +16,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
   List pages=[
     Home(),
     RateandReviewPage(),
-    NotificationPage(),
+    NotificationService(),
     ProfilePage(),
 
   ];
