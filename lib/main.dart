@@ -15,8 +15,10 @@ import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:chahewoneu/UserScreens/navpages/Places.dart';
 import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
 import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'AdminScreens/NavBar.dart';
 import 'Navpages/Home.dart';
@@ -38,10 +40,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers:[
-        ChangeNotifierProvider<ProductViewModel>(
-            create: (_)=> ProductViewModel())
+        // ChangeNotifierProvider<ProductViewModel>(
+        //     create: (_)=> ProductViewModel())
       ],
-    return MaterialApp(
+    child: MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -73,6 +75,7 @@ class MyApp extends StatelessWidget {
 
       // HomePage(),
 
+    ),
     );
   }
 }
