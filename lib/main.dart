@@ -1,7 +1,7 @@
-import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
-import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:flutter/material.dart';
+
+import 'AdminScreen/adminlogin_screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -10,6 +10,5 @@ void main() {
       routes: {
         "/userlogin": (context) => UserLoginPage(),
         "/adminlogin": (context) => AdminLoginScreen(),
-        "/admindashboard": (context) => AdminDashboard(),
       }));
 }
