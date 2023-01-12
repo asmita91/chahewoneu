@@ -86,13 +86,13 @@ class _PlaceDetailsState extends State<PlaceDetails>
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: index.isEven ? Color(0xFF69C5DF) : Color(0xFF9294CC),
-                image: DecorationImage(
+                image: const DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("Assets/Images/Pokhara.jpg"))),
+                    image: AssetImage("Assets/Images/Hiace.png"))),
           ),
           InkWell(
               child: Align(
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.center,
                 child: Container(
                   height: 110,
                   margin: EdgeInsets.only(left: 50, right: 50, bottom: 30),
@@ -107,7 +107,7 @@ class _PlaceDetailsState extends State<PlaceDetails>
                 ),
               ),
               onTap: () {
-                Navigator.of(context).pushNamed("/");
+                Navigator.of(context).pushNamed("/placeSubPage");
               }),
         ]),
       ),

@@ -5,6 +5,7 @@ import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
+import 'package:chahewoneu/UserScreens/navpages/Places_subpage.dart';
 import 'package:chahewoneu/UserScreens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +36,7 @@ void main() {
       "/forgotPassword": (context) => ForgetPasswordPage(),
       "/userPayment": (context) => KhaltiPayment(),
       "/adminPayment": (context) => AdminPayment(),
+      "/placeSubPage": (context) => PlaceDescription(text: "Context")
     },
   ));
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
