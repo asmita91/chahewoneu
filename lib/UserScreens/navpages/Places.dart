@@ -91,7 +91,7 @@ class _PlaceDetailsState extends State<PlaceDetails>
                     image: AssetImage("Images/Pokhara.jpg"))),
           ),
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.center,
             child: Container(
               height: 110,
               margin: EdgeInsets.only(left: 50, right: 50, bottom: 30),

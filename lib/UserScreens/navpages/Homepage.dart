@@ -1,3 +1,4 @@
+import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,9 +33,7 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
 // sidebar
               children: [
                 Icon(Icons.menu, size: 30, color: Colors.black54),
-                Expanded(child: Container(
-
-                )),
+                Expanded(child: Container()),
 
 // menu text
                 Container(
@@ -92,8 +91,10 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
           ),
           SizedBox(height: 10),
           Container(
+            height: 400,
             child: TabBarView(
-              children: [PlaceDetails(),  Text("Contents")],
+              controller: _tabController,
+              children: [PlaceDetails(), Transportation(), Text("Contents")],
               // Transportation(),
             ),
           )

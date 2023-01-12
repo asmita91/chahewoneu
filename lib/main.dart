@@ -24,7 +24,7 @@ void main() {
       "/registration": (context) => RegisterScreen(),
       "/userLogin": (context) => UserLoginPage(),
       "/adminLogin": (context) => AdminLoginScreen(),
-      "/userDashboard": (context) => HomePage(),
+      "/userDashboard": (context) => UserHomePage(),
       "/adminDashboard": (context) => Home(),
       "/transportation_dash": (context) => Transportation(),
       "/airplane_trans": (context) => Airplane(),
