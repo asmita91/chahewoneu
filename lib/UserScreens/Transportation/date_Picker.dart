@@ -36,7 +36,19 @@ class _DatePickerState extends State<DatePicker> {
             //display chosen date
             Text(_dateTime.toString(),style: TextStyle(fontSize: 20)),
 
-
+            //button
+            MaterialButton(
+              onPressed: _showDatePicker,
+              child: const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text ('choose date',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                    )),
+              ),
+              color: Colors.blue ,
+            ),
           ],
         ),
       ),
