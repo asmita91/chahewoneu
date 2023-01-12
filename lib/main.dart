@@ -7,6 +7,7 @@ import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:flutter/material.dart';
 
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
+import 'UserScreens/Transportation/date_Picker.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -21,4 +22,23 @@ void main() {
         "/ChooseAirplaneSeat": (context) => Airplane(),
         "/MeansOfTransportation": (context) => Transportation(),
       }));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        // brightness: Brightness.dark
+      ),
+
+      home: DatePicker(),
+    );
+  }
 }

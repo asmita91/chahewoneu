@@ -15,8 +15,10 @@ class _TransportationState extends State<Transportation> {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       child: Padding(
         padding: const EdgeInsets.all(10),
+
         child: GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
