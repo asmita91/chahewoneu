@@ -88,23 +88,27 @@ class _PlaceDetailsState extends State<PlaceDetails>
                 color: index.isEven ? Color(0xFF69C5DF) : Color(0xFF9294CC),
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("Images/Pokhara.jpg"))),
+                    image: AssetImage("Assets/Images/Pokhara.jpg"))),
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              height: 110,
-              margin: EdgeInsets.only(left: 50, right: 50, bottom: 30),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.white,
+          InkWell(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: 110,
+                  margin: EdgeInsets.only(left: 50, right: 50, bottom: 30),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.white,
+                  ),
+                  child: Container(
+                    padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+                    child: AppColumn(),
+                  ),
+                ),
               ),
-              child: Container(
-                padding: EdgeInsets.only(top: 10, left: 15, right: 15),
-                child: AppColumn(),
-              ),
-            ),
-          ),
+              onTap: () {
+                Navigator.of(context).pushNamed("/");
+              }),
         ]),
       ),
     );

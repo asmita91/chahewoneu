@@ -18,7 +18,8 @@ import 'UserScreens/Transportation/PopUpMenu.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: "/splashScreen",
+    debugShowCheckedModeBanner: false,
+    initialRoute: "/userDashboard",
     routes: {
       // "/splashScreen": (context)=>SplashScreen();
       "/registration": (context) => RegisterScreen(),
