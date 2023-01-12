@@ -1,11 +1,44 @@
+import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
+import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
+import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
+import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
+import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
+import 'package:chahewoneu/UserScreens/UserLogin.dart';
+import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
+import 'package:chahewoneu/UserScreens/navpages/Places_subpage.dart';
+import 'package:chahewoneu/UserScreens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 
+import 'Navpages/Home.dart';
 import 'UserScreens/Payment/KhaltiTest.dart';
+import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
+import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
+import 'UserScreens/Transportation/PopUpMenu.dart';
 
 void main() {
-  runApp(const Myapp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    initialRoute: "/userPayment",
+    routes: {
+      // "/splashScreen": (context)=>SplashScreen();
+      "/registration": (context) => RegisterScreen(),
+      "/userLogin": (context) => UserLoginPage(),
+      "/adminLogin": (context) => AdminLoginScreen(),
+      "/userDashboard": (context) => UserHomePage(),
+      "/adminDashboard": (context) => Home(),
+      "/transportation_dash": (context) => Transportation(),
+      "/car_popup": (context) => PopUp(),
+      "/forgotPassword": (context) => ForgetPasswordPage(),
+      "/userPayment": (context) => KhaltiPayment(),
+      "/adminPayment": (context) => AdminPayment(),
+      "/placeSubPage": (context) => PlaceDescription(text: "Context"),
+      "/ChooseAirplaneSeat": (context) => Airplane(),
+      "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
+      "/ChooseBusSeat": (context) => ChooseBusSeat(),
+    },
+  ));
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.bottom]);
 }
