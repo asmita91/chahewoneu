@@ -29,14 +29,14 @@ void main() {
       "/userDashboard": (context) => UserHomePage(),
       "/adminDashboard": (context) => Home(),
       "/transportation_dash": (context) => Transportation(),
-      "/airplane_trans": (context) => Airplane(),
-      "/bus_trans": (context) => ChooseBusSeat(),
-      "/hiace_trans": (context) => ChooseHiaceSeat(),
       "/car_popup": (context) => PopUp(),
       "/forgotPassword": (context) => ForgetPasswordPage(),
       "/userPayment": (context) => KhaltiPayment(),
       "/adminPayment": (context) => AdminPayment(),
-      "/placeSubPage": (context) => PlaceDescription(text: "Context")
+      "/placeSubPage": (context) => PlaceDescription(text: "Context"),
+      "/ChooseAirplaneSeat": (context) => Airplane(),
+      "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
+      "/ChooseBusSeat": (context) => ChooseBusSeat(),
     },
   ));
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
