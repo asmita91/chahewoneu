@@ -88,7 +88,7 @@ class _PlaceDetailsState extends State<PlaceDetails>
                 color: index.isEven ? Color(0xFF69C5DF) : Color(0xFF9294CC),
                 image: const DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("Assets/Images/Hiace.png"))),
+                    image: AssetImage("assets/images/Hiace.png"))),
           ),
           InkWell(
               child: Align(
