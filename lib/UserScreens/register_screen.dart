@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/UserModel.dart';
+import '../viewmodels/authenti_viewmodel.dart';
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
   @override
@@ -11,13 +15,12 @@ class _RegisterScreen extends State<RegisterScreen> {
   TextEditingController password = new TextEditingController();
   TextEditingController confirmpassword = new TextEditingController();
   bool changePaswordState = false;
-  final formkeyy = GlobalKey<FormState>();
+  late AuthViewModel _authen;
   showHidePassword() {
     setState(() {
       changePaswordState = !changePaswordState;
     });
   }
-
   Widget showVisibilityIcon(bool showPassword) {
     return showPassword == changePaswordState
         ? InkWell(
@@ -35,20 +38,44 @@ class _RegisterScreen extends State<RegisterScreen> {
         },
         child: Icon(Icons.key_off));
   }
-
   hintStyle() {
     TextStyle(
       fontWeight: FontWeight.bold,
       color: Colors.black,
     );
   }
-
   outlineForInputField() {
     OutlineInputBorder(
         borderSide: BorderSide(width: 2, color: Colors.white),
         borderRadius: BorderRadius.circular(20));
   }
 
+  void initState() {
+    _authen = Provider.of<AuthViewModel>(context, listen: false);
+    super.initState();
+  }
+
+  void register() async{
+    if(_formkey.currentState == null || !_formkey.currentState!.validate()){
+      return;
+    }
+    try{
+      await _authen.register(
+          UserModel(
+              username: username.text,
+              email: email.text,
+              password: password.text,
+          )).then((value) {
+        Navigator.of(context).pushReplacementNamed("/userLogin");
+      })
+          .catchError((e){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+      });
+    }catch(err){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+    }
+  }
+  final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -74,11 +101,12 @@ class _RegisterScreen extends State<RegisterScreen> {
                       color: Colors.grey.withOpacity(0.6),
                       borderRadius: BorderRadius.circular(20)),
                   child: Form(
-                    key: formkeyy,
+                    key: _formkey,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextFormField(
+                            controller:username,
                             decoration: InputDecoration(
                               label: Text("username"),
                               hintText: "Please enter your username",
@@ -182,14 +210,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                             style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.lightGreen),
                             onPressed: () {
-                              if (formkeyy.currentState!.validate()) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                  content: Text("registration validation successful"),
-                                ));
-                                Navigator.of(context).pushNamed("/dashboard");
-                              } else {
-                                print("Invalid form");                               }
+                              register();
                             },
                             child: Text(
                               "Register",
@@ -205,15 +226,23 @@ class _RegisterScreen extends State<RegisterScreen> {
                                 vertical: 10, horizontal: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
+
                               children: [
-                                Text(
-                                  "Go to Log In ?",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white70),
+                                InkWell(
+                                  child: Text(
+                                    "Go to Log In ?",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white70),
+                                  ),
+                                  onTap: (){
+                                    setState(() {
+                                      Navigator.of(context).pushReplacementNamed("/userLogin");
+                                    });
+                                  },
                                 ),
-                              ],
+                            ],
 
                             ),
                           ),

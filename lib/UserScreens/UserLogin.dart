@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../viewmodels/authenti_viewmodel.dart';
 
 class UserLoginPage extends StatefulWidget {
   const UserLoginPage({Key? key}) : super(key: key);
@@ -13,13 +16,11 @@ class _UserLoginPageState extends State<UserLoginPage> {
   TextEditingController password = new TextEditingController();
   bool changePaswordState = false;
   final _formkey = GlobalKey<FormState>();
-
   showHidePassword() {
     setState(() {
       changePaswordState = !changePaswordState;
     });
   }
-
   Widget showVisibilityIcon(bool showPassword) {
     return showPassword == changePaswordState
         ? InkWell(
@@ -37,7 +38,6 @@ class _UserLoginPageState extends State<UserLoginPage> {
             },
             child: Icon(Icons.remove_red_eye));
   }
-
   hintStyle() {
     const TextStyle(
       fontWeight: FontWeight.bold,
@@ -45,18 +45,34 @@ class _UserLoginPageState extends State<UserLoginPage> {
       fontSize: 20,
     );
   }
-
   outlineForInputField() {
     OutlineInputBorder(
         borderSide: BorderSide(width: 2, color: Colors.white),
         borderRadius: BorderRadius.circular(20));
   }
-
   styleOfText() {
     TextStyle(
       color: Colors.white70,
       fontSize: 18,
     );
+  }
+  late AuthViewModel _authen;
+
+  void login() async {
+    try {
+      await _authen.login(email.text, password.text).then((value) {
+        Navigator.of(context).pushReplacementNamed('/userDashboard');
+      }).catchError((e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+      });
+    } catch (err) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+    }
+  }
+  @override
+  void initState() {
+    _authen = Provider.of<AuthViewModel>(context, listen: false);
+    super.initState();
   }
 
   @override
@@ -64,7 +80,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/login.avif'), fit: BoxFit.cover)),
+                image: AssetImage('assets/images/admin login.jpg'), fit: BoxFit.cover)),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Form(
@@ -138,14 +154,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                         style: OutlinedButton.styleFrom(
                             backgroundColor: Colors.lightGreen),
                         onPressed: () {
-                          if (_formkey.currentState!.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Login validation successful"),
-                            ));
-                            Navigator.of(context).pushNamed("/dashboard");
-                          } else {
-                            print("Invalid form");
-                          }
+                          login();
                         },
                         child: Text(
                           "Login",
