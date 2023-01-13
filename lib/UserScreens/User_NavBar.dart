@@ -1,6 +1,8 @@
 import 'package:chahewoneu/main.dart';
 import 'package:flutter/material.dart';
 
+import 'navpages/Homepage.dart';
+
 class UserNavBar extends StatelessWidget {
   const UserNavBar({Key? key}) : super(key: key);
 
@@ -56,7 +58,7 @@ class UserNavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Exit'),
-            onTap: () => MyHomePage(title: 'HomePage'),
+            onTap: () => UserHomePage(),
           ) ,
           Divider(),
 
