@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,21 +12,83 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.asset("Images/signIn.jpg"),
-              SizedBox(
-                height: 100,
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                "Images/SplashScreen.jpg",
               ),
-              Text(
-                "Chahewoneu",
-                style: TextStyle(fontSize: 22),
-              )
-            ],
-          ),
+              fit: BoxFit.cover)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height / 1.5,
+                  left: 25,
+                  right: 25),
+              alignment: Alignment.bottomCenter,
+              decoration: BoxDecoration(
+                color: Colors.grey.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    child: Column(
+                      children: [
+                        Text("We will help you to find the ",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold)),
+                        Text("best experiences and",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold)),
+                        Text("adventures ",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                      style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          alignment: Alignment.center,
+                          backgroundColor: Colors.lightGreenAccent,
+                          fixedSize: Size(150, 50)),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("/userLogin");
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            "Get Started",
+                            style: GoogleFonts.roboto(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 15),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Icon(Icons.arrow_forward),
+                        ],
+                      )),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
