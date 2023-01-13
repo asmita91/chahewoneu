@@ -1,4 +1,4 @@
-import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
+import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,12 +18,22 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
     return Scaffold(
+      //SideBar
+      drawer: UserNavBar(),
+        appBar:AppBar(
+          elevation:0,
+          backgroundColor: Colors.transparent,
+          iconTheme: IconThemeData(
+            color: AppColor.Events,
+          ),
+        ),
+
         body: Column(crossAxisAlignment: CrossAxisAlignment.start,
 // 1st Children
             children: [
           Container(
             margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.07,
+              top: MediaQuery.of(context).size.height * 0.02,
               right: MediaQuery.of(context).size.width * 0.02,
               left: MediaQuery.of(context).size.width * 0.04,
             ),
@@ -32,8 +42,11 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
             child: Row(
 // sidebar
               children: [
-                Icon(Icons.menu, size: 30, color: Colors.black54),
-                Expanded(child: Container()),
+                // Icon(Icons.menu, size: 30, color: Colors.black54),
+                // Expanded(child:
+                // Container(
+                //
+                // )),
 
 // menu text
                 Container(
@@ -91,10 +104,8 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
           ),
           SizedBox(height: 10),
           Container(
-            height: 400,
             child: TabBarView(
-              controller: _tabController,
-              children: [PlaceDetails(), Transportation(), Text("Contents")],
+              children: [PlaceDetails(),  Text("Contents")],
               // Transportation(),
             ),
           )

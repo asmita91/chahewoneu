@@ -41,7 +41,8 @@ class ProfilePage extends StatelessWidget {
               Text(tProfileHeading,style: Theme.of(context).textTheme.headline4,),
               Text(tProfileSubHeading,style: Theme.of(context).textTheme.bodyText2,),
               const SizedBox(height: 20,),
-              SizedBox(width:160,
+              SizedBox(
+                width:200,
                 child: ElevatedButton(onPressed: (){},
                   child: const Text(tEditProfile,style: TextStyle(color: Colors.black,fontSize: 20,),),
                   style: ElevatedButton.styleFrom(
