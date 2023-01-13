@@ -96,15 +96,61 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w500,
-                  height: 4,
+                  height: 2.5,
 
                 ),
               ),
             ),
-            SizedBox(
-              height: 280,
+            SizedBox(height: 22),
+            Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(left: 22),
+              child: Text("Arrival Date ",style:
+              TextStyle(
+                fontSize: 18,
+                fontFamily: "Times New Roman",
+                color: Colors.black,
+                fontStyle: FontStyle.normal,
 
+              ),),
             ),
+            SizedBox(height: 10,),
+            Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(left: 20,top: 10),
+              child: MaterialButton(
+                onPressed: (){}, child: const Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
+                child: Text("Choose Date",style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: "Times New Roman",
+                  color: Colors.white,
+                ),),
+              ),
+                color: Colors.deepPurple,
+              ),
+            ),
+            SizedBox(height: 10),
+
+            // Container(
+            //   alignment: Alignment.topLeft,
+            //   margin: EdgeInsets.all(10.6),
+            //   padding: EdgeInsets.only(left: 80),
+            //   child: MaterialButton(
+            //     onPressed: (){}, child: const Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
+            //     child: Text("Choose Date",style: TextStyle(
+            //       fontSize: 15,
+            //       fontFamily: "Times New Roman",
+            //       color: Colors.white,
+            //     ),),
+            //   ),
+            //     color: Colors.deepPurple,
+            //   ),
+            // ),
+
+            SizedBox(
+              height: 100,
+            ),
+
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
