@@ -13,14 +13,14 @@ class UserNavBar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('offlutter.com'),
+            accountName: Text('Ritika'),
             accountEmail: Text('example@gmail.com'),
             currentAccountPicture:CircleAvatar(
               child:ClipOval(
                 child:Image.network(
-               'https://www.peacenepaltreks.com/public/uploads/HIMALAYAN-PEAKS-OF-NEPAL.png',
-                  width:60,
-                  height:60 ,
+               'https://i.pinimg.com/736x/ef/6c/2a/ef6c2a5a8ae72d6d8437fd5ee421220d.jpg',
+                  width:90,
+                  height:90 ,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -34,6 +34,7 @@ class UserNavBar extends StatelessWidget {
               ),
             ),
           ),
+
           ListTile(
             leading: Icon(Icons.cloud_circle),
             title: Text('Weather'),

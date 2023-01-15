@@ -1,3 +1,4 @@
+import 'package:chahewoneu/Navpages/Home.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
@@ -10,11 +11,11 @@ class NavBar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('offlutter.com'),
+            accountName: Text('Ritika'),
             accountEmail: Text('example@gmail.com'),
             currentAccountPicture:CircleAvatar(
               child:ClipOval(
-                child:Image.network('https://www.peacenepaltreks.com/public/uploads/HIMALAYAN-PEAKS-OF-NEPAL.png',
+                child:Image.network('https://i.pinimg.com/736x/ef/6c/2a/ef6c2a5a8ae72d6d8437fd5ee421220d.jpg',
                // decoration:BoxDecoration(
                //   image:DecorationImage(
                    fit:BoxFit.cover,
@@ -27,10 +28,11 @@ class NavBar extends StatelessWidget {
             decoration: BoxDecoration(
               color : Colors.blue,
               image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("Images/Goshaikunda.jpg")),
+                    image: NetworkImage('https://www.peacenepaltreks.com/public/uploads/HIMALAYAN-PEAKS-OF-NEPAL.png'),
+                     fit: BoxFit.cover,
               ),
             ),
+          ),
           ListTile(
             leading: Icon(Icons.cloud_circle),
             title: Text('Weather'),
@@ -55,7 +57,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Exit'),
-            onTap: () => null,
+            onTap: () => Home(),
           ) ,
           Divider(),
 

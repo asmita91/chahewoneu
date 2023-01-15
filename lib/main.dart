@@ -1,9 +1,11 @@
+import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
 import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
 import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
+import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:chahewoneu/UserScreens/navpages/Places_subpage.dart';
 import 'package:chahewoneu/UserScreens/register_screen.dart';
@@ -59,6 +61,8 @@ class Chahewoneu extends StatelessWidget {
           "/ChooseAirplaneSeat": (context) => Airplane(),
           "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
           "/ChooseBusSeat": (context) => ChooseBusSeat(),
+          "/UserNavBar":(context) =>UserNavBar(),
+          "/AdminNavBar":(context) =>NavBar(),
         },
       ),
     );
