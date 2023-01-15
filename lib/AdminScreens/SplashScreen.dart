@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../viewmodels/authenti_viewmodel.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,6 +13,35 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late AuthViewModel _authViewModel;
+
+  void checkLogin() async {
+    await Future.delayed(Duration(seconds: 2));
+    // check for user detail first
+    // try {
+    //   await _authViewModel.checkLogin();
+    //   if (_authViewModel.user == null) {
+    //     Navigator.of(context).pushReplacementNamed("/login");
+    //   } else {
+    //     NotificationService.display(
+    //       title: "Welcome back",
+    //       body:
+    //           "Hello ${_authViewModel.loggedInUser?.username},\n We have been waiting for you.",
+    //     );
+    //     Navigator.of(context).pushReplacementNamed("/dashboard");
+    //   }
+    // } catch (e) {
+    //   Navigator.of(context).pushReplacementNamed("/login");
+    // }
+  }
+
+  @override
+  void initState() {
+    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+    checkLogin();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
