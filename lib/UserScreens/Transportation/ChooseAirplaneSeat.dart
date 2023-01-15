@@ -11,9 +11,9 @@ class Airplane extends StatefulWidget {
 class _AirplaneState extends State<Airplane> {
   // var isBooked
   var countSeatLeft = 2 * 13;
-  var countSeatRight = 2 * 10;
+  var countSeatRight = 2 * 13;
   var listSeatLeft = [];
-  var listSeatCenter = [];
+
   var listSeatRight = [];
 
   @override
@@ -24,7 +24,7 @@ class _AirplaneState extends State<Airplane> {
     // third param is for naming value every seat //look line 38
     initSeatValueToList(listSeatLeft, countSeatLeft, "l");
     initSeatValueToList(listSeatRight, countSeatRight, "r");
-    setVisiblitySeat();
+
     super.initState();
   }
 
@@ -48,18 +48,6 @@ class _AirplaneState extends State<Airplane> {
     print(data);
   }
 
-  setVisiblitySeat() {
-    setState(() {
-      listSeatLeft[2]["isVisible"] = false; // left column index 0
-      listSeatLeft[2]["isVisible"] = false; // left column index 1
-      listSeatLeft[2]["isVisible"] = false; // left column index 0
-      listSeatRight[2]["isVisible"] = false; // right column index 1
-      listSeatRight[2]["isVisible"] = false; // right column index 2
-      listSeatRight[2]["isVisible"] = false; // right column index 5
-    });
-    //this function to set where's the position of the seat that should be invisible
-  }
-
   setSelectedToBooked() {
     listSeatLeft.forEach((seat) {
       if (seat["isSelected"]) {
@@ -68,13 +56,7 @@ class _AirplaneState extends State<Airplane> {
         });
       }
     });
-    listSeatCenter.forEach((seat) {
-      if (seat["isSelected"]) {
-        setState(() {
-          seat["isBooked"] = true;
-        });
-      }
-    });
+
     listSeatRight.forEach((seat) {
       if (seat["isSelected"]) {
         setState(() {
@@ -89,7 +71,6 @@ class _AirplaneState extends State<Airplane> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -181,7 +162,7 @@ class _AirplaneState extends State<Airplane> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 15,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
@@ -191,11 +172,11 @@ class _AirplaneState extends State<Airplane> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(width: 20),
-                  widgetSeat(listSeatLeft, false),
+                  widgetSeat(listSeatLeft),
                   SizedBox(
                     width: 140,
                   ),
-                  widgetSeat(listSeatRight, false),
+                  widgetSeat(listSeatRight),
                 ],
               ),
             ),
@@ -214,15 +195,15 @@ class _AirplaneState extends State<Airplane> {
     );
   }
 
-  Widget widgetSeat(List dataSeat, bool isCenter) {
+  Widget widgetSeat(List dataSeat) {
     return Container(
       width: MediaQuery.of(context).size.width / 3.93,
       child: GridView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: isCenter ? 4 : 3,
-          childAspectRatio: isCenter ? 1 : 1,
+          crossAxisCount: 2,
+          childAspectRatio: 1.7,
         ),
         itemCount: dataSeat.length,
         itemBuilder: (BuildContext context, int index) {
