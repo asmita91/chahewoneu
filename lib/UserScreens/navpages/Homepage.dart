@@ -1,4 +1,3 @@
-import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,17 +19,16 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
         body: Column(crossAxisAlignment: CrossAxisAlignment.start,
 // 1st Children
             children: [
-              Container(
-                margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.07,
-                  right: MediaQuery.of(context).size.width * 0.02,
-                  left: MediaQuery.of(context).size.width * 0.04,
-                ),
-
-                child: Row(
-                  children: [
-                    Icon(Icons.menu, size: 30, color: Colors.black54),
-                    Expanded(child: Container()),
+          Container(
+            margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.07,
+              right: MediaQuery.of(context).size.width * 0.02,
+              left: MediaQuery.of(context).size.width * 0.04,
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.menu, size: 30, color: Colors.black54),
+                Expanded(child: Container()),
 
 // menu text
 //                     Container(
@@ -43,55 +41,52 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
 //                         color: Colors.grey.withOpacity(0.5),
 //                       ),
 //                     ),
-                  ],
-                ),
-              ),
-
-              SizedBox(
-                height: 20,
-              ),
-
-              Container(
-                margin:
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            margin:
                 EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-                child: Text(
-                  "Discover",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
-                ),
-              ),
-
-              SizedBox(height: 15),
-              Container(
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TabBar(
-                    labelPadding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.04),
-                    controller: _tabController,
-                    labelColor: Colors.black,
-                    unselectedLabelColor: Colors.grey,
-                    isScrollable: true,
-                    indicatorSize: TabBarIndicatorSize.label,
-                    indicator:
+            child: Text(
+              "Discover",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+            ),
+          ),
+          SizedBox(height: 15),
+          Container(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: TabBar(
+                labelPadding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.04),
+                controller: _tabController,
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+                isScrollable: true,
+                indicatorSize: TabBarIndicatorSize.label,
+                indicator:
                     CircleTabIndicator(colors: AppColor.HomePage, radius: 4),
-                    tabs: [
-                      Tab(text: "Places"),
-                      Tab(text: "Booking"),
-                      Tab(text: "Emotions"),
-                    ],
-                  ),
-                ),
+                tabs: [
+                  Tab(text: "Places"),
+                  Tab(text: "Booking"),
+                  Tab(text: "Emotions"),
+                ],
               ),
-              SizedBox(height: 10),
-              Container(
-                height: 500,
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [PlaceDetails(), Transportation(), Text("Contents")],
-                  // Transportation(),
-                ),
-              )
-            ]));
+            ),
+          ),
+          SizedBox(height: 10),
+          Container(
+            height: 600,
+            child: TabBarView(
+              controller: _tabController,
+              children: [PlaceDetails(), Text("hi"), Text("Contents")],
+              // Transportation(),
+            ),
+          )
+        ]));
   }
 }
 

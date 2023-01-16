@@ -11,19 +11,17 @@ import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:khalti_flutter/khalti_flutter.dart';
 import 'package:provider/provider.dart';
+
 import 'Navpages/Home.dart';
-import 'UserScreens/Payment/KhaltiTest.dart';
 import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
-import 'UserScreens/UserRatingReview.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(const Chahewoneu());
 }
 
@@ -35,33 +33,32 @@ class Chahewoneu extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthViewModel>
-          (create: (_) => AuthViewModel() ),
-        ChangeNotifierProvider<RatingReviewViewModel>
-          (create: (_)=>RatingReviewViewModel())
+        ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider<RatingReviewViewModel>(
+            create: (_) => RatingReviewViewModel())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute:"/registration" ,
+        initialRoute: "/userDashboard",
         routes: {
-        // "/splashScreen": (context)=>SplashScreen();
-        "/registration": (context) => RegisterScreen(),
-        "/userLogin": (context) => UserLoginPage(),
-        "/adminLogin": (context) => AdminLoginScreen(),
-        "/userDashboard": (context) => UserHomePage(),
-        "/adminDashboard": (context) => Home(),
-        "/transportation_dash": (context) => Transportation(),
-        "/car_popup": (context) => PopUp(),
-        "/forgotPassword": (context) => ForgetPasswordPage(),
-        "/userPayment": (context) => KhaltiPayment(),
-        "/adminPayment": (context) => AdminPayment(),
-        "/placeSubPage": (context) => PlaceDescription(text: "Context"),
-        "/ChooseAirplaneSeat": (context) => Airplane(),
-        "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
-        "/ChooseBusSeat": (context) => ChooseBusSeat(),
+          // "/splashScreen": (context)=>SplashScreen();
+          "/registration": (context) => RegisterScreen(),
+          "/userLogin": (context) => UserLoginPage(),
+          "/adminLogin": (context) => AdminLoginScreen(),
+          "/userDashboard": (context) => UserHomePage(),
+          "/adminDashboard": (context) => Home(),
+          "/transportation_dash": (context) => Transportation(),
+          "/car_popup": (context) => PopUp(),
+          "/forgotPassword": (context) => ForgetPasswordPage(),
+          // "/userPayment": (context) => KhaltiPayment(),
+          "/adminPayment": (context) => AdminPayment(),
+          "/placeSubPage": (context) => PlaceDescription(text: "Context"),
+          "/ChooseAirplaneSeat": (context) => Airplane(),
+          "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
+          "/ChooseBusSeat": (context) => ChooseBusSeat(),
         },
       ),
     );

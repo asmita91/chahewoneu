@@ -4,24 +4,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/UserModel.dart';
 
-class AuthentiRepository{
-
-  CollectionReference<UserModel> userRef = FirebaseService.db.collection("users")
-      .withConverter<UserModel>(
-    fromFirestore: (snapshot, _) {
-      return UserModel.fromFirebaseSnapshot(snapshot);
-    },
-    toFirestore: (model, _) => model.toJson(),
-  );
+class AuthentiRepository {
+  CollectionReference<UserModel> userRef =
+      FirebaseService.db.collection("users").withConverter<UserModel>(
+            fromFirestore: (snapshot, _) {
+              return UserModel.fromFirebaseSnapshot(snapshot);
+            },
+            toFirestore: (model, _) => model.toJson(),
+          );
   Future<UserCredential?> register(UserModel user) async {
     try {
-      final response = await userRef
-          .where("username", isEqualTo: user.username!).get();
-      if (response.size != 0)
-        throw Exception("Username already exists");
+      final response =
+          await userRef.where("username", isEqualTo: user.username!).get();
+      if (response.size != 0) throw Exception("Username already exists");
       UserCredential _uc = await FirebaseService.firebaseAuthe
           .createUserWithEmailAndPassword(
-          email: user.email!, password: user.password!);
+              email: user.email!, password: user.password!);
 
       user.userId = _uc.user!.uid;
       user.fcmToken = "";
@@ -32,7 +30,6 @@ class AuthentiRepository{
       rethrow;
     }
   }
-
 
   Future<UserCredential> login(String email, String password) async {
     try {
@@ -46,11 +43,10 @@ class AuthentiRepository{
 
   Future<UserModel> getUserDetail(String id) async {
     try {
-      final response = await userRef
-          .where("userId", isEqualTo: id).get();
+      final response = await userRef.where("userId", isEqualTo: id).get();
 
       var user = response.docs.single.data();
-      user.fcmToken="";
+      user.fcmToken = "";
       await userRef.doc(user.userId).set(user);
 
       return user;
@@ -59,18 +55,15 @@ class AuthentiRepository{
     }
   }
 
-
-
   Future<bool> resetPassword(String email) async {
     try {
       var res = await FirebaseService.firebaseAuthe
-          .sendPasswordResetEmail( email: email);
+          .sendPasswordResetEmail(email: email);
       return true;
     } catch (err) {
       rethrow;
     }
   }
-
 
   Future<void> logout() async {
     try {

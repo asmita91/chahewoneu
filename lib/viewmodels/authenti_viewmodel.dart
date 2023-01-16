@@ -6,15 +6,13 @@ import '../models/UserModel.dart';
 import '../repositories/authenti_repository.dart';
 import '../services/firebase_service.dart';
 
-
 class AuthViewModel with ChangeNotifier {
   User? _user = FirebaseService.firebaseAuthe.currentUser;
 
   User? get user => _user;
 
   UserModel? _loggedInUser;
-  UserModel? get loggedInUser =>_loggedInUser;
-
+  UserModel? get loggedInUser => _loggedInUser;
 
   Future<void> login(String email, String password) async {
     try {
@@ -35,7 +33,6 @@ class AuthViewModel with ChangeNotifier {
     }
   }
 
-
   Future<void> register(UserModel user) async {
     try {
       var response = await AuthentiRepository().register(user);
@@ -48,12 +45,23 @@ class AuthViewModel with ChangeNotifier {
     }
   }
 
-  Future<void> logout() async{
-    try{
+  // Future<void> checkLogin() async {
+  //   try {
+  //     _loggedInUser = await AuthentiRepository().getUserDetail(_user!.uid);
+  //     notifyListeners();
+  //   } catch (err) {
+  //     _user = null;
+  //     AuthentiRepository.logout();
+  //     rethrow;
+  //   }
+  // }
+
+  Future<void> logout() async {
+    try {
       await AuthentiRepository().logout();
       _user = null;
       notifyListeners();
-    }catch(e){
+    } catch (e) {
       rethrow;
     }
   }
