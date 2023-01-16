@@ -12,7 +12,7 @@ String ratingReviewModelToJson(RatingReviewModel data) => json.encode(data.toJso
 
 class RatingReviewModel {
   RatingReviewModel({
-    
+
     required this.rating,
     required this.review,
   });

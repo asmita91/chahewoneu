@@ -6,7 +6,7 @@ import '../models/ratingreview_model.dart';
 import '../repositories/ratingreview_repository.dart';
 
 class RatingReviewViewModel with ChangeNotifier{
-  HotelRepository _ratingReviewRepository =HotelRepository();
+  RatingReviewRepository _ratingReviewRepository =RatingReviewRepository();
   Stream<QuerySnapshot<RatingReviewModel>>? _ratingreview;
   Stream<QuerySnapshot<RatingReviewModel>>? get ratingreview => _ratingreview;
 
