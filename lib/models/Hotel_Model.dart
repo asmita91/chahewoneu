@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 HotelModel? hotelModelFromJson(String str) => HotelModel.fromJson(json.decode(str));
 
 String hotelModelToJson(HotelModel? data) => json.encode(data!.toJson());
@@ -46,4 +48,13 @@ class HotelModel {
     "imagepath": imagepath,
     "imageUrl": imageUrl,
   };
+  factory HotelModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => HotelModel(
+  hotelId: json["hotel_id"],
+  hotelName: json["hotel_name"],
+  description: json["description"],
+  price: json["price"],
+  location: json["location"],
+  imagepath: json["imagepath"],
+  imageUrl: json["imageUrl"],
+  );
 }

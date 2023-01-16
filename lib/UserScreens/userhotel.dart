@@ -1,7 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class UserHotelScreen extends StatelessWidget {
+class UserHotelScreen extends StatefulWidget {
+  const UserHotelScreen({Key? key}) : super(key: key);
+
+  @override
+  State<UserHotelScreen> createState() => _UserHotelScreenState();
+}
+
+class _UserHotelScreenState extends State<UserHotelScreen> {
   Widget _searchBar() {
     return Container(
       height: 50,

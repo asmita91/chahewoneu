@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/ratingreview_model.dart';
 import '../services/firebase_service.dart';
 
-class RatingReviewRepository{
+class HotelRepository{
   CollectionReference<RatingReviewModel> ref =
   FirebaseService.db.collection("ratingreview")
       .withConverter<RatingReviewModel>(
