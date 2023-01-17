@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'AdminScreens/NavBar.dart';
+import 'Navpages/CustomerDetails.dart';
 import 'UserScreens/navpages/Main_page.dart';
 import 'ViewModel/GlobalUIViewModel.dart';
 import 'ViewModel/auth_viewmodel.dart';
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
 
-          initialRoute: "/usereditprofile",
+          initialRoute: "/customer",
           routes: {
             UserHomePage.route: (context) => UserHomePage(),
             // UserProfilePage.route:(context)=>UserProfilePage(),
@@ -70,6 +71,7 @@ class MyApp extends StatelessWidget {
             "/sidebar": (context) => NavBar(),
             "/userprofilepage":(context)=>ProfileInfo(),
             "/usereditprofile":(context)=>UserProfile(),
+            "/customer":(context)=> CustomerDetails(name: "sanji", email: "sanji@12gmailcom", phone: "9866622390", address: "Kathmandu"),
           },
           // MainPage(),
           // UserLoginPage()

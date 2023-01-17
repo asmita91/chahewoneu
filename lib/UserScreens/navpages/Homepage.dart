@@ -1,16 +1,10 @@
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
-import 'package:chahewoneu/UserScreens/navpages/Main_page.dart';
-import 'package:chahewoneu/UserScreens/navpages/bar_page.dart';
-import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
-import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../Colors.dart';
-import '../../Navpages/ProfilePage.dart';
-import 'UserProfile.dart';
 import 'place_details.dart';
-// import 'meansOfTransportation.dart';
 
 class UserHomePage extends StatefulWidget {
   static String route = "UserHomePage";
@@ -77,7 +71,8 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
                     isScrollable: true,
                     indicatorSize: TabBarIndicatorSize.label,
                     indicator: CircleTabIndicator(
-                        colors: AppColor.HomePage, radius: 4),
+                        colors: AppColor.AdminDashboardPage
+                        , radius: 4),
                     tabs: [
                       Tab(text: "Places"),
                       Tab(text: "Booking"),
