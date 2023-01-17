@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ExpandableTextWidget extends StatefulWidget {
   final String Des_text;
@@ -15,7 +16,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
 
   //if long text xa vane
   bool hiddenText = true;
-  double textHeight = 108; //yesma prblm aauna sakxa
+  double textHeight = 245; //yesma prblm aauna sakxa
 
   //check length of the text passed
   @override
@@ -35,7 +36,44 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //4.15
+      child: secondHalf.isEmpty
+          ? Text(firstHalf, style: TextStyle(fontSize: 18, height: 1.8))
+          : Column(
+              children: [
+                Text(
+                    style: TextStyle(
+                      fontSize: 18,
+                      height: 1.8,
+                    ),
+                    hiddenText
+                        ? (firstHalf + "...")
+                        : (firstHalf + secondHalf)),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      hiddenText = !hiddenText;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        "Show more",
+                        style: TextStyle(
+                            color: Colors.lightGreenAccent,
+                            fontSize: 18,
+                            height: 1.8),
+                      ),
+                      Icon(
+                        hiddenText
+                            ? Icons.arrow_drop_down
+                            : Icons.arrow_drop_up,
+                        color: Colors.blueGrey,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
     );
   }
 }

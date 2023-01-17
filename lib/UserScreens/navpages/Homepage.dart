@@ -18,98 +18,100 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
     return Scaffold(
-      //SideBar
-      drawer: UserNavBar(),
-        appBar:AppBar(
-          elevation:0,
+        //SideBar
+        drawer: UserNavBar(),
+        appBar: AppBar(
+          elevation: 0,
           backgroundColor: Colors.transparent,
           iconTheme: IconThemeData(
             color: AppColor.Events,
           ),
         ),
-
         body: Column(crossAxisAlignment: CrossAxisAlignment.start,
 // 1st Children
             children: [
-          Container(
-            margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.02,
-              right: MediaQuery.of(context).size.width * 0.02,
-              left: MediaQuery.of(context).size.width * 0.04,
-            ),
+              // Container(
+              //   margin: EdgeInsets.only(
+              //     top: MediaQuery.of(context).size.height * 0.02,
+              //     right: MediaQuery.of(context).size.width * 0.02,
+              //     left: MediaQuery.of(context).size.width * 0.04,
+              //   ),
+              // ),
 // Menu
 
-            child: Row(
-// sidebar
-              children: [
-                // Icon(Icons.menu, size: 30, color: Colors.black54),
-                // Expanded(child:
-                // Container(
-                //
-                // )),
-
-// menu text
-                Container(
-                  margin: EdgeInsets.only(
-                      right: MediaQuery.of(context).size.width * 0.03),
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey.withOpacity(0.5),
-                  ),
-                ),
-              ],
-            ),
-          ),
+//                 child: Row(
+// // sidebar
+//                   children: [
+//                     // Icon(Icons.menu, size: 30, color: Colors.black54),
+//                     // Expanded(child:
+//                     // Container(
+//                     //
+//                     // )),
+//
+// // menu text
+// //                     Container(
+// //                       margin: EdgeInsets.only(
+// //                           right: MediaQuery.of(context).size.width * 0.03),
+// //                       width: 50,
+// //                       height: 50,
+// //                       decoration: BoxDecoration(
+// //                         borderRadius: BorderRadius.circular(10),
+// //                         color: Colors.grey.withOpacity(0.5),
+// //                       ),
+// //                     ),
+//                   ],
+//                 ),
+//               ),
 
 // 2nd children
-          SizedBox(
-            height: 20,
-          ),
+              SizedBox(
+                height: 20,
+              ),
 
 // discover text
-          Container(
-            margin:
-                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-            child: Text(
-              "Discover",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
-            ),
-          ),
+              Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.04),
+                child: Text(
+                  "Discover",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                ),
+              ),
 
 // 3rd children
 // tabbar
-          SizedBox(height: 15),
-          Container(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: TabBar(
-                labelPadding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.04),
-                controller: _tabController,
-                labelColor: Colors.black,
-                unselectedLabelColor: Colors.grey,
-                isScrollable: true,
-                indicatorSize: TabBarIndicatorSize.label,
-                indicator:
-                    CircleTabIndicator(colors: AppColor.HomePage, radius: 4),
-                tabs: [
-                  Tab(text: "Places"),
-                  Tab(text: "Booking"),
-                  Tab(text: "Emotions"),
-                ],
+              SizedBox(height: 15),
+              Container(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TabBar(
+                    labelPadding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.04),
+                    controller: _tabController,
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Colors.grey,
+                    isScrollable: true,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: CircleTabIndicator(
+                        colors: AppColor.HomePage, radius: 4),
+                    tabs: [
+                      Tab(text: "Places"),
+                      Tab(text: "Booking"),
+                      Tab(text: "Emotions"),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(height: 10),
-          Container(
-            child: TabBarView(
-              children: [PlaceDetails(),  Text("Contents")],
-              // Transportation(),
-            ),
-          )
-        ]));
+              SizedBox(height: 10),
+              Container(
+                height: 600,
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [PlaceDetails(), Text("hi"), Text("Contents")],
+                  // Transportation(),
+                ),
+              )
+            ]));
   }
 }
 

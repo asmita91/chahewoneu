@@ -77,35 +77,86 @@ class _PlaceDetailsState extends State<PlaceDetails>
 
     return Transform(
       transform: matrix,
-      child: Container(
-        height: MediaQuery.of(context).size.height / 3,
-        child: Stack(children: [
-          Container(
-            height: 200,
-            margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: index.isEven ? Color(0xFF69C5DF) : Color(0xFF9294CC),
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("Images/Pokhara.jpg"))),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 110,
-              margin: EdgeInsets.only(left: 50, right: 50, bottom: 30),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.white,
-              ),
-              child: Container(
-                padding: EdgeInsets.only(top: 10, left: 15, right: 15),
-                child: AppColumn(),
-              ),
+      child: SingleChildScrollView(
+        child: Container(
+            child: Column(
+          children: [
+            Flexible(
+              flex: 0,
+              child: Stack(children: [
+                Container(
+                  height: 200,
+                  margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color:
+                          index.isEven ? Color(0xFF69C5DF) : Color(0xFF9294CC),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("Images/Pokhara.jpg"))),
+                ),
+                InkWell(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        height: 110,
+                        margin: EdgeInsets.only(
+                            left: 50, right: 50, bottom: 30, top: 150),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white,
+                        ),
+                        child: Container(
+                          padding:
+                              EdgeInsets.only(top: 10, left: 15, right: 15),
+                          child: AppColumn(),
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/SubPlaces");
+                    }),
+              ]),
             ),
-          ),
-        ]),
+            Flexible(
+              flex: 0,
+              child: Stack(children: [
+                Container(
+                  height: 200,
+                  margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color:
+                          index.isEven ? Color(0xFF69C5DF) : Color(0xFF9294CC),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("Images/Chitwan.jpg"))),
+                ),
+                InkWell(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        height: 110,
+                        margin: EdgeInsets.only(
+                            left: 50, right: 50, bottom: 30, top: 150),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white,
+                        ),
+                        child: Container(
+                          padding:
+                              EdgeInsets.only(top: 10, left: 15, right: 15),
+                          child: AppColumn(),
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/SubPlaces");
+                    }),
+              ]),
+            )
+          ],
+        )),
       ),
     );
   }

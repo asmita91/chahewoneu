@@ -1,4 +1,3 @@
-
 // import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
 // =======
 // import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
@@ -9,23 +8,18 @@
 // import 'UserScreens/navpages/Home.dart';
 // import 'UserScreens/navpages/Main_page.dart';
 import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
-import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:chahewoneu/UserScreens/navpages/Places.dart';
+import 'package:chahewoneu/UserScreens/navpages/Places_subpage.dart';
 import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
 import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:provider/provider.dart';
 
 import 'AdminScreens/NavBar.dart';
-import 'Navpages/Home.dart';
-import 'Navpages/NotificationPage.dart';
 import 'UserScreens/navpages/Main_page.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,12 +33,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers:[
-        // ChangeNotifierProvider<ProductViewModel>(
-        //     create: (_)=> ProductViewModel())
-      ],
-    child: MaterialApp(
+    // return MultiProvider(
+    //   providers:[
+    //     // ChangeNotifierProvider<ProductViewModel>(
+    //     //     create: (_)=> ProductViewModel())
+    //   ],
+    child:
+    return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -59,24 +54,22 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-     initialRoute: "/UserHomePage",
-        routes:{
-        "/UserHomePage":(context)=>UserHomePage(),
-          "/Places":(context)=>PlaceDetails(),
-          "/Usersidebar":(context)=>UserNavBar(),
-          "/mypage":(context)=>Mypage(),
-          "/searchpage":(context)=>SearchPage(),
-          "/Mainpage":(context)=>MainPage(),
-          "/AdminDashboard":(context)=>AdminDashboard(),
-          "/sidebar":(context)=>NavBar(),
-
-        }
-        // MainPage(),
+      initialRoute: "/UserHomePage",
+      routes: {
+        "/UserHomePage": (context) => UserHomePage(),
+        "/SubPlaces": (context) => PlaceDetails(),
+        "/SubPlaces": (context) => PlaceDescription(text: "Pokhara"),
+        "/Usersidebar": (context) => UserNavBar(),
+        "/mypage": (context) => Mypage(),
+        "/searchpage": (context) => SearchPage(),
+        "/Mainpage": (context) => MainPage(),
+        "/AdminDashboard": (context) => AdminDashboard(),
+        "/sidebar": (context) => NavBar(),
+      },
+      // MainPage(),
       // UserLoginPage()
 
       // HomePage(),
-
-    ),
     );
   }
 }
@@ -88,6 +81,7 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -99,10 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
       ),
       body: Center(
@@ -120,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: showNotification,//to bring notification
+        onPressed: showNotification, //to bring notification
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
