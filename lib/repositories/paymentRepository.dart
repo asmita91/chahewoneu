@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/AdminPaymentModel.dart';
 import '../services/firebase_service.dart';
 
-class ProductRepository {
+class PaymentRepository {
   CollectionReference<AdminPaymentModel> ref =
       FirebaseService.db.collection("payment").withConverter<AdminPaymentModel>(
             //typecast garirakhnu naparos vanera banakoo reeeee
@@ -23,16 +23,16 @@ class ProductRepository {
     return response.data();
   }
 
-  Future<AdminPaymentModel?> deleteProduct(String id) async {
+  Future<AdminPaymentModel?> deletePayment(String id) async {
     await ref.doc(id).delete();
   }
 
-  Future<bool> addProduct(AdminPaymentModel data) async {
+  Future<bool> addPayment(AdminPaymentModel data) async {
     await ref.add(data);
     return true;
   }
 
-  Future<void> editProduct(ProductModel data, String id) async {
+  Future<void> editPayment(AdminPaymentModel data, String id) async {
     var response = await ref.doc(id).set(data);
     return response;
   }

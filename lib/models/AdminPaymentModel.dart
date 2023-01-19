@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 AdminPaymentModel? adminPaymentModelFromJson(String str) =>
     AdminPaymentModel.fromJson(json.decode(str));
 
@@ -37,7 +39,8 @@ class AdminPaymentModel {
         packageId: json["packageId"],
       );
 
-  factory AdminPaymentModel.(Map<String, dynamic> json) =>
+  factory AdminPaymentModel.fromFirebaseSnapshot(
+          DocumentSnapshot<Map<String, dynamic>> json) =>
       AdminPaymentModel(
         paymentId: json["paymentId"],
         userId: json["userId"],

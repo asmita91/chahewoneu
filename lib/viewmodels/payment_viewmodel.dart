@@ -1,20 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
-class ProductViewModel with ChangeNotifier {
-  ProductRepository _productRepository = ProductRepository();
-  Stream<QuerySnapshot<ProductModel>>? _products;
-  //_underscore rakheko variable aaru cls le use garna mildain a
-  Stream<QuerySnapshot<ProductModel>>? get products => _products;
+import '../models/AdminPaymentModel.dart';
+import '../repositories/paymentRepository.dart';
 
-  Future<void> getProducts() async {
-    var response = _productRepository.getData();
-    _products = response;
+class PaymentViewModel with ChangeNotifier {
+  PaymentRepository _paymentRepository = PaymentRepository();
+  Stream<QuerySnapshot<AdminPaymentModel>>? _payment;
+  //_underscore rakheko variable aaru cls le use garna mildain a
+  Stream<QuerySnapshot<AdminPaymentModel>>? get payment => _payment;
+
+  Future<void> getPayment() async {
+    var response = _paymentRepository.getData();
+    _payment = response;
     notifyListeners();
   }
 
-  Future<void> deleteProducts(String id) async {
-    await _productRepository.deleteProduct(id);
+  Future<void> deletePayment(String id) async {
+    await _paymentRepository.deletePayment(id);
     notifyListeners();
   }
 }
