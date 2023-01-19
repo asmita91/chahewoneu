@@ -37,6 +37,15 @@ class AdminPaymentModel {
         packageId: json["packageId"],
       );
 
+  factory AdminPaymentModel.(Map<String, dynamic> json) =>
+      AdminPaymentModel(
+        paymentId: json["paymentId"],
+        userId: json["userId"],
+        userName: json["userName"],
+        userImage: json["userImage"],
+        packagePrice: json["packagePrice"],
+        packageId: json["packageId"],
+      );
   Map<String, dynamic> toJson() => {
         "paymentId": paymentId,
         "userId": userId,
