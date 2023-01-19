@@ -95,13 +95,28 @@ class _ChooseHiaceSeatState extends State<ChooseHiaceSeat> {
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w500,
-                height: 3.5,
+                height: 2.5,
               ),),
             ),
             SizedBox(
-              height: 250,
+              height: 22,
             ),
             Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(left: 22),
+              child: Text("Arrival Date ",style:
+              TextStyle(
+                fontSize: 18,
+                fontFamily: "Times New Roman",
+                color: Colors.black,
+                fontStyle: FontStyle.normal,
+
+              ),),
+            ),
+            SizedBox(height: 10,),
+            Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(left: 20,top: 10),
               child: MaterialButton(
                 onPressed: (){}, child: const Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
                 child: Text("Choose Date",style: TextStyle(
@@ -114,8 +129,9 @@ class _ChooseHiaceSeatState extends State<ChooseHiaceSeat> {
               ),
             ),
             SizedBox(
-              height: 220,
+              height: 20,
             ),
+            SizedBox(height: 60,),
 
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
@@ -152,7 +168,7 @@ class _ChooseHiaceSeatState extends State<ChooseHiaceSeat> {
                             height: 20,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.purple,
+                                color: Colors.purple,
                             ),
                           ),
                           Container(

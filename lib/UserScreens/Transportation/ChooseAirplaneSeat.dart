@@ -86,21 +86,41 @@ class _AirplaneState extends State<Airplane> {
                     height: 2.5,
                   )),
             ),
+            SizedBox(
+              height: 22,
+            ),
             Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(left: 22),
+              child: Text("Arrival Date ",style:
+              TextStyle(
+                fontSize: 18,
+                fontFamily: "Times New Roman",
+                color: Colors.black,
+                fontStyle: FontStyle.normal,
+
+              ),),
+            ),
+            SizedBox(height: 10,),
+            Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(left: 20,top: 10),
               child: MaterialButton(
                 onPressed: (){}, child: const Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
                 child: Text("Choose Date",style: TextStyle(
                   fontSize: 15,
                   fontFamily: "Times New Roman",
                   color: Colors.white,
+
                 ),),
               ),
                 color: Colors.deepPurple,
               ),
             ),
             SizedBox(
-              height: 220,
+              height: 20,
             ),
+            SizedBox(height: 20),
 
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
