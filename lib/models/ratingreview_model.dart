@@ -15,25 +15,30 @@ class RatingReviewModel {
 
     required this.rating,
     required this.review,
+    required this.username,
   });
 
   String rating;
   String review;
+  String username;
 
   factory RatingReviewModel.fromFirebaseSnapshot(
       DocumentSnapshot<Map<String, dynamic>> json) => RatingReviewModel(
     rating: json["Rating"],
+    username: json["Username"],
     review: json["Review"],
   );
 
   factory RatingReviewModel.fromJson(Map<String, dynamic> json) => RatingReviewModel(
     rating: json["Rating"],
     review: json["Review"],
+    username: json["Username"],
   );
 
   Map<String, dynamic> toJson() => {
     "Rating": rating,
     "Review": review,
+    "Username": username,
   };
 
 }
