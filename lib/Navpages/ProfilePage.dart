@@ -12,17 +12,24 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var isDark=MediaQuery.of(context).platformBrightness==Brightness.dark;
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: (){}, icon: const Icon(LineAwesomeIcons.angle_left),color: Colors.black,),
+        leading: IconButton(onPressed: (){},
+          icon: const Icon(LineAwesomeIcons.angle_left),color: Colors.black,),
         title: Text(tProfile, textAlign: TextAlign.center, style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w400,
           color: Colors.black,
         ),),
+
+
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(isDark? LineAwesomeIcons.sun:LineAwesomeIcons.moon),color: Colors.black,),
+          IconButton(onPressed: (){},
+            icon: Icon(isDark? LineAwesomeIcons.sun : LineAwesomeIcons.moon),
+            color: Colors.black,),
         ],
       ),
       body: SingleChildScrollView(
@@ -31,12 +38,14 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: 150,height: 150,
+                width: 120,
+                height: 120,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100), child: Image(image: AssetImage(tProfileImage),),
                 ),
               ),
               const SizedBox(height: 10),
+
               Text(tProfileHeading,style: Theme.of(context).textTheme.headline4,),
               Text(tProfileSubHeading,style: Theme.of(context).textTheme.bodyText2,),
               const SizedBox(height: 20,),
