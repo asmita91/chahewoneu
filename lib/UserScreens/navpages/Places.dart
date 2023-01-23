@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'app_column.dart';
@@ -109,7 +108,7 @@ class _PlaceDetailsState extends State<PlaceDetails>
                         child: Container(
                           padding:
                               EdgeInsets.only(top: 10, left: 15, right: 15),
-                          child: AppColumn(),
+                          child: AppColumn(time: "4", price: 20000),
                         ),
                       ),
                     ),
@@ -146,7 +145,7 @@ class _PlaceDetailsState extends State<PlaceDetails>
                         child: Container(
                           padding:
                               EdgeInsets.only(top: 10, left: 15, right: 15),
-                          child: AppColumn(),
+                          child: AppColumn(time: "5", price: 1200),
                         ),
                       ),
                     ),

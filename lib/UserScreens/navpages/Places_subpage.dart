@@ -87,7 +87,7 @@ class PlaceDescription extends StatelessWidget {
                             ),
                           ),
                         ),
-                        AppColumn(),
+                        AppColumn(time: "2", price: 10000),
                         SizedBox(
                           height: 15,
                         ),
