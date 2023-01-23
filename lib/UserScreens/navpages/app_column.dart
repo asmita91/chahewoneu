@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +42,8 @@ class _AppColumnState extends State<AppColumn> {
               return Align(
                 alignment: Alignment.bottomRight,
                 child: Container(
+                  margin: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width / 32),
                   child: Column(
                     children: [
                       Text("Pokhara",
@@ -59,6 +60,9 @@ class _AppColumnState extends State<AppColumn> {
                             Icons.access_time,
                             size: 15,
                             color: Colors.blue,
+                          ),
+                          SizedBox(
+                            width: 5,
                           ),
                           RichText(
                             text: TextSpan(
@@ -85,6 +89,9 @@ class _AppColumnState extends State<AppColumn> {
                               Icons.currency_rupee,
                               size: 15,
                               color: Colors.green,
+                            ),
+                            SizedBox(
+                              width: 5,
                             ),
                             RichText(
                               text: TextSpan(
