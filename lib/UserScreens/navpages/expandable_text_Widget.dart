@@ -16,7 +16,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
 
   //if long text xa vane
   bool hiddenText = true;
-  double textHeight = 245; //yesma prblm aauna sakxa
+  double textHeight = 350; //yesma prblm aauna sakxa
 
   //check length of the text passed
   @override
@@ -37,12 +37,12 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
   Widget build(BuildContext context) {
     return Container(
       child: secondHalf.isEmpty
-          ? Text(firstHalf, style: TextStyle(fontSize: 18, height: 1.8))
+          ? Text(firstHalf, style: TextStyle(fontSize: 15, height: 1.8))
           : Column(
               children: [
                 Text(
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       height: 1.8,
                     ),
                     hiddenText

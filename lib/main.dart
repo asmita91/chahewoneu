@@ -54,11 +54,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      initialRoute: "/AdminDashboard",
+      initialRoute: "/UserHomePage",
       routes: {
         "/UserHomePage": (context) => UserHomePage(),
-        "/SubPlaces": (context) => PlaceDetails(),
-        "/SubPlaces": (context) => PlaceDescription(text: "Pokhara"),
+        "/Places": (context) => PlaceDetails(),
+        "/SubPlaces": (context) => PlaceDescription(text: "Overview"),
         "/Usersidebar": (context) => UserNavBar(),
         "/mypage": (context) => Mypage(),
         "/searchpage": (context) => SearchPage(),

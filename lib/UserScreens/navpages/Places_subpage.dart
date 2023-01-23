@@ -13,6 +13,7 @@ class PlaceDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int weight = 0;
     return Scaffold(
         body: Stack(children: [
           Positioned(
@@ -110,24 +111,58 @@ class PlaceDescription extends StatelessWidget {
                         color: Colors.lightGreenAccent,
                         borderRadius: BorderRadius.circular(20)),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("no. of people",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                        Icon(Icons.remove, color: Colors.white),
-                        SizedBox(
-                          width: 10,
-                        ),
                         Text(
-                          "0",
+                          "WEIGHT",
                           style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(
-                          width: 10,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RawMaterialButton(
+                              onPressed: () {
+                                weight--;
+                              },
+                              constraints: BoxConstraints()
+                                  .tighten(height: 10.0, width: 10.0),
+                              shape: CircleBorder(),
+                              elevation: 7.0,
+                              child: Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                                size: 10.0,
+                              ),
+                              fillColor: Colors.white24,
+                            ),
+                            Text(
+                              weight.toString(),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            RawMaterialButton(
+                              onPressed: () {
+                                weight++;
+                              },
+                              constraints: BoxConstraints()
+                                  .tighten(height: 10.0, width: 10.0),
+                              shape: CircleBorder(),
+                              elevation: 7.0,
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 10.0,
+                              ),
+                              fillColor: Colors.white24,
+                            )
+                          ],
                         ),
-                        Icon(Icons.add, color: Colors.white)
                       ],
                     ),
                   ),
