@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_flushbar/flutter_flushbar.dart';
 import 'package:intl/intl.dart';
 
-import '../../model/bus_seat.dart';
 import '../../model/hiace_seat.dart';
-import '../../repositories/BusRepo.dart';
 
 bool isSelected = false;
 bool isBooked = false;

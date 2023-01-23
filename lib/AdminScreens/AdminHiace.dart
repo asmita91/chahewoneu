@@ -1,138 +1,90 @@
+import 'package:chahewoneu/constant/my_constraints.dart';
+import 'package:chahewoneu/repositories/HiaceRepo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-class AdminHiaceSeat extends StatefulWidget {
-  const AdminHiaceSeat({Key? key}) : super(key: key);
-
+bool isSelected = false;
+bool isBooked = false;
+class AdminHiace extends StatefulWidget {
+  static String route = "AdminHiace";
+  AdminHiace({Key? key}) : super(key: key);
   @override
-  State<AdminHiaceSeat> createState() => _AdminHiaceSeatState();
+  State<AdminHiace> createState() => _AdminHiaceState();
 }
-
-class _AdminHiaceSeatState extends State<AdminHiaceSeat> {
-  var countSeatLeft = 2 * 10;
-  var countSeatCenter = 2 * 2;
-  var countSeatRight = 2 * 10;
-  var listSeatLeft = [];
-  var listSeatCenter = [];
-  var listSeatRight = [];
-
+class _AdminHiaceState extends State<AdminHiace> {
+  var countSeatLeft = 2 * 13;
+  var countSeatRight = 2 * 13;
+  Map<int, String> leftSelectedSeat = <int, String>{};
+  Map<int, String> rightSelectedSeat = <int, String>{};
+  Map<int, String> leftBookedSeat = <int, String>{};
+  Map<int, String> rightBookedSeat = <int, String>{};
   @override
   void initState() {
-    initSeatValueToList(listSeatLeft, countSeatLeft, "l");
-    initSeatValueToList(listSeatCenter, countSeatCenter, "c");
-    initSeatValueToList(listSeatRight, countSeatRight, "r");
-    setVisiblitySeat();
+    initSeatValueToMap(leftBookedSeat);
+    initSeatValueToMap(rightBookedSeat);
     super.initState();
   }
-
-  initSeatValueToList(List data, count, side) {
-    var objectData;
-    for (int i = 0; i < count; i++) {
-      objectData = {
-        "id": side + "${i + 1}",
-        "isBooked": false,
-        "isAvailable": true,
-        "isSelected": false,
-        "isVisible": true,
-      };
-      setState(() {
-        data.add(objectData);
+  initSeatValueToMap(Map<int, String> selectedSeatMap) {
+    // print("The Bye is: --> $selectedSeatMap");
+    if (selectedSeatMap.isNotEmpty) {
+      selectedSeatMap.forEach((int key, String value) {
+        // print("The Book Seat: --> $key:$value");
+        setState(() {
+          if (value == null) {
+            value = txtAvailableString;
+          }
+          selectedSeatMap[key] = value;
+        });
       });
     }
-    print(data);
   }
-
-  setVisiblitySeat() {
-    setState(() {
-      listSeatLeft[2]["isVisible"] = false;
-      listSeatLeft[2]["isVisible"] = false;
-      listSeatLeft[2]["isVisible"] = false;
-      listSeatRight[2]["isVisible"] = false;
-      listSeatRight[2]["isVisible"] = false;
-      listSeatRight[2]["isVisible"] = false;
+  void setSelectedToBooked() {
+    leftBookedSeat = leftSelectedSeat;
+    rightBookedSeat = rightSelectedSeat;
+    Map<String, List<int>> alignmentMap = {};
+    List<int> leftSelectedNumList = [];
+    List<int> rightSelectedNumList = [];
+    leftBookedSeat.forEach((int key, String value) {
+      setState(() {
+        if (value == txtSelectedString) {
+          value = txtBookedString;
+          leftSelectedSeat[key] = txtBookedString;
+        }
+        leftSelectedNumList.add(key);
+        alignmentMap[txtLeft] = leftSelectedNumList;
+        print("The left booked of index:$key --> $value");
+      });
     });
-  }
-
-  setSelectedToBooked() {
-    listSeatLeft.forEach((seat) {
-      if (seat["isSelected"]) {
-        setState(() {
-          seat["isBooked"] = true;
-        });
-      }
-    });
-    listSeatCenter.forEach((seat) {
-      if (seat["isSelected"]) {
-        setState(() {
-          seat["isBooked"] = true;
-        });
-      }
-    });
-    listSeatRight.forEach((seat) {
-      if (seat["isSelected"]) {
-        setState(() {
-          seat["isBooked"] = true;
-        });
-      }
+    rightBookedSeat.forEach((int key, String value) {
+      setState(() {
+        if (value == txtSelectedString) {
+          value = txtBookedString;
+          rightSelectedSeat[key] = txtBookedString;
+        }
+        rightSelectedNumList.add(key);
+        alignmentMap[txtRight] = rightSelectedNumList;
+      });
     });
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        width: MediaQuery
-            .of(context)
-            .size
-            .width,
+        width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 80.0),
             Container(
-              child: Text("Hiace Seat Booking",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                  height: 2.5,
-                ),),
+              margin: EdgeInsets.only(top: 0),
+              child: Text("Admin Hiace Seat Booking",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                    // height: 2.5,
+                  )),
             ),
-            SizedBox(
-              height: 22,
-            ),
-            Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.only(left: 22),
-              child: Text("Arrival Date ",style:
-              TextStyle(
-                fontSize: 18,
-                fontFamily: "Times New Roman",
-                color: Colors.black,
-                fontStyle: FontStyle.normal,
-
-              ),),
-            ),
-            SizedBox(height: 10,),
-            Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.only(left: 20,top: 10),
-              child: MaterialButton(
-                onPressed: (){}, child: const Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
-                child: Text("Choose Date",style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: "Times New Roman",
-                  color: Colors.white,
-                ),),
-              ),
-                color: Colors.deepPurple,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            SizedBox(height: 60,),
-
+            SizedBox(height: 20.0),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -196,7 +148,7 @@ class _AdminHiaceSeatState extends State<AdminHiaceSeat> {
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 10),
-                            child: Text("available"),
+                            child: Text("Available"),
                           ),
                         ],
                       ),
@@ -206,29 +158,21 @@ class _AdminHiaceSeatState extends State<AdminHiaceSeat> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 15,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
               // height: 100,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
+              width: MediaQuery.of(context).size.width,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  widgetSeat(listSeatLeft, false),
+                  SizedBox(width: 20),
+                  widgetSeat1(leftSelectedSeat, txtLeft),
                   SizedBox(
-                    width: 20,
+                    width: 210,
                   ),
-                  Expanded(
-                    child: widgetSeat(listSeatCenter, true),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  widgetSeat(listSeatRight, false),
+                  widgetSeat2(rightSelectedSeat, txtRight),
                 ],
               ),
             ),
@@ -236,57 +180,74 @@ class _AdminHiaceSeatState extends State<AdminHiaceSeat> {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {
-                setSelectedToBooked();
-              },
-              child: Text("Book"),
-            ),
+                onPressed: () async {
+                  var myData = await HiaceRepo().getAllBookingData();
+                  final leftData = myData["Left"] as List<int>;
+                  final rightData = myData["Right"] as List<int>;
+                  print("Left: $leftData and Right: $rightData}");
+                  // setState(() {
+                  //   leftBookedSeat = leftData;
+                  //   rightBookedSeat = rightData;
+                  // });
+                },
+                child: Text("Click Me"))
           ],
         ),
       ),
     );
   }
-
-  Widget widgetSeat(List dataSeat, bool isCenter) {
+  Widget widgetSeat1(Map<int, String> reservedSeat, String alignment) {
     return Container(
-      width: MediaQuery
-          .of(context)
-          .size
-          .width / 3.93,
+      width: MediaQuery.of(context).size.width / 6.50,
       child: GridView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: isCenter ? 4 : 3,
-          childAspectRatio: isCenter ? 1 : 1,
+          crossAxisCount: 1,
         ),
-        itemCount: dataSeat.length,
+        itemCount: 6,
         itemBuilder: (BuildContext context, int index) {
-          return Visibility(
-            visible: dataSeat[index]["isVisible"],
-            child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  dataSeat[index]["isSelected"] =
-                  !dataSeat[index]["isSelected"];
-                });
-              },
-              child: Container(
-                margin: EdgeInsets.all(5),
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                  color: dataSeat[index]["isBooked"]
-                      ? Colors.red
-                      : dataSeat[index]["isSelected"]
-                      ? Colors.purple
-                      : Colors.transparent,
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                  borderRadius: BorderRadius.circular(5),
-                ),
+          return Container(
+            margin: EdgeInsets.all(5),
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              color: leftBookedSeat[index] == txtBookedString
+                  ? Colors.red
+                  : Colors.transparent,
+              border: Border.all(
+                color: Colors.grey,
               ),
+              borderRadius: BorderRadius.circular(5),
+            ),
+          );
+        },
+      ),
+    );
+  }
+  Widget widgetSeat2(Map<int, String> reservedSeat, String alignment) {
+    return Container(
+      width: MediaQuery.of(context).size.width / 6.50,
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+        ),
+        itemCount: 6,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            margin: EdgeInsets.all(5),
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              color: rightBookedSeat[index] == txtBookedString
+                  ? Colors.red
+                  : Colors.transparent,
+              border: Border.all(
+                color: Colors.grey,
+              ),
+              borderRadius: BorderRadius.circular(5),
             ),
           );
         },
