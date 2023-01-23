@@ -1,82 +1,43 @@
-// import 'package:chahewoneu/AdminScreens/AdminBookingPlace.dart';
-// import 'package:chahewoneu/AdminScreens/AdminCar.dart';
-// import 'package:chahewoneu/AdminScreens/AdminHiace.dart';
-// import 'package:chahewoneu/AdminScreens/NavBar.dart';
-// import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
-// import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
-// import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
-// import 'package:chahewoneu/UserScreens/UserLogin.dart';
-// import 'package:chahewoneu/UserScreens/User_NavBar.dart';
-// import 'package:chahewoneu/UserScreens/hoteldescription.dart';
-// import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
-// import 'package:chahewoneu/UserScreens/navpages/UserEditProfile.dart';
-// import 'package:chahewoneu/UserScreens/register_screen.dart';
-// import 'package:chahewoneu/ViewModel/GlobalUIViewModel.dart';
-// import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
-// import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
-// import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
-// import 'package:chahewoneu/viewmodels/hotel_viewmodel.dart';
-// import 'package:chahewoneu/viewmodels/payment_viewmodel.dart';
-// import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:provider/provider.dart';
-//
-// import 'AdminScreens/AdminAirplane.dart';
-// import 'AdminScreens/AdminDashboard.dart';
-// import 'AdminScreens/AdminRatingReview.dart';
-// import 'AdminScreens/AdminTransPage.dart';
-// import 'AdminScreens/SplashScreen.dart';
-// import 'AdminScreens/hoteladd.dart';
-// import 'Navpages/Home.dart';
-// import 'UserScreens/Payment/KhaltiTest.dart';
-// import 'UserScreens/Transportation/ChooseBusSeat.dart';
-// import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
-// import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
-// import 'UserScreens/Transportation/PopUpMenu.dart';
-// import 'UserScreens/UserRatingReview.dart';
-// import 'UserScreens/userhotel.dart';
-// import 'WeatherScreen/weather.dart';
-
+import 'package:chahewoneu/AdminScreens/AdminBookingPlace.dart';
+import 'package:chahewoneu/AdminScreens/AdminCar.dart';
+import 'package:chahewoneu/AdminScreens/AdminHiace.dart';
+import 'package:chahewoneu/AdminScreens/NavBar.dart';
+import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
+import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
+import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
+import 'package:chahewoneu/UserScreens/UserLogin.dart';
+import 'package:chahewoneu/UserScreens/User_NavBar.dart';
+import 'package:chahewoneu/UserScreens/hoteldescription.dart';
+import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
+import 'package:chahewoneu/UserScreens/navpages/UserEditProfile.dart';
+import 'package:chahewoneu/UserScreens/register_screen.dart';
+import 'package:chahewoneu/ViewModel/GlobalUIViewModel.dart';
+import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
+import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
+import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/hotel_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/payment_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import 'AdminScreens/AdminAirplane.dart';
-import 'AdminScreens/AdminBookingPlace.dart';
-import 'AdminScreens/AdminCar.dart';
 import 'AdminScreens/AdminDashboard.dart';
-import 'AdminScreens/AdminHiace.dart';
+import 'AdminScreens/AdminEvents.dart';
 import 'AdminScreens/AdminRatingReview.dart';
 import 'AdminScreens/AdminTransPage.dart';
-import 'AdminScreens/NavBar.dart';
-import 'AdminScreens/Payment/receivePayment.dart';
 import 'AdminScreens/SplashScreen.dart';
-import 'AdminScreens/adminlogin_screen.dart';
 import 'AdminScreens/hoteladd.dart';
 import 'Navpages/Home.dart';
-import 'UserScreens/ForgetPassword.dart';
 import 'UserScreens/Payment/KhaltiTest.dart';
 import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'UserScreens/Transportation/ChooseBusSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
-import 'UserScreens/UserLogin.dart';
 import 'UserScreens/UserRatingReview.dart';
-import 'UserScreens/User_NavBar.dart';
-import 'UserScreens/hoteldescription.dart';
-import 'UserScreens/navpages/Homepage.dart';
-import 'UserScreens/navpages/UserEditProfile.dart';
-import 'UserScreens/register_screen.dart';
 import 'UserScreens/userhotel.dart';
-import 'ViewModel/GlobalUIViewModel.dart';
-import 'ViewModel/People_viewmodel.dart';
-import 'ViewModel/PlaceViewModel.dart';
-import 'ViewModel/auth_viewmodel.dart';
 import 'WeatherScreen/weather.dart';
 
 Future<void> main() async {
@@ -104,8 +65,6 @@ class Chahewoneu extends StatelessWidget {
 
         ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
         ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
-        // ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
-
         ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
         ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
         ChangeNotifierProvider<PaymentViewModel>(
@@ -125,20 +84,11 @@ class Chahewoneu extends StatelessWidget {
           "/userDashboard": (context) => UserHomePage(),
 
           "/adminDashboard": (context) => Home(),
-          // "/transportation_dash": (context) => Transportation(),
-
           "/adminDashboard": (context) => AdminDashboard(),
-          // "/transportation_dash": (context) => Transportation(),
-
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
-          // "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
-          // "/placeSubPage": (context) => PlaceDescription(text: "Context"),
           "/ChooseAirplaneSeat": (context) => Airplane(),
-          // "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
-          // "/ChooseBusSeat": (context) => ChooseBusSeat(),
-
           "/ChooseHiaceSeat": (context) => Hiace(),
           "/ChooseBusSeat": (context) => Bus(),
 
