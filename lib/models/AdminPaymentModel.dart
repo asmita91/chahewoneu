@@ -16,7 +16,7 @@ class AdminPaymentModel {
   AdminPaymentModel({
     this.paymentId,
     this.userId,
-    this.userName,
+    required this.userName,
     this.userImage,
     this.packagePrice,
     this.packageId,
@@ -24,7 +24,7 @@ class AdminPaymentModel {
 
   String? paymentId;
   String? userId;
-  String? userName;
+  String userName;
   String? userImage;
   int? packagePrice;
   String? packageId;

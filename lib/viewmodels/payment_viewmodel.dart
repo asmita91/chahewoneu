@@ -11,7 +11,7 @@ class PaymentViewModel with ChangeNotifier {
   Stream<QuerySnapshot<AdminPaymentModel>>? get payment => _payment;
 
   Future<void> getPayment() async {
-    var response = _paymentRepository.getData();
+    var response = _paymentRepository.getPayment();
     _payment = response;
     notifyListeners();
   }

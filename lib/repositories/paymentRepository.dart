@@ -13,7 +13,7 @@ class PaymentRepository {
             toFirestore: (model, _) => model.toJson(),
           );
 
-  Stream<QuerySnapshot<AdminPaymentModel>> getData() {
+  Stream<QuerySnapshot<AdminPaymentModel>> getPayment() {
     Stream<QuerySnapshot<AdminPaymentModel>> response = ref.snapshots();
     return response;
   }
