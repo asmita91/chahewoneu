@@ -44,7 +44,7 @@ class Chahewoneu extends StatelessWidget {
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/userDashboard",
+        initialRoute: "/adminDashboard",
         routes: {
           // "/splashScreen": (context)=>SplashScreen();
           "/registration": (context) => RegisterScreen(),

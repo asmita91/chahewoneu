@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -8,7 +9,8 @@ import '../imagestrings.dart';
 import '../textstrings.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+   ProfilePage({Key? key}) : super(key: key);
+  final user=FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -123,19 +125,9 @@ class ProfilePage extends StatelessWidget {
                     color:Colors.blueAccent.withOpacity(0.1),
                   ),
                   child: const Icon(LineAwesomeIcons.alternate_sign_out,size:18.0,color: Colors.blue,),
-                ),
-                title: InkWell(
-                  onTap: (){
-                    // Navigator.pop(context);
-                    // Navigator.push(context, Materia);
-                  },
-                  child: Text("Logout",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.red,
 
-                    ),),
                 ),
+
                 trailing: Container(
                   width:40,
                   height: 40,
