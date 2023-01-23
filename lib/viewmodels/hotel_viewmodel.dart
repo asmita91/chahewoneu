@@ -10,9 +10,8 @@ class HotelViewModel with ChangeNotifier{
   Stream<QuerySnapshot<HotelModel>>? _hotel;
   Stream<QuerySnapshot<HotelModel>>? get hotel => _hotel;
 
-  Future<void> getRatingReview() async{
+  Future<void> getHotel() async{
     var response = _hotelRepository.getData();
-
     _hotel = response;
     notifyListeners();
   }

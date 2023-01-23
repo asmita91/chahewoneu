@@ -11,6 +11,9 @@ class AuthViewModel with ChangeNotifier {
 
   User? get user => _user;
 
+  // final response = await userRef
+  //     .where("lacation", isEqualTo: "textconroller.text").get();
+
   UserModel? _loggedInUser;
   UserModel? get loggedInUser => _loggedInUser;
 
