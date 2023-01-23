@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -54,7 +53,7 @@ class ProfilePage extends StatelessWidget {
                 child: ElevatedButton(onPressed: (){},
                   child: const Text(tEditProfile,style: TextStyle(color: Colors.black,fontSize: 20,),),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
+                    backgroundColor: Colors.yellowAccent,
                   ),
                 ),
               ),
