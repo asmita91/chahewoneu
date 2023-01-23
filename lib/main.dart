@@ -1,7 +1,7 @@
 import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
-import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
+// import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
 import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
@@ -9,6 +9,7 @@ import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:chahewoneu/UserScreens/navpages/Places_subpage.dart';
 import 'package:chahewoneu/UserScreens/register_screen.dart';
+import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'Navpages/Home.dart';
+import 'Package.dart';
 import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
@@ -37,14 +39,18 @@ class Chahewoneu extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
         ChangeNotifierProvider<RatingReviewViewModel>(
-            create: (_) => RatingReviewViewModel())
+            create: (_) => RatingReviewViewModel()),
+        ChangeNotifierProvider<PeopleViewModel>(
+            create: (_) => PeopleViewModel())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
+
         initialRoute: "/adminDashboard",
+        // initialRoute: "/Package",
         routes: {
           // "/splashScreen": (context)=>SplashScreen();
           "/registration": (context) => RegisterScreen(),
@@ -54,15 +60,16 @@ class Chahewoneu extends StatelessWidget {
           "/adminDashboard": (context) => Home(),
           "/transportation_dash": (context) => Transportation(),
           "/car_popup": (context) => PopUp(),
-          "/forgotPassword": (context) => ForgetPasswordPage(),
+          // "/forgotPassword": (context) => ForgetPasswordPage(),
           // "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
           "/placeSubPage": (context) => PlaceDescription(text: "Context"),
           "/ChooseAirplaneSeat": (context) => Airplane(),
           "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
           "/ChooseBusSeat": (context) => ChooseBusSeat(),
-          "/UserNavBar":(context) =>UserNavBar(),
-          "/AdminNavBar":(context) =>NavBar(),
+          "/UserNavBar": (context) => UserNavBar(),
+          "/AdminNavBar": (context) => NavBar(),
+          "/Package": (context) => Package(),
         },
       ),
     );

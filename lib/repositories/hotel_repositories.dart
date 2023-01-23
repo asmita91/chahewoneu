@@ -12,21 +12,18 @@ class HotelRepository{
     },
     toFirestore: (model, _) => model.toJson(),
   );
-
-
   Stream<QuerySnapshot<HotelModel>> getData()  {
     Stream<QuerySnapshot<HotelModel>> response = ref
         .snapshots();
     return response;
   }
-
   Future<HotelModel?> getOneData(String id) async {
     DocumentSnapshot<HotelModel> response = await ref.doc(id).get();
     return response.data();
   }
 
-  Future<void> addRatingReview(HotelModel data) async {
+
+  Future<void> addHotel(HotelModel data) async {
     await ref.add(data);
   }
-
 }
