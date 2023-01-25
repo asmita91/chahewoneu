@@ -1,7 +1,7 @@
 import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
-// import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
+import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
 import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
@@ -60,7 +60,7 @@ class Chahewoneu extends StatelessWidget {
           "/adminDashboard": (context) => Home(),
           "/transportation_dash": (context) => Transportation(),
           "/car_popup": (context) => PopUp(),
-          // "/forgotPassword": (context) => ForgetPasswordPage(),
+          "/forgotPassword": (context) => ForgetPasswordPage(),
           // "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
           "/placeSubPage": (context) => PlaceDescription(text: "Context"),
