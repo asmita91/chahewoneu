@@ -128,6 +128,20 @@ class ProfilePage extends StatelessWidget {
 
                 ),
 
+
+                title: InkWell(
+                  onTap: (){
+                    FirebaseAuth.instance.signOut();
+                  },
+                  child: Text("Logout",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.red,
+
+                    ),),
+                ),
+
+
                 trailing: Container(
                   width:40,
                   height: 40,
@@ -147,6 +161,8 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
+
+
 
     );
 
