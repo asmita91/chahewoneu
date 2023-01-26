@@ -70,6 +70,8 @@ class ProfilePage extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     color:Colors.lightBlue.withOpacity(0.1),
+
+
                   ),
                   child: const Icon(LineAwesomeIcons.user_check,size:18.0,color: Colors.blue, ),
                 ),
