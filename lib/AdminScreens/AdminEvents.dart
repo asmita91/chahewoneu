@@ -12,8 +12,8 @@ class AdminEvent extends StatefulWidget {
 }
 
 class  _HotelPlace  extends State< AdminEvent > {
-  TextEditingController place = new TextEditingController();
-  TextEditingController place_description = new TextEditingController();
+  TextEditingController event = new TextEditingController();
+  TextEditingController event_description = new TextEditingController();
   File? pickedImage;
 
   void imagePickerOption() {
@@ -142,7 +142,7 @@ class  _HotelPlace  extends State< AdminEvent > {
           ),
           TextFormField(
             style: TextStyle(color: Colors.black),
-            controller: place,
+            controller: event,
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return "Place";
@@ -167,7 +167,7 @@ class  _HotelPlace  extends State< AdminEvent > {
           ),
           TextFormField(
             style: TextStyle(color: Colors.black),
-            controller: place_description,
+            controller: event_description,
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return "Event description is required";
