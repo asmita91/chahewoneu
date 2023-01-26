@@ -6,9 +6,9 @@ import '../repositories/PlacesRepositories.dart';
 
 class PlaceViewModel with ChangeNotifier {
   PlaceRepository _placeRepository = PlaceRepository();
-  Stream<QuerySnapshot<PlaceModel>>? _place;
+  Stream<QuerySnapshot<Place_Model>>? _place;
   //_underscore rakheko variable aaru cls le use garna mildain a
-  Stream<QuerySnapshot<PlaceModel>>? get place => _place;
+  Stream<QuerySnapshot<Place_Model>>? get place => _place;
 
   // Future<void> getOnePlace(String placeId) async {
   //   _place = PlaceModel();

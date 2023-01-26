@@ -1,3 +1,4 @@
+import 'package:chahewoneu/AdminScreens/AdminBookingPlace.dart';
 import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
@@ -14,10 +15,12 @@ import 'package:chahewoneu/WeatherScreen/weather.dart';
 import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/hotel_viewmodel.dart';
+import 'package:chahewoneu/viewmodels/place_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'AdminScreens/SplashScreen.dart';
 import 'AdminScreens/hoteladd.dart';
 import 'Navpages/Home.dart';
 import 'Package.dart';
@@ -50,15 +53,17 @@ class Chahewoneu extends StatelessWidget {
             create: (_) => PeopleViewModel()),
         ChangeNotifierProvider<HotelViewModel>(
             create: (_) => HotelViewModel()),
+        ChangeNotifierProvider<PlaceView_Model>(
+            create: (_) => PlaceView_Model()),
       ],
       child: GetMaterialApp(
         title: 'Flutter Demo',
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/Userhotel",
+        initialRoute: "/Adminhotel",
         routes: {
-          // "/splashScreen": (context)=>SplashScreen();
+          "/splashScreen": (context)=>SplashScreen(),
           "/registration": (context) => RegisterScreen(),
           "/userLogin": (context) => UserLoginPage(),
           "/adminLogin": (context) => AdminLoginScreen(),
@@ -69,7 +74,7 @@ class Chahewoneu extends StatelessWidget {
           "/forgotPassword": (context) => ForgetPasswordPage(),
           // "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
-          "/placeSubPage": (context) => PlaceDescription(text: "Context"),
+          // "/placeSubPage": (context) => PlaceDescription(text: "Context"),
           "/ChooseAirplaneSeat": (context) => Airplane(),
           "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
           "/ChooseBusSeat": (context) => ChooseBusSeat(),
@@ -77,7 +82,7 @@ class Chahewoneu extends StatelessWidget {
           "/AdminNavBar": (context) => NavBar(),
           "/Adminhotel": (context) => HotelAddPlace(),
           "/hoteldescription": (context) => HotelDescription(),
-          "/Userhotel": (context) => WeatherScreen(),
+          "/Userhotel": (context) => BookingPlace(),
           "/Package": (context) => Package(),
         },
       ),

@@ -44,7 +44,7 @@ class _PlaceDescriptionState extends State<PlaceDescription2> {
         body: StreamBuilder(
             stream: place,
             builder:
-                (context, AsyncSnapshot<QuerySnapshot<PlaceModel>> snapshot) {
+                (context, AsyncSnapshot<QuerySnapshot<Place_Model>> snapshot) {
               if (!snapshot.hasData) {
                 return CircularProgressIndicator();
               } else if (snapshot.hasError) {
@@ -54,9 +54,9 @@ class _PlaceDescriptionState extends State<PlaceDescription2> {
                     controller: pageController,
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (context, position) {
-                      List<PlaceModel> places = [];
+                      List<Place_Model> places = [];
                       for (var querySnapshotPlace in snapshot.data!.docs) {
-                        final PlaceModel place = querySnapshotPlace.data();
+                        final Place_Model place = querySnapshotPlace.data();
                         places.add(place);
                       }
                       return Stack(children: [

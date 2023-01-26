@@ -33,7 +33,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
   @override
   Widget build(BuildContext context) {
     var place = context.watch<PlaceViewModel>().place;
-    List<PlaceModel> places = [];
+    List<Place_Model> places = [];
     return Column(
       children: [
         Expanded(
@@ -41,14 +41,14 @@ class _PlaceDetailsState extends State<PlaceDetails> {
             child: StreamBuilder(
                 stream: place,
                 builder: (context,
-                    AsyncSnapshot<QuerySnapshot<PlaceModel>> snapshot) {
+                    AsyncSnapshot<QuerySnapshot<Place_Model>> snapshot) {
                   if (!snapshot.hasData) {
                     return CircularProgressIndicator();
                   } else if (snapshot.hasError) {
                     return Text("Error");
                   } else {
                     for (var querySnapshotPlace in snapshot.data!.docs) {
-                      final PlaceModel place = querySnapshotPlace.data();
+                      final Place_Model place = querySnapshotPlace.data();
                       places.add(place);
                     }
                     return MyPageViewController(pageController, places);
@@ -63,14 +63,14 @@ class _PlaceDetailsState extends State<PlaceDetails> {
 
 class MyPageViewController extends StatelessWidget {
   final PageController controller;
-  final List<PlaceModel> places;
+  final List<Place_Model> places;
 
   MyPageViewController(this.controller, this.places);
 
   @override
   Widget build(BuildContext context) {
-    List<PlaceModel> lessThan5 = [];
-    List<PlaceModel> greaterThan5 = [];
+    List<Place_Model> lessThan5 = [];
+    List<Place_Model> greaterThan5 = [];
 
     for (int i = 0; i <= places.length - 1; i++) {
       print("The total i is: -->$i");
@@ -93,7 +93,7 @@ class MyPageViewController extends StatelessWidget {
   }
 
   Widget firstPageViewController(
-      PageController pageController, List<PlaceModel> places) {
+      PageController pageController, List<Place_Model> places) {
     return PageView.builder(
         controller: pageController,
         itemCount: places.length,
@@ -103,7 +103,7 @@ class MyPageViewController extends StatelessWidget {
   }
 
   Widget secondPageViewController(
-      PageController pageController, List<PlaceModel> places) {
+      PageController pageController, List<Place_Model> places) {
     return PageView.builder(
         controller: pageController,
         itemCount: places.length,
@@ -112,7 +112,7 @@ class MyPageViewController extends StatelessWidget {
         });
   }
 
-  Widget _createPageSlider(PlaceModel place, int index) {
+  Widget _createPageSlider(Place_Model place, int index) {
     return Column(
       children: [
         Flexible(

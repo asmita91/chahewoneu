@@ -5,21 +5,21 @@ import '../Services/firebaseService.dart';
 import '../models/place.dart';
 
 class PlaceRepository with ChangeNotifier {
-  CollectionReference<PlaceModel> placeRef =
-      FirebaseService.db.collection("places").withConverter<PlaceModel>(
+  CollectionReference<Place_Model> placeRef =
+      FirebaseService.db.collection("places").withConverter<Place_Model>(
             //typecast garirakhnu naparos vanera banakoo reeeee
             fromFirestore: (snapshot, _) {
-              return PlaceModel.fromFirebaseSnapshot(snapshot);
+              return Place_Model.fromFirebaseSnapshot(snapshot);
             },
             toFirestore: (model, _) => model.toJson(),
           );
 
-  Stream<QuerySnapshot<PlaceModel>> getPlaceData() {
-    Stream<QuerySnapshot<PlaceModel>> response = placeRef.snapshots();
+  Stream<QuerySnapshot<Place_Model>> getPlaceData() {
+    Stream<QuerySnapshot<Place_Model>> response = placeRef.snapshots();
     return response;
   }
 
-  Future<DocumentSnapshot<PlaceModel>> getOnePlace(String placeId) async {
+  Future<DocumentSnapshot<Place_Model>> getOnePlace(String placeId) async {
     try {
       final response = await placeRef.doc(placeId).get();
       if (!response.exists) {
@@ -32,7 +32,7 @@ class PlaceRepository with ChangeNotifier {
     }
   }
 
-  Future<bool> addPlace(PlaceModel data) async {
+  Future<bool> addPlace(Place_Model data) async {
     await placeRef.add(data);
     return true;
   }

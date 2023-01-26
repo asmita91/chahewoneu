@@ -2,7 +2,7 @@ import 'package:chahewoneu/models/place.dart';
 import 'package:flutter/material.dart';
 
 class MyConstants {
-  static PlaceModel? holdNavigatePlaceDetails;
+  static Place_Model? holdNavigatePlaceDetails;
 
   static double myCurrentPageValue = 0.0;
   static double _scaleFactor = 0.8; // show the 80% of original size
