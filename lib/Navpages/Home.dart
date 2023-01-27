@@ -1,6 +1,8 @@
 import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:flutter/material.dart';
 import '../../Colors.dart';
+import '../UserScreens/navpages/place_details.dart';
+import '../UserScreens/userhotel.dart';
 
 
 
@@ -15,7 +17,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
   bool isGrid=true;
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(length: 4, vsync: this);
+    TabController tabController = TabController(length: 8, vsync: this);
 
     return Scaffold(
       drawer: NavBar(),
@@ -59,24 +61,22 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
               // indicator: ,
               tabs: [
                 Tab(text: "Places"),
-                Tab(
-                  text: "Events",
-                ),
-                Tab(
-                  text: "Booking",
-                ),
-                Tab(
-                  text: "Transportation",
-                )
+                Tab(text: "Events"),
+                Tab(text: "Booking"),
+                Tab(text: "Hotel"),
+                Tab(text: "Transportation")
               ]),
         ),
         Container(
           height: 300,
           width: double.maxFinite,
-          child: TabBarView(controller: tabController, children: [
+          child: TabBarView(controller: tabController,
+              children: [
+                Expanded(child: PlaceDetails()),
+                Text(" "),
             Text(" "),
             Text(" "),
-            Text(" "),
+                Expanded(child: UserHotelScreen()),
             Text(" ")
           ]),
         )
@@ -85,27 +85,53 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
   }
 }
 
-class CircleTabIndicator extends Decoration{
-  final Color color;
+// class CircleTabIndicator extends Decoration{
+//   final Color color;
+//   double radius;
+//   CircleTabIndicator({required this.color, required this.radius});
+//   @override
+//   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+//     // TODO: implement createBoxPainter
+//     return _CirclePainter(color: color, radius:radius);
+//     // throw UnimplementedError();
+//   }
+//
+// }
+// class _CirclePainter extends BoxPainter{
+//   final Color color;
+//   double radius;
+//   _CirclePainter({required this.color, required this.radius});
+//
+//   @override
+//   void paint(Canvas canvas,
+//       Offset offset,
+//       ImageConfiguration configuration) {
+//   }
+//
+// }
+class CircleTabIndicator extends Decoration {
+  final Color colors;
   double radius;
-  CircleTabIndicator({required this.color, required this.radius});
+  CircleTabIndicator({required this.colors, required this.radius});
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-    // TODO: implement createBoxPainter
-    return _CirclePainter(color: color, radius:radius);
-    // throw UnimplementedError();
+// TODO: implement createBoxPainter
+    return _CirclePainter(colors: Colors.black, radius: radius);
   }
-
 }
-class _CirclePainter extends BoxPainter{
-  final Color color;
+
+class _CirclePainter extends BoxPainter {
+  final Color colors;
   double radius;
-  _CirclePainter({required this.color, required this.radius});
-
+  _CirclePainter({required this.colors, required this.radius});
   @override
-  void paint(Canvas canvas,
-      Offset offset,
-      ImageConfiguration configuration) {
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    Paint _paint = Paint();
+    _paint.color = colors;
+    _paint.isAntiAlias = true;
+    final Offset circleOffset = Offset(
+        configuration.size!.width / 2 - radius / 2,
+        configuration.size!.height - radius);
+    canvas.drawCircle(offset + circleOffset, radius, _paint);
   }
-
 }
