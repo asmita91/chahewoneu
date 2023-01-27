@@ -27,7 +27,7 @@ class  _HotelPlace  extends State< HotelAddPlace > {
   // var uuid = Uuid();
   void imagePickerOption() {
     Get.bottomSheet(
-      SingleChildScrollView  (
+      SingleChildScrollView  (git add
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(0.0),

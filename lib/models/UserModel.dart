@@ -13,7 +13,7 @@ String userModelToJson(UserModel? data) => json.encode(data!.toJson());
 class UserModel {
   UserModel({
     this.userId,
-    this.fcmToken,
+    this.fcmToken ="NORMAL",
     this.firstname,
     this.lastname,
     this.username,

@@ -62,7 +62,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     super.initState();
     wf = new WeatherFactory("856822fd8e22db5e1ba48c0e7d69844a");
     getWeather("Kathmandu");
-    getWeather("Bhaktapur");
+    // getWeather("Bhaktapur");
   }
 
   @override
@@ -85,7 +85,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           controller: textEditingController,
           onSubmitted: (value){
             cityName = textEditingController.text;
-            getWeather(openLocation.toString());
+            getWeather(cityName.toString());
           },
         ),
         backgroundColor: Colors.transparent,

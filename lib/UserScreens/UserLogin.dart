@@ -61,6 +61,11 @@ class _UserLoginPageState extends State<UserLoginPage> {
   void login() async {
     try {
       await _authen.login(email.text, password.text).then((value) {
+        // if(_authen.loggedInUser!.fcmToken!="ADMIN"){
+        // //  LOGOUT
+        // }else{
+        // //  NAVIGATE
+        // }
         Navigator.of(context).pushReplacementNamed('/userDashboard');
       }).catchError((e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
