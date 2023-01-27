@@ -35,6 +35,7 @@ import 'UserScreens/Transportation/PopUpMenu.dart';
 import 'package:get/get.dart';
 
 import 'UserScreens/UserRatingReview.dart';
+import 'UserScreens/userevent.dart';
 import 'UserScreens/userhotel.dart';
 import 'WeatherScreen/weather.dart';
 
@@ -71,7 +72,7 @@ class Chahewoneu extends StatelessWidget {
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/adminDashboard",
+        initialRoute: "/UserEvent",
         routes: {
           "/splashScreen": (context)=>SplashScreen(),
           "/registration": (context) => RegisterScreen(),
@@ -109,6 +110,7 @@ class Chahewoneu extends StatelessWidget {
           "/AdminHiace":(context)=>AdminHiace(),
           "/choosebus":(context)=>Bus(),
           "/Adminplace":(context)=>BookingPlace(),
+          "/UserEvent":(context)=>UserEventScreen(),
         },
       ),
     );
