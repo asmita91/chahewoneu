@@ -1,6 +1,7 @@
 import 'package:chahewoneu/main.dart';
 import 'package:flutter/material.dart';
 
+import '../AdminScreens/AdminBookingPlace.dart';
 import 'navpages/Homepage.dart';
 
 class UserNavBar extends StatelessWidget {
@@ -38,7 +39,7 @@ class UserNavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.cloud_circle),
             title: Text('Weather'),
-            onTap: () => null,
+            onTap: () => Navigator.of(context).pushNamed("/Weather"),
           ),
           Divider(),
           ListTile(
@@ -51,7 +52,7 @@ class UserNavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.rate_review),
             title: Text('Rate and Review'),
-            onTap: () => null,
+            onTap: () => Navigator.of(context).pushNamed("/UserRatereview"),
           ),
 
           Divider(),

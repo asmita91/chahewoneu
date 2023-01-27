@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../Colors.dart';
 import '../../Navpages/ProfilePage.dart';
+import '../userhotel.dart';
 import 'UserProfile.dart';
 import 'place_details.dart';
 // import 'meansOfTransportation.dart';
@@ -81,7 +82,7 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
                     tabs: [
                       Tab(text: "Places"),
                       Tab(text: "Booking"),
-                      Tab(text: "Emotions"),
+                      Tab(text: "Hotel"),
                     ],
                   ),
                 ),
@@ -95,7 +96,7 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
                 children: [
                   Expanded(child: PlaceDetails()),
                   Text("hi"),
-                  Text("Contents")
+                  Expanded(child: UserHotelScreen()),
                 ],
                 // Transportation(),
               ),

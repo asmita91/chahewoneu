@@ -113,7 +113,7 @@ class _BookingPlace extends State<BookingPlace> {
         imagepath: photo.ref.fullPath,
         imageUrl: url,
     );
-    db.collection("place").add(data.toJson()).then((value) {
+    db.collection("places").add(data.toJson()).then((value) {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("place added")));
     });
