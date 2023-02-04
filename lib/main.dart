@@ -53,7 +53,7 @@ class PaymentModel extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: LoginScreen(),
-        initialRoute: "/adminPayment",
+        initialRoute: "/userPayment",
         routes: {
           // "/splashScreen": (context)=>SplashScreen();
           "/registration": (context) => RegisterScreen(),
