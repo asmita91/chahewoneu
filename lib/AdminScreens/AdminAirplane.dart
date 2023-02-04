@@ -1,9 +1,5 @@
-import 'package:chahewoneu/constant/my_constraints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-bool isSelected = false;
-bool isBooked = false;
 
 class Airplane extends StatefulWidget {
   Airplane({Key? key}) : super(key: key);
@@ -16,67 +12,59 @@ class _AirplaneState extends State<Airplane> {
   // var isBooked
   var countSeatLeft = 2 * 13;
   var countSeatRight = 2 * 13;
+  var listSeatLeft = [];
 
-  Map<int, String> leftSelectedSeat = <int, String>{};
-  Map<int, String> rightSelectedSeat = <int, String>{};
-
-  Map<int, String> leftBookedSeat = <int, String>{};
-  Map<int, String> rightBookedSeat = <int, String>{};
+  var listSeatRight = [];
 
   @override
   void initState() {
-    initSeatValueToMap(leftSelectedSeat);
-    initSeatValueToMap(rightSelectedSeat);
+    //l for left, c for center , r for right
+    //first param "listSeatLeft","listSeatCenter","listSeatRight" that similar like object temp that u want to save the data
+    // second param is for like how many seat on every side
+    // third param is for naming value every seat //look line 38
+    initSeatValueToList(listSeatLeft, countSeatLeft, "l");
+    initSeatValueToList(listSeatRight, countSeatRight, "r");
 
     super.initState();
   }
 
-  initSeatValueToMap(Map<int, String> selectedSeatMap) {
-    print("The reserved seat List is: --> $selectedSeatMap");
-    if (selectedSeatMap.isEmpty) {
-      selectedSeatMap.forEach((int key, String value) {
-        setState(() {
-          if (value == null) {
-            value = txtAvailableString;
-          }
-          selectedSeatMap[key] = value;
-          print("The reserved seat List is: --> $selectedSeatMap");
-        });
+  initSeatValueToList(List data, count, side) {
+    var objectData;
+    //init variable to save your object data
+    for (int i = 0; i < count; i++) {
+      objectData = {
+        "id": side + "${i + 1}",
+        "isBooked": false,
+        "isAvailable": true,
+        "isSelected": false,
+        "isVisible": true,
+      };
+      //this format object for every seat has
+      setState(() {
+        data.add(objectData);
+        //add object to list
       });
     }
+    print(data);
   }
 
-  void setSelectedToBooked() {
-    leftBookedSeat = leftSelectedSeat;
-    rightBookedSeat = rightSelectedSeat;
-    Map<String, List<int>> alignmentMap = {};
-    List<int> leftSelectedNumList = [];
-    List<int> rightSelectedNumList = [];
-
-    leftBookedSeat.forEach((int key, String value) {
-      setState(() {
-        if (value == txtSelectedString) {
-          value = txtBookedString;
-          leftSelectedSeat[key] = txtBookedString;
-        }
-        leftSelectedNumList.add(key);
-        alignmentMap[txtLeft] = leftSelectedNumList;
-        print("The left booked of index:$key --> $value");
-      });
+  setSelectedToBooked() {
+    listSeatLeft.forEach((seat) {
+      if (seat["isSelected"]) {
+        setState(() {
+          seat["isBooked"] = true;
+        });
+      }
     });
 
-    rightBookedSeat.forEach((int key, String value) {
-      setState(() {
-        if (value == txtSelectedString) {
-          value = txtBookedString;
-          rightSelectedSeat[key] = txtBookedString;
-        }
-        rightSelectedNumList.add(key);
-        alignmentMap[txtRight] = rightSelectedNumList;
-        print("The right booked of index:$key --> $value");
-      });
+    listSeatRight.forEach((seat) {
+      if (seat["isSelected"]) {
+        setState(() {
+          seat["isBooked"] = true;
+        });
+      }
     });
-    print("The final booked: $alignmentMap");
+    //this function to loop every side of seat, from selected to booked, u also can this function to send to u'r serves side
   }
 
   @override
@@ -223,11 +211,11 @@ class _AirplaneState extends State<Airplane> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(width: 20),
-                  widgetSeat1(leftSelectedSeat, txtLeft),
+                  widgetSeat(listSeatLeft),
                   SizedBox(
                     width: 140,
                   ),
-                  widgetSeat1(rightSelectedSeat, txtRight),
+                  widgetSeat(listSeatRight),
                 ],
               ),
             ),
@@ -246,7 +234,7 @@ class _AirplaneState extends State<Airplane> {
     );
   }
 
-  Widget widgetSeat1(Map<int, String> reservedSeat, String alignment) {
+  Widget widgetSeat(List dataSeat) {
     return Container(
       width: MediaQuery.of(context).size.width / 3.93,
       child: GridView.builder(
@@ -256,26 +244,15 @@ class _AirplaneState extends State<Airplane> {
           crossAxisCount: 2,
           childAspectRatio: 1.7,
         ),
-        itemCount: 26,
+        itemCount: dataSeat.length,
         itemBuilder: (BuildContext context, int index) {
           return Visibility(
-            visible: true,
+            visible: dataSeat[index]["isVisible"],
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  if (reservedSeat[index] == null) {
-                    reservedSeat[index] = txtAvailableString;
-                  }
-                  if (reservedSeat[index] == txtAvailableString) {
-                    reservedSeat[index] = txtSelectedString;
-                    print("I Clicked on: $index ==> ${reservedSeat[index]}");
-                  } else if (reservedSeat[index] == txtSelectedString) {
-                    reservedSeat[index] = txtAvailableString;
-                    print("II Clicked on: $index ==> ${reservedSeat[index]}");
-                  } else {
-                    reservedSeat[index] = txtBookedString;
-                    print(" III Clicked on: $index ==> ${reservedSeat[index]}");
-                  }
+                  dataSeat[index]["isSelected"] =
+                      !dataSeat[index]["isSelected"];
                 });
               },
               child: Container(
@@ -283,11 +260,11 @@ class _AirplaneState extends State<Airplane> {
                 width: 20,
                 height: 20,
                 decoration: BoxDecoration(
-                  color: reservedSeat[index] == txtBookedString
+                  color: dataSeat[index]["isBooked"]
                       ? Colors.red
-                      : reservedSeat[index] == txtSelectedString
+                      : dataSeat[index]["isSelected"]
                           ? Colors.purple
-                          : Colors.yellow,
+                          : Colors.transparent,
                   border: Border.all(
                     color: Colors.grey,
                   ),
