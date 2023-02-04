@@ -25,7 +25,7 @@ class _TransportationState extends State<Transportation> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image: AssetImage("Images/Car.png"),
+                    image: AssetImage("Assets/Images/Car.png"),
                     fit: BoxFit.cover,
                   )),
               child: Align(alignment: Alignment.bottomCenter, child: PopUp()),
@@ -34,7 +34,7 @@ class _TransportationState extends State<Transportation> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                      image: AssetImage("Images/bus.png"),
+                      image: AssetImage("Assets/Images/bus.png"),
                       fit: BoxFit.cover,
                     )),
                 child: Align(
@@ -55,7 +55,7 @@ class _TransportationState extends State<Transportation> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                      image: AssetImage("Images/hiace.png"),
+                      image: AssetImage("Assets/Images/hiace.png"),
                       fit: BoxFit.cover,
                     )),
                 child: Align(
@@ -76,7 +76,7 @@ class _TransportationState extends State<Transportation> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                      image: AssetImage("Images/airplane.png"),
+                      image: AssetImage("Assets/Images/airplane.png"),
                       fit: BoxFit.cover,
                     )),
                 child: Align(
