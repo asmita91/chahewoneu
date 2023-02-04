@@ -1,10 +1,13 @@
 import 'package:chahewoneu/Constraints/constraint.dart';
+import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
+import '../../models/People_Model.dart';
 import 'app_column.dart';
 import 'app_icon.dart';
 import 'expandable_text_Widget.dart';
@@ -30,6 +33,16 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
   var _currentPageValue = 0.0;
   PageController pageController = PageController(viewportFraction: 0.85);
   int _count = 1;
+  Future<void> savePeople() async {
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    final data = PeopleModel(number: _count, userName: "Asm", userId: "1");
+
+    db.collection("peoples").add(data.toJson()).then((value) {
+      print("Added Data with ID: ${value.id}");
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("People Added")));
+    });
+  }
 
   @override
   void initState() {
@@ -200,7 +213,8 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed("/dashboard");
+                        Navigator.of(context).pushNamed(UserHomePage.route);
+                        savePeople();
                       },
                       child: Text("Book Now",
                           style: TextStyle(

@@ -74,7 +74,7 @@ class MyPageViewController extends StatelessWidget {
 
     for (int i = 0; i <= places.length - 1; i++) {
       print("The total i is: -->$i");
-      if (i <= 4) {
+      if (i <= 2) {
         print("The IF value of  i is: $i");
         lessThan5.add(places[i]);
       } else {
