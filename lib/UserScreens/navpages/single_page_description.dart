@@ -29,6 +29,7 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
   late PlaceViewModel _placeViewModel;
   var _currentPageValue = 0.0;
   PageController pageController = PageController(viewportFraction: 0.85);
+  int _count = 1;
 
   @override
   void initState() {
@@ -40,6 +41,21 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
       setState(() {
         _currentPageValue = pageController.page!;
       });
+    });
+  }
+
+  void _incrementCount() {
+    setState(() {
+      _count++;
+    });
+  }
+
+  void _decrementCount() {
+    if (_count < 2) {
+      return;
+    }
+    setState(() {
+      _count--;
     });
   }
 
@@ -138,78 +154,51 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.lightGreenAccent,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "People",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RawMaterialButton(
-                              onPressed: () {
-                                weight--;
-                              },
-                              constraints: BoxConstraints()
-                                  .tighten(height: 10.0, width: 10.0),
-                              shape: CircleBorder(),
-                              elevation: 7.0,
-                              child: Icon(
-                                Icons.remove,
-                                color: Colors.white,
-                                size: 10.0,
-                              ),
-                              fillColor: Colors.white24,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.lightGreenAccent,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "People",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          FloatingActionButton(
+                            child: Icon(
+                              Icons.add,
+                              size: 15,
                             ),
-                            Text(
-                              weight.toString(),
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.w600),
+                            onPressed: _incrementCount,
+                            backgroundColor: Colors.transparent,
+                          ),
+                          Text(
+                            "${_count}",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          FloatingActionButton(
+                            child: Icon(
+                              Icons.remove,
+                              size: 15,
                             ),
-                            RawMaterialButton(
-                              onPressed: () {
-                                weight++;
-                              },
-                              constraints: BoxConstraints()
-                                  .tighten(height: 10.0, width: 10.0),
-                              shape: CircleBorder(),
-                              elevation: 7.0,
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                                size: 10.0,
-                              ),
-                              fillColor: Colors.white24,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                            onPressed: _decrementCount,
+                            backgroundColor: Colors.transparent,
+                          )
+                        ],
+                      )),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.lightGreenAccent,
-                          // minimumSize: Size.fromHeight(40),
-                          padding: EdgeInsets.only(
-                            left: 30,
-                            right: 30,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          elevation: 3),
+                        backgroundColor: Colors.lightGreenAccent,
+                        // minimumSize: Size.fromHeight(40),
+                        padding: EdgeInsets.only(
+                          left: 30,
+                          right: 30,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                      ),
                       onPressed: () {
                         Navigator.of(context).pushNamed("/dashboard");
                       },
