@@ -1,3 +1,4 @@
+import 'package:chahewoneu/AdminScreens/AdminCar.dart';
 import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
 import 'package:chahewoneu/AdminScreens/AdminTransPage.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
@@ -12,7 +13,7 @@ import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/MeansOfTransportationAdmin",
+      initialRoute: "/MeansOfTransportation",
       routes: {
         "userlogin": (context) => UserLoginPage(),
         "adminlogin": (context) => AdminLoginScreen(),
@@ -22,5 +23,6 @@ void main() {
         "/ChooseAirplaneSeat": (context) => Airplane(),
         "/MeansOfTransportation": (context) => Transportation(),
         "/MeansOfTransportationAdmin": (context) => AdminTransportation(),
+        "/AdminCar": (context) => AdminCar()
       }));
 }
