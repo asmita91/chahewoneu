@@ -1,18 +1,52 @@
-//Ghandruk.jpg//images
+import 'package:chahewoneu/Constraints/constraint.dart';
+import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 
 import 'app_column.dart';
 import 'app_icon.dart';
 import 'expandable_text_Widget.dart';
 
-class PlaceDescription extends StatelessWidget {
-  final String text;
+class PlaceDescription extends StatefulWidget {
+  static String route = "PlaceDescription";
+  final int? index;
+  final String? placeName;
+  final String? placeDescription;
+  final String? imageLink;
+  final int? time;
+  final int? price;
 
-  const PlaceDescription({Key? key, required this.text}) : super(key: key);
+  PlaceDescription(this.index, this.placeName, this.placeDescription,
+      this.imageLink, this.time, this.price);
+
+  @override
+  State<PlaceDescription> createState() => _PlaceDescriptionState();
+}
+
+class _PlaceDescriptionState extends State<PlaceDescription> {
+  late PlaceViewModel _placeViewModel;
+  var _currentPageValue = 0.0;
+  PageController pageController = PageController(viewportFraction: 0.85);
+
+  @override
+  void initState() {
+    _placeViewModel = Provider.of<PlaceViewModel>(context, listen: false);
+    _placeViewModel.getPlace();
+    print("The Final Place -->${_placeViewModel.getPlace()}");
+    super.initState();
+    pageController.addListener(() {
+      setState(() {
+        _currentPageValue = pageController.page!;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    var place = context.watch<PlaceViewModel>().place;
+    // var place = MyConstants.holdNavigatePlaceDetails;
     int weight = 0;
     return Scaffold(
         body: Stack(children: [
@@ -26,7 +60,7 @@ class PlaceDescription extends StatelessWidget {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage("Images/Pokhara.jpg"))))),
+                          image: NetworkImage(widget.imageLink!))))),
           Positioned(
               top: MediaQuery.of(context).size.width * 0.1,
               left: MediaQuery.of(context).size.width * 0.04,
@@ -38,6 +72,7 @@ class PlaceDescription extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
+                  MyConstants.holdNavigatePlaceDetails = null;
                   Navigator.of(context).pop("/SubPages");
                 },
               )),
@@ -61,7 +96,7 @@ class PlaceDescription extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          text,
+                          "Overview",
                           //make changes from 3:43
                           style: TextStyle(
                             fontSize: 25,
@@ -72,22 +107,19 @@ class PlaceDescription extends StatelessWidget {
                           height: 5,
                         ),
                         Expanded(
-                          child: const SingleChildScrollView(
+                          child: SingleChildScrollView(
                             child: ExpandableTextWidget(
-                              Des_text:
-                                  "Pokhara is considered the tourism capital "
-                                  "of Nepal,[9] being a base for trekkers undertaking"
-                                  " the Annapurna Circuit through the Annapurna Conservation "
-                                  "Area region[10] of the Annapurna ranges in the Himalayas. "
-                                  "The city is also home to many of the elite Gurkha soldiers, "
-                                  "soldiers native to South Asia of Nepalese nationality recruited for the British Army,"
-                                  " Nepalese Army, Indian Army, Gurkha Contingent Singapore, Gurkha Reserve Unit Brunei,"
-                                  " UN peacekeeping"
-                                  " forces and in war zones around the world.[11]",
+                              Des_text: widget.placeDescription!,
                             ),
                           ),
                         ),
-                        AppColumn(time: "2", price: 10000),
+                        Center(
+                          child: AppColumn(
+                              placeName: widget.placeName!,
+                              time: widget.time!.toString(),
+                              price: widget.price!,
+                              rate: widget.price!),
+                        ),
                         SizedBox(
                           height: 15,
                         ),
@@ -115,10 +147,10 @@ class PlaceDescription extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "WEIGHT",
+                          "People",
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 10,
+                              fontSize: 15,
                               fontWeight: FontWeight.w600),
                         ),
                         Row(

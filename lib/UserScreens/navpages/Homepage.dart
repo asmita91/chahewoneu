@@ -1,12 +1,16 @@
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
+import 'package:chahewoneu/UserScreens/navpages/bar_page.dart';
+import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
+import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../Colors.dart';
-import 'Places.dart';
+import 'place_details.dart';
 // import 'meansOfTransportation.dart';
 
 class UserHomePage extends StatefulWidget {
+  static String route = "UserHomePage";
   const UserHomePage({Key? key}) : super(key: key);
 
   @override
@@ -14,62 +18,37 @@ class UserHomePage extends StatefulWidget {
 }
 
 class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
+  List pages = [
+    BarItemPage(),
+    SearchPage(),
+    Mypage(),
+  ];
+  int currentIndex = 0;
+  void onTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
     return Scaffold(
-        //SideBar
-        drawer: UserNavBar(),
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          iconTheme: IconThemeData(
-            color: AppColor.Events,
-          ),
+      //SideBar
+      drawer: UserNavBar(),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: AppColor.Events,
         ),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+      body: Column(crossAxisAlignment: CrossAxisAlignment.stretch,
 // 1st Children
-            children: [
-              // Container(
-              //   margin: EdgeInsets.only(
-              //     top: MediaQuery.of(context).size.height * 0.02,
-              //     right: MediaQuery.of(context).size.width * 0.02,
-              //     left: MediaQuery.of(context).size.width * 0.04,
-              //   ),
-              // ),
-// Menu
-
-//                 child: Row(
-// // sidebar
-//                   children: [
-//                     // Icon(Icons.menu, size: 30, color: Colors.black54),
-//                     // Expanded(child:
-//                     // Container(
-//                     //
-//                     // )),
-//
-// // menu text
-// //                     Container(
-// //                       margin: EdgeInsets.only(
-// //                           right: MediaQuery.of(context).size.width * 0.03),
-// //                       width: 50,
-// //                       height: 50,
-// //                       decoration: BoxDecoration(
-// //                         borderRadius: BorderRadius.circular(10),
-// //                         color: Colors.grey.withOpacity(0.5),
-// //                       ),
-// //                     ),
-//                   ],
-//                 ),
-//               ),
-
-// 2nd children
-              SizedBox(
-                height: 20,
-              ),
-
+          children: [
 // discover text
-              Container(
+            Expanded(
+              child: Container(
                 margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.04),
                 child: Text(
@@ -77,11 +56,13 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
                 ),
               ),
+            ),
 
 // 3rd children
 // tabbar
-              SizedBox(height: 15),
-              Container(
+            SizedBox(height: 15),
+            Expanded(
+              child: Container(
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: TabBar(
@@ -102,16 +83,42 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              Container(
-                height: 600,
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [PlaceDetails(), Text("hi"), Text("Contents")],
-                  // Transportation(),
-                ),
-              )
-            ]));
+            ),
+            SizedBox(height: 10),
+            Container(
+              height: 600,
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  Expanded(child: PlaceDetails()),
+                  Text("hi"),
+                  Text("Contents")
+                ],
+                // Transportation(),
+              ),
+            )
+          ]),
+      bottomNavigationBar: BottomNavigationBar(
+          unselectedFontSize: 0,
+          selectedFontSize: 0,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
+          onTap: onTap,
+          currentIndex: 0,
+          selectedItemColor: Colors.black54,
+          unselectedItemColor: Colors.grey.withOpacity(0.5),
+          showUnselectedLabels: false,
+          showSelectedLabels: false,
+          elevation: 0,
+// when ever there is a bar they take a list of children or item
+          items: [
+            BottomNavigationBarItem(label: "Home", icon: Icon(Icons.apps)),
+            BottomNavigationBarItem(
+                label: "Bar", icon: Icon(Icons.bar_chart_sharp)),
+            BottomNavigationBarItem(label: "Search", icon: Icon(Icons.search)),
+            BottomNavigationBarItem(label: "My", icon: Icon(Icons.person)),
+          ]),
+    );
   }
 }
 

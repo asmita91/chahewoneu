@@ -1,63 +1,52 @@
-// To parse this JSON data, do
-//
-//     final placeModel = placeModelFromJson(jsonString);
-
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-PlaceModel? placeModelFromJson(String str) =>
-    PlaceModel.fromJson(json.decode(str));
-
-String placeModelToJson(PlaceModel? data) => json.encode(data!.toJson());
-
 class PlaceModel {
+  String userId;
+  String placeId;
+  String placeName;
+  String placeDescription;
+  int estimatedPrice;
+  int distanceFromCap;
+  String imageUrl;
+
   PlaceModel({
-    this.placeId,
-    this.placeName,
-    this.placeDesc,
-    this.estimatedPrice,
-    this.distanceFromCap,
-    this.imageUrl,
-    this.imagePath,
+    required this.userId,
+    required this.placeId,
+    required this.placeName,
+    required this.placeDescription,
+    required this.estimatedPrice,
+    required this.distanceFromCap,
+    required this.imageUrl,
   });
 
-  String? placeId;
-  String? placeName;
-  String? placeDesc;
-  int? estimatedPrice;
-  int? distanceFromCap;
-  String? imageUrl;
-  String? imagePath;
-
   factory PlaceModel.fromJson(Map<String, dynamic> json) => PlaceModel(
+        userId: json["userId"],
         placeId: json["placeId"],
         placeName: json["placeName"],
-        placeDesc: json["placeDesc"],
+        placeDescription: json["placeDescription"],
         estimatedPrice: json["estimatedPrice"],
         distanceFromCap: json["distanceFromCap"],
         imageUrl: json["imageUrl"],
-        imagePath: json["imagePath"],
       );
   factory PlaceModel.fromFirebaseSnapshot(
           DocumentSnapshot<Map<String, dynamic>> json) =>
       PlaceModel(
+        userId: json["userId"],
         placeId: json["placeId"],
         placeName: json["placeName"],
-        placeDesc: json["placeDesc"],
+        placeDescription: json["placeDescription"],
         estimatedPrice: json["estimatedPrice"],
         distanceFromCap: json["distanceFromCap"],
         imageUrl: json["imageUrl"],
-        imagePath: json["imagePath"],
       );
 
   Map<String, dynamic> toJson() => {
+        "userId": userId,
         "placeId": placeId,
         "placeName": placeName,
-        "placeDesc": placeDesc,
+        "placeDescription": placeDescription,
         "estimatedPrice": estimatedPrice,
         "distanceFromCap": distanceFromCap,
         "imageUrl": imageUrl,
-        "imagePath": imagePath,
       };
 }
