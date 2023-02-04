@@ -1,19 +1,26 @@
 import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AdminEvent extends StatefulWidget {
-  const  AdminEvent ({super.key});
+import '../ViewModel/PlaceViewModel.dart';
+import '../models/event_model.dart';
+import '../viewmodels/event_viewmodel.dart';
+
+class EventAdd extends StatefulWidget {
+  const EventAdd({super.key});
 
   @override
-  State< AdminEvent > createState() => _Event ();
+  State<EventAdd> createState() => _EventAdd();
 }
 
-class  _Event  extends State< AdminEvent > {
-  TextEditingController event = new TextEditingController();
+class _EventAdd extends State<EventAdd> {
+  TextEditingController event_name = new TextEditingController();
   TextEditingController event_description = new TextEditingController();
+  TextEditingController event_location = new TextEditingController();
+  int id = new DateTime.now().millisecondsSinceEpoch;
   File? pickedImage;
 
   void imagePickerOption() {
@@ -25,7 +32,7 @@ class  _Event  extends State< AdminEvent > {
             topRight: Radius.circular(0.0),
           ),
           child: Container(
-            color: Color.fromARGB(255, 200, 129, 224),
+            color: Colors.blue,
             height: 250,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -72,7 +79,6 @@ class  _Event  extends State< AdminEvent > {
       ),
     );
   }
-
   pickImage(ImageSource imageType) async {
     try {
       final photo = await ImagePicker().pickImage(source: imageType);
@@ -87,113 +93,156 @@ class  _Event  extends State< AdminEvent > {
       debugPrint(error.toString());
     }
   }
-
+  Future<void> add_event(event_viewmodel) async {
+    if (pickedImage == null) {
+      // ScaffoldMessenger.of(context).showSnackBar(snackBar)
+      return;
+    }
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    Reference storageRef = FirebaseStorage.instance.ref();
+    String dt = DateTime.now().millisecondsSinceEpoch.toString();
+    var photo = await storageRef.child("event").child("$dt.jpg").putFile(File(pickedImage!.path));
+    var url = await photo.ref.getDownloadURL();
+    final data = EventModel(
+      eventId: id.toString(),
+      eventName: event_name.text,
+      eventDescription: event_description.text,
+      eventLocation: event_location.text,
+      imagepath: photo.ref.fullPath,
+      imageUrl: url,
+    );
+    db.collection("event").add(data.toJson()).then((value) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("event added")));
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Add Events'),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(
-            height: 10,
-          ),
-
-          Align(
-            alignment: Alignment.center,
-            child: Stack(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.grey.withOpacity(0.6), width: 2),
-                  ),
-                  child: ClipRect(
-                    child: pickedImage != null
-                        ? Image.file(
-                      pickedImage!,
-                      width: 500,
-                      height: 200,
-                      fit: BoxFit.cover,
-                    )
-                        : Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png?20220802103107',
-                      // width: 500,
-                      // height: 800,
-                      fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.grey.withOpacity(0.6), width: 2),
+                    ),
+                    child: ClipRect(
+                      child: pickedImage != null
+                          ? Image.file(
+                        pickedImage!,
+                        width: 500,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      )
+                          : Image.network(
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png?20220802103107',
+                        // width: 500,
+                        // height: 800,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                  onPressed: imagePickerOption,
+                  icon: const Icon(Icons.add_a_photo_sharp),
+                  label: const Text('Image here')),
+            ),
+            TextFormField(
+              style: TextStyle(color: Colors.black),
+              controller: event_name,
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Event";
+                }
+                if (!RegExp(r"^[a-zA-Z]").hasMatch(value)) {
+                  return "Please enter the event name";
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(),
+                prefixIcon: Icon(
+                  Icons.nature_people,
+                  color: Colors.black,
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton.icon(
-                onPressed: imagePickerOption,
-                icon: const Icon(Icons.add_a_photo_sharp),
-                label: const Text('Event Image')),
-          ),
-          TextFormField(
-            style: TextStyle(color: Colors.black),
-            controller: event,
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return "Place";
-              }
-              if (!RegExp(r"^[a-zA-Z]").hasMatch(value)) {
-                return "Please enter the Event name";
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(),
-              prefixIcon: Icon(
-                Icons.place_sharp,
-                color: Colors.black,
+                hintText: "event name",
               ),
-              hintText: "Event Name",
             ),
-          ),
-          SizedBox(
-            height: 20,
-            width: 10,
-          ),
-          TextFormField(
-            style: TextStyle(color: Colors.black),
-            controller: event_description,
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return "Event description is required";
-              }
-            },
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(),
-              prefixIcon: Icon(
-                Icons.description,
-                color: Colors.black,
+            SizedBox(
+              height: 20,
+              width: 10,
+            ),
+            TextFormField(
+              style: TextStyle(color: Colors.black),
+              controller: event_description,
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "event description is required";
+                }
+              },
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(),
+                prefixIcon: Icon(
+                  Icons.description,
+                  color: Colors.black,
+                ),
+                hintText: "event description",
               ),
-              hintText: "Event description",
             ),
-          ),
-          SizedBox(
-            height: 10,
-            width:10,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.event),
-                label: const Text('Add Event')),
-          ),
-        ],
+            SizedBox(
+              height: 10,
+              width: 10,
+            ),
+            TextFormField(
+              style: TextStyle(color: Colors.black),
+              controller: event_location,
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Event location is required";
+                }
+              },
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(),
+                prefixIcon: Icon(
+                  Icons.money,
+                  color: Colors.black,
+                ),
+                hintText: "event location required",
+              ),
+            ),
+            SizedBox(
+              height: 10,
+              width: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                  onPressed: () {
+                    add_event(EventViewModel);
+                  },
+                  icon: const Icon(Icons.place_outlined),
+                  label: const Text('Add Event')),
+            ),
+
+          ],
+        ),
       ),
     );
   }
