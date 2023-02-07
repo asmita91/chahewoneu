@@ -36,11 +36,13 @@ class _AdminPaymentState extends State<AdminPayment> {
             SizedBox(
               width: 5,
             ),
-            Text("Payment",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white)),
+            Text(
+              "Payment",
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
           ],
         )),
         body: StreamBuilder(

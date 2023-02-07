@@ -17,7 +17,6 @@ class _KhaltiPaymentState extends State<KhaltiPayment> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-
       ),
       body: SafeArea(
         child: Center(
@@ -54,7 +53,7 @@ class _KhaltiPaymentState extends State<KhaltiPayment> {
                   khaltiWallet();
                 }, // Image tapped
                 child: Image.asset(
-                  'assets/Images/khalti.png',
+                  'Images/khalti.png',
                   width: 180,
                 ),
               ),
@@ -80,7 +79,7 @@ class _KhaltiPaymentState extends State<KhaltiPayment> {
                   );
                 },
                 child: Image.asset(
-                  'assets/images/ime.png',
+                  'Images/ime.png',
                   width: 100,
                 ),
               ),
@@ -103,7 +102,7 @@ class _KhaltiPaymentState extends State<KhaltiPayment> {
                   );
                 },
                 child: Image.asset(
-                  'assets/images/visa.png',
+                  'Images/visa.png',
                   width: 150,
                 ),
               ),
