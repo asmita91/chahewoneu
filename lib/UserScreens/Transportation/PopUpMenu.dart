@@ -1,3 +1,5 @@
+import 'package:chahewoneu/model/CarModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,20 @@ class PopUp extends StatefulWidget {
 }
 
 class _PopUpState extends State<PopUp> {
+  String status = "false";
+
+  Future<void> saveCar() async {
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    var text;
+    final data = CarModel(status: true, userId: "1", userName: "Asmita");
+
+    db.collection("cars").add(data.toJson()).then((value) {
+      print("Added Data with ID: ${value.id}");
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Car Added")));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -25,7 +41,10 @@ class _PopUpState extends State<PopUp> {
                 "new Hyundai Creta i.e 5 seater car, comfortable enough to drop you on your destination."),
             actions: [
               TextButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    status = "true";
+                    saveCar();
+                  },
                   child: Text(
                     "Book",
                     style: TextStyle(
