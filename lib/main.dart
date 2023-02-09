@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import 'package:chahewoneu/AdminScreens/AdminAirplane.dart';
-=======
 import 'package:chahewoneu/AdminScreens/AdminCar.dart';
->>>>>>> 7548f014b48f18e51f171886579c48a5bedd34e2
 import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
 import 'package:chahewoneu/AdminScreens/AdminTransPage.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
@@ -20,11 +17,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
       initialRoute: AdminAirplane.route,
-=======
-      initialRoute: "/MeansOfTransportation",
->>>>>>> 7548f014b48f18e51f171886579c48a5bedd34e2
       routes: {
         AdminAirplane.route: (context) => AdminAirplane(),
         "userlogin": (context) => UserLoginPage(),

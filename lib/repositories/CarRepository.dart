@@ -3,10 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 import '../Services/firebaseService.dart';
-<<<<<<< HEAD
 import '../model/AirplaceModel.dart';
-=======
->>>>>>> 7548f014b48f18e51f171886579c48a5bedd34e2
 
 class CarRepository with ChangeNotifier {
   CollectionReference<CarModel> carRef =
@@ -45,7 +42,6 @@ class CarRepository with ChangeNotifier {
     await carRef.add(data);
     return true;
   }
-<<<<<<< HEAD
 
   // plane
   Future<Object> getFromDate(String date) async {
@@ -66,6 +62,4 @@ class CarRepository with ChangeNotifier {
       return c_airplanes.get();
     }
   }
-=======
->>>>>>> 7548f014b48f18e51f171886579c48a5bedd34e2
 }
