@@ -1,11 +1,16 @@
 import 'package:chahewoneu/constant/my_constraints.dart';
+import 'package:chahewoneu/model/aeroplane_seat.dart';
+import 'package:chahewoneu/repositories/AirplaneRepo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_flushbar/flutter_flushbar.dart';
+import 'package:intl/intl.dart';
 
 bool isSelected = false;
 bool isBooked = false;
 
 class Airplane extends StatefulWidget {
+  static String route = "Airplane";
   Airplane({Key? key}) : super(key: key);
 
   @override
@@ -13,6 +18,7 @@ class Airplane extends StatefulWidget {
 }
 
 class _AirplaneState extends State<Airplane> {
+  String selectedDate = "";
   // var isBooked
   var countSeatLeft = 2 * 13;
   var countSeatRight = 2 * 13;
@@ -29,6 +35,20 @@ class _AirplaneState extends State<Airplane> {
     initSeatValueToMap(rightSelectedSeat);
 
     super.initState();
+  }
+
+  void showToast(BuildContext context, Color color, String message) {
+    Flushbar(
+      duration: Duration(seconds: 3),
+      backgroundColor: color,
+      messageText: Text(
+        message,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16.0,
+        ),
+      ),
+    ).show(context);
   }
 
   initSeatValueToMap(Map<int, String> selectedSeatMap) {
@@ -76,7 +96,17 @@ class _AirplaneState extends State<Airplane> {
         print("The right booked of index:$key --> $value");
       });
     });
-    print("The final booked: $alignmentMap");
+
+    if (selectedDate == "") {
+      showToast(context, Colors.red, "Please select date");
+    } else if ((leftSelectedNumList.isEmpty && rightSelectedNumList.isEmpty)) {
+      showToast(context, Colors.red, "Please select seat");
+    } else {
+      AeroplaneSeat aeroplaneSeat =
+          AeroplaneSeat(selectedDate, "19", alignmentMap);
+      AirplaneRepo().sendBookingDetailsToFirebase(aeroplaneSeat);
+      showToast(context, Colors.green, "Booked Successfully");
+    }
   }
 
   @override
@@ -117,24 +147,50 @@ class _AirplaneState extends State<Airplane> {
             SizedBox(
               height: 10,
             ),
-            Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.only(left: 20, top: 10),
-              child: MaterialButton(
-                onPressed: () {},
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  child: Text(
-                    "Choose Date",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: "Times New Roman",
-                      color: Colors.white,
+            Row(
+              children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.only(left: 20, top: 10),
+                  child: MaterialButton(
+                    onPressed: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1950),
+                          //DateTime.now() - not to allow to choose before today.
+                          lastDate: DateTime(2100));
+
+                      if (pickedDate != null) {
+                        print(
+                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                        String formattedDate =
+                            DateFormat('yyyy-MM-dd').format(pickedDate);
+                        setState(() {
+                          //set output date to TextField value.
+                          selectedDate = formattedDate;
+                        });
+                      } else {}
+                    },
+                    child: Text(
+                      "Choose Date",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: "Times New Roman",
+                        color: Colors.white,
+                      ),
                     ),
+                    color: Colors.deepPurple,
                   ),
                 ),
-                color: Colors.deepPurple,
-              ),
+                SizedBox(width: 20.0),
+                Text(selectedDate,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                        fontStyle: FontStyle.italic,
+                        letterSpacing: 2)),
+              ],
             ),
             SizedBox(
               height: 20,
@@ -287,7 +343,7 @@ class _AirplaneState extends State<Airplane> {
                       ? Colors.red
                       : reservedSeat[index] == txtSelectedString
                           ? Colors.purple
-                          : Colors.yellow,
+                          : Colors.transparent,
                   border: Border.all(
                     color: Colors.grey,
                   ),
