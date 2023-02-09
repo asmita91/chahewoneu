@@ -4,7 +4,6 @@ import 'package:chahewoneu/repositories/AirplaneRepo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_flushbar/flutter_flushbar.dart';
-import 'package:intl/intl.dart';
 
 bool isSelected = false;
 bool isBooked = false;
@@ -147,51 +146,7 @@ class _AirplaneState extends State<Airplane> {
             SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                Container(
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.only(left: 20, top: 10),
-                  child: MaterialButton(
-                    onPressed: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1950),
-                          //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2100));
-
-                      if (pickedDate != null) {
-                        print(
-                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                        String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
-                        setState(() {
-                          //set output date to TextField value.
-                          selectedDate = formattedDate;
-                        });
-                      } else {}
-                    },
-                    child: Text(
-                      "Choose Date",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: "Times New Roman",
-                        color: Colors.white,
-                      ),
-                    ),
-                    color: Colors.deepPurple,
-                  ),
-                ),
-                SizedBox(width: 20.0),
-                Text(selectedDate,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2)),
-              ],
-            ),
+            //////sanjeeeeeeeeelaaaaaaaaaa addddddddd hereeeeeeeeeeeeeeee
             SizedBox(
               height: 20,
             ),
