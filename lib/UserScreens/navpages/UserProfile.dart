@@ -1,15 +1,13 @@
-
-
-import 'package:chahewoneu/imagestrings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../textstrings.dart';
-import 'Widgets/profile_menu.dart';
+import '../../Navpages/Widgets/profile_menu.dart';
+import '../../imagestrings.dart';
+import '../../textstrings.dart';
 
-class AdminProfilePage extends StatelessWidget {
-  const AdminProfilePage({Key? key}) : super(key: key);
+class UserProfilePage extends StatelessWidget {
+  const UserProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +91,7 @@ class AdminProfilePage extends StatelessWidget {
 
               ProfileMenuWidget(title: "User Details",
                 icon: LineAwesomeIcons.user_check,onPress: (){
-                Navigator.pushNamed(context, "/CustomerDetails");
+                  Navigator.pushNamed(context, "/CustomerDetails");
                 },),
               ProfileMenuWidget(title: "Payment Details",
                 icon: LineAwesomeIcons.money_bill,onPress: (){},),

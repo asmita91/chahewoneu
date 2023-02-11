@@ -1,4 +1,5 @@
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
+import 'package:chahewoneu/UserScreens/navpages/Main_page.dart';
 import 'package:chahewoneu/UserScreens/navpages/bar_page.dart';
 import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
 import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../Colors.dart';
+import '../../Navpages/ProfilePage.dart';
+import 'UserProfile.dart';
 import 'place_details.dart';
 // import 'meansOfTransportation.dart';
 
@@ -18,17 +21,17 @@ class UserHomePage extends StatefulWidget {
 }
 
 class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
-  List pages = [
-    BarItemPage(),
-    SearchPage(),
-    Mypage(),
-  ];
-  int currentIndex = 0;
-  void onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
+  // List pages = [
+  //   UserProfilePage(),
+  //   MainPage(),
+  //
+  // ];
+  // int currentIndex = 0;
+  // void onTap(int index) {
+  //   setState(() {
+  //     currentIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -98,26 +101,24 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
               ),
             )
           ]),
-      bottomNavigationBar: BottomNavigationBar(
-          unselectedFontSize: 0,
-          selectedFontSize: 0,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white,
-          onTap: onTap,
-          currentIndex: 0,
-          selectedItemColor: Colors.black54,
-          unselectedItemColor: Colors.grey.withOpacity(0.5),
-          showUnselectedLabels: false,
-          showSelectedLabels: false,
-          elevation: 0,
-// when ever there is a bar they take a list of children or item
-          items: [
-            BottomNavigationBarItem(label: "Home", icon: Icon(Icons.apps)),
-            BottomNavigationBarItem(
-                label: "Bar", icon: Icon(Icons.bar_chart_sharp)),
-            BottomNavigationBarItem(label: "Search", icon: Icon(Icons.search)),
-            BottomNavigationBarItem(label: "My", icon: Icon(Icons.person)),
-          ]),
+//       bottomNavigationBar: BottomNavigationBar(
+//           type: BottomNavigationBarType.shifting,
+//           backgroundColor: Colors.white,
+//           onTap: onTap,
+//           currentIndex: currentIndex,
+//
+//           unselectedFontSize: 0,
+//           selectedFontSize: 0,
+//           selectedItemColor: Colors.blue,
+//           unselectedItemColor: Colors.black,
+//           showUnselectedLabels: false,
+//           showSelectedLabels: false,
+//           elevation: 0,
+// // when ever there is a bar they take a list of children or item
+//           items: [
+//             BottomNavigationBarItem(label: "Home", icon: Icon(Icons.apps)),
+//             BottomNavigationBarItem(label: "My", icon: Icon(Icons.person)),
+//           ]),
     );
   }
 }

@@ -1,7 +1,9 @@
 
+import 'package:chahewoneu/Navpages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 import '../Navpages/Home.dart';
-import '../Navpages/ProfilePage.dart';
+import '../UserScreens/navpages/UserProfile.dart';
+
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class AdminDashboard extends StatefulWidget {
 class _AdminDashboardState extends State<AdminDashboard> {
   List pages=[
     Home(),
-    ProfilePage(),
+    AdminProfilePage(),
 
   ];
 
