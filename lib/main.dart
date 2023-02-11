@@ -1,6 +1,9 @@
+
+
 import 'package:chahewoneu/AdminScreens/AdminAirplane.dart';
 import 'package:chahewoneu/AdminScreens/AdminCar.dart';
 import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
+import 'package:chahewoneu/AdminScreens/AdminHiace.dart';
 import 'package:chahewoneu/AdminScreens/AdminTransPage.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
 import 'package:chahewoneu/UserScreens/Transportation/ChooseAirplaneSeat.dart';
@@ -17,7 +20,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Airplane.route,
+      initialRoute: "/AdminHiace",
       routes: {
         AdminAirplane.route: (context) => AdminAirplane(),
         "userlogin": (context) => UserLoginPage(),
@@ -28,6 +31,7 @@ Future<void> main() async {
         Airplane.route: (context) => Airplane(),
         "/MeansOfTransportation": (context) => Transportation(),
         "/MeansOfTransportationAdmin": (context) => AdminTransportation(),
-        "/AdminCar": (context) => AdminCar()
+        "/AdminCar": (context) => AdminCar(),
+        "/AdminHiace":(context)=>AdminHiaceSeat(),
       }));
 }
