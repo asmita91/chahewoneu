@@ -17,7 +17,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AdminAirplane.route,
+      initialRoute: Airplane.route,
       routes: {
         AdminAirplane.route: (context) => AdminAirplane(),
         "userlogin": (context) => UserLoginPage(),
