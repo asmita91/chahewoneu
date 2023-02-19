@@ -1,6 +1,7 @@
 import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
+import 'package:chahewoneu/UserScreens/navpages/UserEditProfile.dart';
 import 'package:chahewoneu/UserScreens/navpages/UserProfile.dart';
 import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
 import 'package:chahewoneu/UserScreens/navpages/place_details.dart';
@@ -14,6 +15,8 @@ import 'package:provider/provider.dart';
 
 import 'AdminScreens/NavBar.dart';
 import 'UserScreens/navpages/Main_page.dart';
+import 'ViewModel/GlobalUIViewModel.dart';
+import 'ViewModel/auth_viewmodel.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,8 +32,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
+          ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
+          ChangeNotifierProvider(create: (_) => AuthViewModel()),
           ChangeNotifierProvider<PlaceViewModel>(
-              create: (_) => PlaceViewModel())
+              create: (_) => PlaceViewModel()),
+
+
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -48,7 +55,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
 
-          initialRoute: "UserHomePage",
+          initialRoute: "/usereditprofile",
           routes: {
             UserHomePage.route: (context) => UserHomePage(),
             // UserProfilePage.route:(context)=>UserProfilePage(),
@@ -61,7 +68,8 @@ class MyApp extends StatelessWidget {
             "/Mainpage": (context) => MainPage(),
             "/AdminDashboard": (context) => AdminDashboard(),
             "/sidebar": (context) => NavBar(),
-            "/userprofilepage":(context)=>UserProfilePage(),
+            "/userprofilepage":(context)=>ProfileInfo(),
+            "/usereditprofile":(context)=>UserProfile(),
           },
           // MainPage(),
           // UserLoginPage()
