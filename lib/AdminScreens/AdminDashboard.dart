@@ -1,30 +1,22 @@
-
 import 'package:chahewoneu/Navpages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 import '../Navpages/Home.dart';
-import '../UserScreens/navpages/UserProfile.dart';
-
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({Key? key}) : super(key: key);
-
   @override
   State<AdminDashboard> createState() => _AdminDashboardState();
 }
-
 class _AdminDashboardState extends State<AdminDashboard> {
   List pages=[
     Home(),
     AdminProfilePage(),
-
   ];
-
   int currentIndex=0;
   void onTap(int index){
     setState(() {
       currentIndex=index;
     });
-
   }
   @override
   Widget build(BuildContext context) {
