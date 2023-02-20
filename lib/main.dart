@@ -10,6 +10,7 @@ import 'package:chahewoneu/UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
+import 'package:chahewoneu/model/bus_seat.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,6 @@ Future<void> main() async {
         "userlogin": (context) => UserLoginPage(),
         "adminlogin": (context) => AdminLoginScreen(),
         "admindashboard": (context) => AdminDashboard(),
-        "/ChooseBusSeat": (context) => ChooseBusSeat(),
         "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
         Airplane.route: (context) => Airplane(),
         "/MeansOfTransportation": (context) => Transportation(),

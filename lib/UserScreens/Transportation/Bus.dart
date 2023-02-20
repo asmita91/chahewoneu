@@ -1,48 +1,43 @@
+import 'package:chahewoneu/constant/my_constraints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_flushbar/flutter_flushbar.dart';
-import 'package:intl/intl.dart';
 
-import '../../model/bus_seat.dart';
-import '../../repositories/BusRepo.dart';
+bool isSelected = false;
+bool isBooked = false;
 
-class ChooseBusSeat extends StatefulWidget {
-  static String route="ChooseBusSeat";
-  ChooseBusSeat(selectedDate, {Key? key}) : super(key: key);
+class Bus extends StatefulWidget {
+  Bus({Key? key}) : super(key: key);
 
   @override
-  State<ChooseBusSeat> createState() => _ChooseBusSeatState();
+  State<Bus> createState() => _BusState();
 }
 
-class _ChooseBusSeatState extends State<ChooseBusSeat> {
-  String selectedDate="";
-  var countSeatLeft = 2 * 10;
-  var countSeatCenter = 2 * 2;
-  var countSeatRight = 2 * 10;
+class _BusState extends State<Bus> {
+  // var isBooked
+  var countSeatLeft = 2 * 13;
+  var countSeatRight = 2 * 13;
   var listSeatLeft = [];
-  var listSeatCenter = [];
+
   var listSeatRight = [];
+
+  Map<int, String> leftSelectedSeat = <int, String>{};
+  Map<int, String> rightSelectedSeat = <int, String>{};
+
+  Map<int, String> leftBookedSeat = <int, String>{};
+  Map<int, String> rightBookedSeat = <int, String>{};
 
   @override
   void initState() {
+    // initSeatValueToMap(myMapSeatLeft, countSeatLeft, "l");
+    //l for left, c for center , r for right
+    //first param "listSeatLeft","listSeatCenter","listSeatRight" that similar like object temp that u want to save the data
+    // second param is for like how many seat on every side
+    // third param is for naming value every seat //look line 38
     initSeatValueToList(listSeatLeft, countSeatLeft, "l");
-    initSeatValueToList(listSeatCenter, countSeatCenter, "c");
     initSeatValueToList(listSeatRight, countSeatRight, "r");
-    setVisiblitySeat();
+
+    initSeatValueToMap(leftSelectedSeat, countSeatLeft, "l");
     super.initState();
-  }
-  void showToast(BuildContext context, Color color, String message) {
-    Flushbar(
-      duration: Duration(seconds: 3),
-      backgroundColor: color,
-      messageText: Text(
-        message,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
-        ),
-      ),
-    ).show(context);
   }
 
   initSeatValueToList(List data, count, side) {
@@ -62,57 +57,47 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
         //add object to list
       });
     }
-    print(data);
+    // print(data);
   }
 
-  setVisiblitySeat() {
-    setState(() {
-      listSeatLeft[2]["isVisible"] = false; // left column index 0
-      listSeatLeft[2]["isVisible"] = false; // left column index 1
-      listSeatLeft[2]["isVisible"] = false; // left column index 0
-      listSeatRight[2]["isVisible"] = false; // right column index 1
-      listSeatRight[2]["isVisible"] = false; // right column index 2
-      listSeatRight[2]["isVisible"] = false; // right column index 5
+  initSeatValueToMap(Map<int, String> selectedSeatMap, count, side) {
+    print("The reserved seat List is: --> $selectedSeatMap");
+    selectedSeatMap.forEach((int key, String value) {
+      setState(() {
+        value ??= txtAvailableString;
+        selectedSeatMap[key] = value;
+        print("The reserved seat List is: --> $selectedSeatMap");
+      });
     });
-    //this function to set where's the position of the seat that should be invisible
   }
 
-  setSelectedToBooked() {
-    listSeatLeft.forEach((seat) {
-      if (seat["isSelected"]) {
-        setState(() {
-          seat["isBooked"] = true;
-        });
-      }
-    });
-    listSeatCenter.forEach((seat) {
-      if (seat["isSelected"]) {
-        setState(() {
-          seat["isBooked"] = true;
-        });
-      }
-    });
-    listSeatRight.forEach((seat) {
-      if (seat["isSelected"]) {
-        setState(() {
-          seat["isBooked"] = true;
-        });
-      }
-    });
-    if(selectedDate==""){
-      showToast(context, Colors.red, "Please select date");
-    }else if((listSeatLeft.isEmpty && listSeatCenter.isEmpty && listSeatRight.isEmpty)){
-      showToast(context, Colors.red, "Please select seat");
-    }else{
-      // BusSeat(selectedDate,"17",alignmentMap);
-      // BusRepo().sendBookingDetailsToFirebase(busSeat);
-      showToast(context, Colors.green, "Booked Successfully");
-
-
-    }
-
-
+  void setSelectedToBooked() {
+    // listSeatLeft.forEach((seat) {
+    //   if (seat["isSelected"]) {
+    //     setState(() {
+    //       seat["isBooked"] = true;
+    //     });
+    //   }
+    // });
+    //
+    // listSeatRight.forEach((seat) {
+    //   if (seat["isSelected"]) {
+    //     setState(() {
+    //       seat["isBooked"] = true;
+    //     });
+    //   }
+    // });
     //this function to loop every side of seat, from selected to booked, u also can this function to send to u'r serves side
+    leftBookedSeat = leftSelectedSeat;
+    leftBookedSeat.forEach((int key, String value) {
+      setState(() {
+        if (value == txtSelectedString) {
+          value = txtBookedString;
+          setColor(txtBookedString);
+        }
+        print("The booked of index:$key --> $value");
+      });
+    });
   }
 
   @override
@@ -125,112 +110,57 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              child: Text("Bus Seat Booking",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                  height: 2.5,
-
-                ),
-              ),
+              margin: EdgeInsets.only(top: 15),
+              child: Text("Airplane Seat Booking",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                    height: 2.5,
+                  )),
             ),
-            SizedBox(height: 22),
+            SizedBox(
+              height: 22,
+            ),
             Container(
               alignment: Alignment.topLeft,
               padding: EdgeInsets.only(left: 22),
-              child: Text("Arrival Date ",style:
-              TextStyle(
-                fontSize: 18,
-                fontFamily: "Times New Roman",
-                color: Colors.black,
-                fontStyle: FontStyle.normal,
-
-              ),),
-            ),
-            SizedBox(height: 10,),
-            // Container(
-            //   alignment: Alignment.topLeft,
-            //   padding: EdgeInsets.only(left: 20,top: 10),
-            //   child: MaterialButton(
-            //     onPressed: (){}, child: const Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
-            //     child: Text("Choose Date",style: TextStyle(
-            //       fontSize: 15,
-            //       fontFamily: "Times New Roman",
-            //       color: Colors.white,
-            //     ),),
-            //   ),
-            //     color: Colors.deepPurple,
-            //   ),
-            // ),
-            SizedBox(height: 10),
-      Row(
-        children: [
-          Container(
-            alignment: Alignment.topLeft,
-            padding: EdgeInsets.only(left: 20, top: 10),
-            child: MaterialButton(
-              onPressed: () async {
-                DateTime? pickedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(1950),
-                    //DateTime.now() - not to allow to choose before today.
-                    lastDate: DateTime(2100));
-                if (pickedDate != null) {
-                  print(
-                      pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                  String formattedDate =
-                  DateFormat('yyyy-MM-dd').format(pickedDate);
-                  setState(() {
-                    //set output date to TextField value.
-                    selectedDate = formattedDate;
-                  });
-                } else {}
-              },
               child: Text(
-                "Choose Date",
+                "Arrival Date ",
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 18,
                   fontFamily: "Times New Roman",
-                  color: Colors.white,
+                  color: Colors.black,
+                  fontStyle: FontStyle.normal,
                 ),
               ),
-              color: Colors.deepPurple,
             ),
-          ),
-
-            // Container(
-            //   alignment: Alignment.topLeft,
-            //   margin: EdgeInsets.all(10.6),
-            //   padding: EdgeInsets.only(left: 80),
-            //   child: MaterialButton(
-            //     onPressed: (){}, child: const Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
-            //     child: Text("Choose Date",style: TextStyle(
-            //       fontSize: 15,
-            //       fontFamily: "Times New Roman",
-            //       color: Colors.white,
-            //     ),),
-            //   ),
-            //     color: Colors.deepPurple,
-            //   ),
-            // ),
-          SizedBox(width: 20.0),
-          Text(selectedDate,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                  fontStyle: FontStyle.italic,
-                  letterSpacing: 2)),
-        ],
-      ),
-
             SizedBox(
-              height: 20,
+              height: 10,
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(left: 20, top: 10),
+              child: MaterialButton(
+                onPressed: () {},
+                child: const Padding(
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  child: Text(
+                    "Choose Date",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: "Times New Roman",
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                color: Colors.deepPurple,
+              ),
             ),
             SizedBox(
               height: 20,
             ),
-
+            SizedBox(height: 20),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -251,8 +181,6 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
                             margin: EdgeInsets.only(left: 10),
                             child: Text(
                               "Booked",
-
-
                             ),
                           ),
                         ],
@@ -296,7 +224,7 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 10),
-                            child: Text("available"),
+                            child: Text("Available"),
                           ),
                         ],
                       ),
@@ -315,17 +243,13 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  widgetSeat(listSeatLeft, false),
+                  SizedBox(width: 20),
+                  // widgetSeat(listSeatLeft),
+                  widgetSeat1(leftSelectedSeat),
                   SizedBox(
-                    width: 20,
+                    width: 140,
                   ),
-                  Expanded(
-                    child: widgetSeat(listSeatCenter, true),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  widgetSeat(listSeatRight, false),
+                  widgetSeat(listSeatRight),
                 ],
               ),
             ),
@@ -344,15 +268,15 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
     );
   }
 
-  Widget widgetSeat(List dataSeat, bool isCenter) {
+  Widget widgetSeat(List dataSeat) {
     return Container(
       width: MediaQuery.of(context).size.width / 3.93,
       child: GridView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: isCenter ? 4 : 3,
-          childAspectRatio: isCenter ? 1 : 1,
+          crossAxisCount: 2,
+          childAspectRatio: 1.7,
         ),
         itemCount: dataSeat.length,
         itemBuilder: (BuildContext context, int index) {
@@ -387,8 +311,90 @@ class _ChooseBusSeatState extends State<ChooseBusSeat> {
       ),
     );
   }
+
+  Widget widgetSeat1(Map<int, String> reservedSeat) {
+    return Container(
+      width: MediaQuery.of(context).size.width / 3.93,
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.7,
+        ),
+        itemCount: 26,
+        itemBuilder: (BuildContext context, int index) {
+          return Visibility(
+            visible: true,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (reservedSeat[index] == null) {
+                    reservedSeat[index] = txtAvailableString;
+                  }
+                  if (reservedSeat[index] == txtAvailableString) {
+                    reservedSeat[index] = txtSelectedString;
+                    print("I Clicked on: $index ==> ${reservedSeat[index]}");
+                  } else if (reservedSeat[index] == txtSelectedString) {
+                    reservedSeat[index] = txtAvailableString;
+                    print("II Clicked on: $index ==> ${reservedSeat[index]}");
+                  } else {
+                    reservedSeat[index] = txtAvailableString;
+                    print(" III Clicked on: $index ==> ${reservedSeat[index]}");
+                  }
+                });
+              },
+              child: Text("-> ${reservedSeat[index]}"),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Color setColor(String statusType) {
+    Color newColor = Colors.transparent;
+    if (statusType == txtBookedString) {
+      newColor = Colors.red;
+    } else if (statusType == txtSelectedString) {
+      newColor = Colors.purple;
+    } else {
+      newColor = Colors.yellow;
+    }
+    return newColor;
+  }
 }
 
+class ShowSeat extends StatelessWidget {
+  final String statusType;
 
+  const ShowSeat({required this.statusType});
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(5),
+      width: 20,
+      height: 20,
+      decoration: BoxDecoration(
+        color: setColor(statusType),
+        border: Border.all(
+          color: Colors.grey,
+        ),
+        borderRadius: BorderRadius.circular(5),
+      ),
+    );
+  }
 
+  Color setColor(String statusType) {
+    Color newColor = Colors.transparent;
+    if (statusType == txtBookedString) {
+      newColor = Colors.red;
+    } else if (statusType == txtSelectedString) {
+      newColor = Colors.purple;
+    } else {
+      newColor = Colors.yellow;
+    }
+    return newColor;
+  }
+}
