@@ -16,7 +16,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
     Home(),
     AdminRatingReview(),
     // NotificationService(),
-    ProfilePage(),
+    AdminProfilePage(),
 
   ];
 
