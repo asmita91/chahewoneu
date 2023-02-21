@@ -7,7 +7,6 @@ class CustomerDetails extends StatefulWidget {
   final String address;
 
   CustomerDetails({required this.name, required this.email, required this.phone, required this.address});
-
   @override
   State<CustomerDetails> createState() => _CustomerDetailsState();
 }
