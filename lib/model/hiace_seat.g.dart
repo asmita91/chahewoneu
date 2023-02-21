@@ -1,8 +1,8 @@
 
-part of 'aeroplane_seat.dart';
+part of 'hiace_seat.dart';
 
-AeroplaneSeat _$AeroplaneSeatFromJson(Map<String, dynamic> json) =>
-    AeroplaneSeat(
+
+HiaceSeat _$HiaceSeatFromJson(Map<String, dynamic> json) => HiaceSeat(
       json['bookedDate'] as String?,
       json['userId'] as String?,
       (json['seat'] as Map<String, dynamic>?)?.map(
@@ -11,8 +11,7 @@ AeroplaneSeat _$AeroplaneSeatFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$AeroplaneSeatToJson(AeroplaneSeat instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$HiaceSeatToJson(HiaceSeat instance) => <String, dynamic>{
       'bookedDate': instance.bookedDate,
       'userId': instance.userId,
       'seat': instance.seat,

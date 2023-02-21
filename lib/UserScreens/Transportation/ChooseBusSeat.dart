@@ -316,7 +316,7 @@ class _BusState extends State<Bus> {
 
           // childAspectRatio: 1.7,
         ),
-        itemCount: 26,
+        itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           return Visibility(
             visible: true,

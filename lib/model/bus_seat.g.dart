@@ -1,10 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'bus_seat.dart';
-
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
 
 BusSeat _$BusSeatFromJson(Map<String, dynamic> json) => BusSeat(
       json['bookedDate'] as String?,
