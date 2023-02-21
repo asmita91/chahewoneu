@@ -64,9 +64,9 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        // decoration: const BoxDecoration(
-            // image: DecorationImage(
-            //     image: AssetImage('images/Pokhara.jpg'), fit: BoxFit.cover)),
+      // decoration: const BoxDecoration(
+      // image: DecorationImage(
+      //     image: AssetImage('images/Pokhara.jpg'), fit: BoxFit.cover)),
         child: Scaffold(
           backgroundColor: Colors.grey.withOpacity(0.5),
           body: Form(
@@ -75,8 +75,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
               child: Container(
                 // alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
-                      // color: Colors.grey.withOpacity(0.3),
-                    color: Colors.white,
+                    // color: Colors.grey.withOpacity(0.3),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(20)),
                   margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.5,
