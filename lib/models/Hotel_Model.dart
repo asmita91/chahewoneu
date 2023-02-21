@@ -29,7 +29,8 @@ class HotelModel {
   String? imagepath;
   String? imageUrl;
 
-  factory HotelModel.fromJson(Map<String, dynamic> json) => HotelModel(
+  factory HotelModel.fromJson(
+      Map<String, dynamic> json) => HotelModel(
     hotelId: json["hotel_id"],
     hotelName: json["hotel_name"],
     description: json["description"],
@@ -48,8 +49,9 @@ class HotelModel {
     "imagepath": imagepath,
     "imageUrl": imageUrl,
   };
-  factory HotelModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => HotelModel(
-  hotelId: json["hotel_id"],
+  factory HotelModel.fromFirebaseSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> json) => HotelModel(
+  hotelId: json.id,
   hotelName: json["hotel_name"],
   description: json["description"],
   price: json["price"],

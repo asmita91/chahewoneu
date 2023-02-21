@@ -6,21 +6,27 @@ import 'package:chahewoneu/UserScreens/Transportation/ChooseBusSeat.dart';
 import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
+import 'package:chahewoneu/UserScreens/hoteldescription.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:chahewoneu/UserScreens/navpages/Places_subpage.dart';
 import 'package:chahewoneu/UserScreens/register_screen.dart';
+import 'package:chahewoneu/WeatherScreen/weather.dart';
 import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
+import 'package:chahewoneu/viewmodels/hotel_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'AdminScreens/hoteladd.dart';
 import 'Navpages/Home.dart';
 import 'Package.dart';
 import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
+import 'UserScreens/userhotel.dart';
+import 'package:get/get.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,14 +47,16 @@ class Chahewoneu extends StatelessWidget {
         ChangeNotifierProvider<RatingReviewViewModel>(
             create: (_) => RatingReviewViewModel()),
         ChangeNotifierProvider<PeopleViewModel>(
-            create: (_) => PeopleViewModel())
+            create: (_) => PeopleViewModel()),
+        ChangeNotifierProvider<HotelViewModel>(
+            create: (_) => HotelViewModel()),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         title: 'Flutter Demo',
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/Package",
+        initialRoute: "/Userhotel",
         routes: {
           // "/splashScreen": (context)=>SplashScreen();
           "/registration": (context) => RegisterScreen(),
@@ -67,6 +75,9 @@ class Chahewoneu extends StatelessWidget {
           "/ChooseBusSeat": (context) => ChooseBusSeat(),
           "/UserNavBar": (context) => UserNavBar(),
           "/AdminNavBar": (context) => NavBar(),
+          "/Adminhotel": (context) => HotelAddPlace(),
+          "/hoteldescription": (context) => HotelDescription(),
+          "/Userhotel": (context) => WeatherScreen(),
           "/Package": (context) => Package(),
         },
       ),
