@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:khalti/khalti.dart';
+import 'package:khalti_core/khalti_core.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
-
 class KhaltiPayment extends StatefulWidget {
   const KhaltiPayment({Key? key}) : super(key: key);
 

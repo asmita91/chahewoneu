@@ -11,8 +11,9 @@ import 'package:chahewoneu/viewmodels/payment_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:khalti_flutter/khalti_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:khalti_flutter/khalti_flutter.dart';
+
 
 import 'Navpages/Home.dart';
 import 'UserScreens/Payment/KhaltiTest.dart';
