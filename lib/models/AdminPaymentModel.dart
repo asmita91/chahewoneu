@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 AdminPaymentModel? adminPaymentModelFromJson(String str) =>
     AdminPaymentModel.fromJson(json.decode(str));
 
@@ -14,7 +16,7 @@ class AdminPaymentModel {
   AdminPaymentModel({
     this.paymentId,
     this.userId,
-    this.userName,
+    required this.userName,
     this.userImage,
     this.packagePrice,
     this.packageId,
@@ -22,7 +24,7 @@ class AdminPaymentModel {
 
   String? paymentId;
   String? userId;
-  String? userName;
+  String userName;
   String? userImage;
   int? packagePrice;
   String? packageId;
@@ -37,6 +39,16 @@ class AdminPaymentModel {
         packageId: json["packageId"],
       );
 
+  factory AdminPaymentModel.fromFirebaseSnapshot(
+          DocumentSnapshot<Map<String, dynamic>> json) =>
+      AdminPaymentModel(
+        paymentId: json["paymentId"],
+        userId: json["userId"],
+        userName: json["userName"],
+        userImage: json["userImage"],
+        packagePrice: json["packagePrice"],
+        packageId: json["packageId"],
+      );
   Map<String, dynamic> toJson() => {
         "paymentId": paymentId,
         "userId": userId,
