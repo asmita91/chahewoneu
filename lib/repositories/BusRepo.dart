@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/foundation.dart';
 import '../Services/firebaseService.dart';
 import '../model/BussModel.dart';
 import '../model/bus_seat.dart';
@@ -10,18 +10,19 @@ class BusRepo with ChangeNotifier {
   // plane
   Future<Object> getFromDate(String date) async {
     // db query
-    var airplanes = await FirebaseService.db
+    var bus = await FirebaseService.db
         .collection("bus")
         .where("date", isEqualTo: date)
         .get();
 
-    if (airplanes.docs.length > 0) {
-      return airplanes.docs[0];
+    if (bus.docs.length > 0) {
+      return bus.docs[0];
     } else {
       var c_bus = await FirebaseService.db.collection("bus").add(
           BusModel(
               date: date,
               left: List.generate(26, (index) => null),
+              center: List.generate(26, (index) => null),
               right: List.generate(26, (index) => null)).toJson());
       return c_bus.get();
     }

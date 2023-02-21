@@ -33,6 +33,6 @@ Future<void> main() async {
         "/MeansOfTransportationAdmin": (context) => AdminTransportation(),
         "/AdminCar": (context) => AdminCar(),
         "/AdminHiace":(context)=>AdminHiaceSeat(),
-        "/choosebus":(context)=>ChooseBusSeat("17"),
+        "/choosebus":(context)=>Bus(),
       }));
 }
