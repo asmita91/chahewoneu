@@ -1,11 +1,19 @@
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
+import 'package:chahewoneu/UserScreens/navpages/Main_page.dart';
+import 'package:chahewoneu/UserScreens/navpages/bar_page.dart';
+import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
+import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../Colors.dart';
-import 'Places.dart';
+import '../../Navpages/ProfilePage.dart';
+import 'UserProfile.dart';
+import 'place_details.dart';
+// import 'meansOfTransportation.dart';
 
 class UserHomePage extends StatefulWidget {
+  static String route = "UserHomePage";
   const UserHomePage({Key? key}) : super(key: key);
 
   @override
@@ -13,75 +21,105 @@ class UserHomePage extends StatefulWidget {
 }
 
 class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
+  // List pages = [
+  //   UserProfilePage(),
+  //   MainPage(),
+  //
+  // ];
+  // int currentIndex = 0;
+  // void onTap(int index) {
+  //   setState(() {
+  //     currentIndex = index;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
-
     return Scaffold(
-      //side bar
+      //SideBar
       drawer: UserNavBar(),
-        appBar: AppBar(
-          elevation:0,
-          backgroundColor: Colors.transparent,
-          iconTheme: IconThemeData(
-            size: 30,
-            // color: AppColor.Events,
-          ),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: AppColor.Events,
         ),
-
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+      body: Column(crossAxisAlignment: CrossAxisAlignment.stretch,
 // 1st Children
-            children: [
-          Container(
-            margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.06,
-              right: MediaQuery.of(context).size.width * 0.02,
-              left: MediaQuery.of(context).size.width * 0.04,
-            ),
-          ),
-          SizedBox(
-            height: 0,
-          ),
-          Container(
-            margin:
-                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-            child: Text(
-              "Discover",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
-            ),
-          ),
-          SizedBox(height: 15),
-          Container(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: TabBar(
-                labelPadding: EdgeInsets.only(
+          children: [
+// discover text
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.04),
-                controller: _tabController,
-                labelColor: Colors.black,
-                unselectedLabelColor: Colors.grey,
-                isScrollable: true,
-                indicatorSize: TabBarIndicatorSize.label,
-                indicator:
-                    CircleTabIndicator(colors: AppColor.HomePage, radius: 4),
-                tabs: [
-                  Tab(text: "Places"),
-                  Tab(text: "Booking"),
-                  Tab(text: "Emotions"),
-                ],
+                child: Text(
+                  "Discover",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 10),
-          Container(
-            height: 600,
-            child: TabBarView(
-              controller: _tabController,
-              children: [PlaceDetails(), Text("hi"), Text("Contents")],
-              // Transportation(),
+
+// 3rd children
+// tabbar
+            SizedBox(height: 15),
+            Expanded(
+              child: Container(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TabBar(
+                    labelPadding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.04),
+                    controller: _tabController,
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Colors.grey,
+                    isScrollable: true,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: CircleTabIndicator(
+                        colors: AppColor.HomePage, radius: 4),
+                    tabs: [
+                      Tab(text: "Places"),
+                      Tab(text: "Booking"),
+                      Tab(text: "Emotions"),
+                    ],
+                  ),
+                ),
+              ),
             ),
-          )
-        ]));
+            SizedBox(height: 10),
+            Container(
+              height: 600,
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  Expanded(child: PlaceDetails()),
+                  Text("hi"),
+                  Text("Contents")
+                ],
+                // Transportation(),
+              ),
+            )
+          ]),
+//       bottomNavigationBar: BottomNavigationBar(
+//           type: BottomNavigationBarType.shifting,
+//           backgroundColor: Colors.white,
+//           onTap: onTap,
+//           currentIndex: currentIndex,
+//
+//           unselectedFontSize: 0,
+//           selectedFontSize: 0,
+//           selectedItemColor: Colors.blue,
+//           unselectedItemColor: Colors.black,
+//           showUnselectedLabels: false,
+//           showSelectedLabels: false,
+//           elevation: 0,
+// // when ever there is a bar they take a list of children or item
+//           items: [
+//             BottomNavigationBarItem(label: "Home", icon: Icon(Icons.apps)),
+//             BottomNavigationBarItem(label: "My", icon: Icon(Icons.person)),
+//           ]),
+    );
   }
 }
 

@@ -1,3 +1,5 @@
+import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
+import 'package:chahewoneu/UserScreens/navpages/UserProfile.dart';
 import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,9 +16,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    BarItemPage(),
-    SearchPage(),
-    Mypage(),
+   UserHomePage(),
+    ProfileInfo(),
   ];
   int currentIndex = 0;
   void onTap(int index) {
@@ -32,23 +33,21 @@ class _MainPageState extends State<MainPage> {
       backgroundColor: Colors.white,
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-          unselectedFontSize: 0,
-          selectedFontSize: 0,
-          type: BottomNavigationBarType.fixed,
+          type: BottomNavigationBarType.shifting,
           backgroundColor: Colors.white,
           onTap: onTap,
           currentIndex: currentIndex,
-          selectedItemColor: Colors.black54,
-          unselectedItemColor: Colors.grey.withOpacity(0.5),
+
+          unselectedFontSize: 0,
+          selectedFontSize: 0,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.black,
           showUnselectedLabels: false,
           showSelectedLabels: false,
           elevation: 0,
 // when ever there is a bar they take a list of children or item
           items: [
             BottomNavigationBarItem(label: "Home", icon: Icon(Icons.apps)),
-            BottomNavigationBarItem(
-                label: "Bar", icon: Icon(Icons.bar_chart_sharp)),
-            BottomNavigationBarItem(label: "Search", icon: Icon(Icons.search)),
             BottomNavigationBarItem(label: "My", icon: Icon(Icons.person)),
           ]),
     );
