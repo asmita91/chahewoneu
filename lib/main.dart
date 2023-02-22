@@ -1,3 +1,6 @@
+import 'package:chahewoneu/AdminScreens/AdminBookingPlace.dart';
+import 'package:chahewoneu/AdminScreens/AdminCar.dart';
+import 'package:chahewoneu/AdminScreens/AdminHiace.dart';
 import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
@@ -13,12 +16,15 @@ import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
 import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/hotel_viewmodel.dart';
+import 'package:chahewoneu/viewmodels/payment_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
+import 'AdminScreens/AdminAirplane.dart';
+import 'AdminScreens/AdminDashboard.dart';
+import 'AdminScreens/AdminRatingReview.dart';
+import 'AdminScreens/AdminTransPage.dart';
 import 'AdminScreens/SplashScreen.dart';
 import 'AdminScreens/hoteladd.dart';
 import 'Navpages/Home.dart';
@@ -26,9 +32,12 @@ import 'Package.dart';
 import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
+import 'package:get/get.dart';
+
 import 'UserScreens/UserRatingReview.dart';
 import 'UserScreens/userhotel.dart';
 import 'WeatherScreen/weather.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,22 +59,26 @@ class Chahewoneu extends StatelessWidget {
             create: (_) => RatingReviewViewModel()),
         ChangeNotifierProvider<PeopleViewModel>(
             create: (_) => PeopleViewModel()),
-        ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
-        ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
+        ChangeNotifierProvider<HotelViewModel>(
+            create: (_) => HotelViewModel()),
+        ChangeNotifierProvider<PlaceViewModel>(
+            create: (_) => PlaceViewModel()),
+        ChangeNotifierProvider<PaymentViewModel>(
+            create: (_) => PaymentViewModel()),
       ],
       child: GetMaterialApp(
         title: 'Flutter Demo',
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/Weather",
+        initialRoute: "/adminDashboard",
         routes: {
-          "/splashScreen": (context) => SplashScreen(),
+          "/splashScreen": (context)=>SplashScreen(),
           "/registration": (context) => RegisterScreen(),
           "/userLogin": (context) => UserLoginPage(),
           "/adminLogin": (context) => AdminLoginScreen(),
           "/userDashboard": (context) => UserHomePage(),
-          "/adminDashboard": (context) => Home(),
+          "/adminDashboard": (context) => AdminDashboard(),
           "/transportation_dash": (context) => Transportation(),
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
@@ -73,8 +86,8 @@ class Chahewoneu extends StatelessWidget {
           "/adminPayment": (context) => AdminPayment(),
           // "/placeSubPage": (context) => PlaceDescription(text: "Context"),
           "/ChooseAirplaneSeat": (context) => Airplane(),
-          // "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
-          // "/ChooseBusSeat": (context) => ChooseBusSeat(),
+          "/ChooseHiaceSeat": (context) => Hiace(),
+          "/ChooseBusSeat": (context) => Bus(),
           "/UserNavBar": (context) => UserNavBar(),
           "/AdminNavBar": (context) => NavBar(),
           "/Adminhotel": (context) => HotelAddPlace(),
@@ -83,17 +96,19 @@ class Chahewoneu extends StatelessWidget {
           "/Package": (context) => Package(),
           "/Weather": (context) => WeatherScreen(),
           "/UserRatereview": (context) => UserRatingReview(),
-          // AdminAirplane.route: (context) => AdminAirplane(),
+          "/AdminRatereview": (context) => AdminRatingReview(),
+          AdminAirplane.route: (context) => AdminAirplane(),
           "userlogin": (context) => UserLoginPage(),
           "adminlogin": (context) => AdminLoginScreen(),
-          // "admindashboard": (context) => AdminDashboard(),
+          "admindashboard": (context) => AdminDashboard(),
           "/ChooseHiaceSeat": (context) => Hiace(),
           Airplane.route: (context) => Airplane(),
           "/MeansOfTransportation": (context) => Transportation(),
-          // "/MeansOfTransportationAdmin": (context) => AdminTransportation(),
-          // "/AdminCar": (context) => AdminCar(),
-          // "/AdminHiace":(context)=>AdminHiace(),
+          "/MeansOfTransportationAdmin": (context) => AdminTransportation(),
+          "/AdminCar": (context) => AdminCar(),
+          "/AdminHiace":(context)=>AdminHiace(),
           "/choosebus":(context)=>Bus(),
+          "/Adminplace":(context)=>BookingPlace(),
         },
       ),
     );
