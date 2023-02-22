@@ -1,80 +1,48 @@
-
 import 'package:chahewoneu/constant/my_constraints.dart';
+import 'package:chahewoneu/repositories/AirplaneRepo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_flushbar/flutter_flushbar.dart';
-import 'package:intl/intl.dart';
-
-import '../../model/bus_seat.dart';
-import '../../repositories/BusRepo.dart';
-
 bool isSelected = false;
 bool isBooked = false;
-
-class Bus extends StatefulWidget {
-  static String route = "Airplane";
-  Bus({Key? key}) : super(key: key);
-
+class AdminAirplane extends StatefulWidget {
+  static String route = "AdminAirplane";
+  AdminAirplane({Key? key}) : super(key: key);
   @override
-  State<Bus> createState() => _BusState();
+  State<AdminAirplane> createState() => _AdminAirplaneState();
 }
-
-class _BusState extends State<Bus> {
-  String selectedDate = "";
-  // var isBooked
+class _AdminAirplaneState extends State<AdminAirplane> {
   var countSeatLeft = 2 * 13;
   var countSeatRight = 2 * 13;
-
   Map<int, String> leftSelectedSeat = <int, String>{};
   Map<int, String> rightSelectedSeat = <int, String>{};
-
   Map<int, String> leftBookedSeat = <int, String>{};
   Map<int, String> rightBookedSeat = <int, String>{};
-
   @override
   void initState() {
-    initSeatValueToMap(leftSelectedSeat);
-    initSeatValueToMap(rightSelectedSeat);
-
+    initSeatValueToMap(leftBookedSeat);
+    initSeatValueToMap(rightBookedSeat);
     super.initState();
   }
-
-  void showToast(BuildContext context, Color color, String message) {
-    Flushbar(
-      duration: Duration(seconds: 3),
-      backgroundColor: color,
-      messageText: Text(
-        message,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
-        ),
-      ),
-    ).show(context);
-  }
-
   initSeatValueToMap(Map<int, String> selectedSeatMap) {
-    print("The reserved seat List is: --> $selectedSeatMap");
-    if (selectedSeatMap.isEmpty) {
+    // print("The Bye is: --> $selectedSeatMap");
+    if (selectedSeatMap.isNotEmpty) {
       selectedSeatMap.forEach((int key, String value) {
+        // print("The Book Seat: --> $key:$value");
         setState(() {
           if (value == null) {
             value = txtAvailableString;
           }
           selectedSeatMap[key] = value;
-          print("The reserved seat List is: --> $selectedSeatMap");
         });
       });
     }
   }
-
   void setSelectedToBooked() {
     leftBookedSeat = leftSelectedSeat;
     rightBookedSeat = rightSelectedSeat;
     Map<String, List<int>> alignmentMap = {};
     List<int> leftSelectedNumList = [];
     List<int> rightSelectedNumList = [];
-
     leftBookedSeat.forEach((int key, String value) {
       setState(() {
         if (value == txtSelectedString) {
@@ -86,7 +54,6 @@ class _BusState extends State<Bus> {
         print("The left booked of index:$key --> $value");
       });
     });
-
     rightBookedSeat.forEach((int key, String value) {
       setState(() {
         if (value == txtSelectedString) {
@@ -95,22 +62,9 @@ class _BusState extends State<Bus> {
         }
         rightSelectedNumList.add(key);
         alignmentMap[txtRight] = rightSelectedNumList;
-        print("The right booked of index:$key --> $value");
       });
     });
-
-    if (selectedDate == "") {
-      showToast(context, Colors.red, "Please select date");
-    } else if ((leftSelectedNumList.isEmpty && rightSelectedNumList.isEmpty)) {
-      showToast(context, Colors.red, "Please select seat");
-    } else {
-      BusSeat busSeat =
-      BusSeat(selectedDate, "16", alignmentMap);
-      BusRepo().sendBookingDetailsToFirebase(busSeat);
-      showToast(context, Colors.green, "Booked Successfully");
-    }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,9 +74,10 @@ class _BusState extends State<Bus> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 80.0),
             Container(
               margin: EdgeInsets.only(top: 15),
-              child: Text("Bus Seat Booking",
+              child: Text("Admin Airplane Seat Booking",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
@@ -130,75 +85,7 @@ class _BusState extends State<Bus> {
                     height: 2.5,
                   )),
             ),
-            SizedBox(
-              height: 22,
-            ),
-            Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.only(left: 22),
-              child: Text(
-                "Arrival Date ",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: "Times New Roman",
-                  color: Colors.black,
-                  fontStyle: FontStyle.normal,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-
-            Row(
-              children: [
-                Container(
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.only(left: 20, top: 10),
-                  child: MaterialButton(
-                    onPressed: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1950),
-                          //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2100));
-                      if (pickedDate != null) {
-                        print(
-                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                        String formattedDate =
-                        DateFormat('yyyy-MM-dd').format(pickedDate);
-                        setState(() {
-                          //set output date to TextField value.
-                          selectedDate = formattedDate;
-                        });
-                      } else {}
-                    },
-                    child: Text(
-                      "Choose Date",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: "Times New Roman",
-                        color: Colors.white,
-                      ),
-                    ),
-                    color: Colors.deepPurple,
-                  ),
-                ),
-                SizedBox(width: 20.0),
-                Text(selectedDate,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2)),
-              ],
-            ),
-
-            SizedBox(
-              height: 20,
-            ),
-            SizedBox(height: 20),
+            SizedBox(height: 20.0),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -284,9 +171,9 @@ class _BusState extends State<Bus> {
                   SizedBox(width: 20),
                   widgetSeat1(leftSelectedSeat, txtLeft),
                   SizedBox(
-                    width: 130,
+                    width: 140,
                   ),
-                  widgetSeat1(rightSelectedSeat, txtRight),
+                  widgetSeat2(rightSelectedSeat, txtRight),
                 ],
               ),
             ),
@@ -294,17 +181,22 @@ class _BusState extends State<Bus> {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {
-                setSelectedToBooked();
-              },
-              child: Text("Book"),
-            ),
+                onPressed: () async {
+                  var myData = await AirplaneRepo().getAllBookingData();
+                  final leftData = myData["Left"] as List<int>;
+                  final rightData = myData["Right"] as List<int>;
+                  print("Left: $leftData and Right: $rightData}");
+                  // setState(() {
+                  //   leftBookedSeat = leftData;
+                  //   rightBookedSeat = rightData;
+                  // });
+                },
+                child: Text("Click Me"))
           ],
         ),
       ),
     );
   }
-
   Widget widgetSeat1(Map<int, String> reservedSeat, String alignment) {
     return Container(
       width: MediaQuery.of(context).size.width / 3.93,
@@ -313,47 +205,52 @@ class _BusState extends State<Bus> {
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-
-          // childAspectRatio: 1.7,
+          childAspectRatio: 1.7,
         ),
-        itemCount: 10,
+        itemCount: 26,
         itemBuilder: (BuildContext context, int index) {
-          return Visibility(
-            visible: true,
-            child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  if (reservedSeat[index] == null) {
-                    reservedSeat[index] = txtAvailableString;
-                  }
-                  if (reservedSeat[index] == txtAvailableString) {
-                    reservedSeat[index] = txtSelectedString;
-                    print("I Clicked on: $index ==> ${reservedSeat[index]}");
-                  } else if (reservedSeat[index] == txtSelectedString) {
-                    reservedSeat[index] = txtAvailableString;
-                    print("II Clicked on: $index ==> ${reservedSeat[index]}");
-                  } else {
-                    reservedSeat[index] = txtBookedString;
-                    print(" III Clicked on: $index ==> ${reservedSeat[index]}");
-                  }
-                });
-              },
-              child: Container(
-                margin: EdgeInsets.all(5),
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                  color: reservedSeat[index] == txtBookedString
-                      ? Colors.red
-                      : reservedSeat[index] == txtSelectedString
-                      ? Colors.purple
-                      : Colors.transparent,
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                  borderRadius: BorderRadius.circular(5),
-                ),
+          return Container(
+            margin: EdgeInsets.all(5),
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              color: leftBookedSeat[index] == txtBookedString
+                  ? Colors.red
+                  : Colors.transparent,
+              border: Border.all(
+                color: Colors.grey,
               ),
+              borderRadius: BorderRadius.circular(5),
+            ),
+          );
+        },
+      ),
+    );
+  }
+  Widget widgetSeat2(Map<int, String> reservedSeat, String alignment) {
+    return Container(
+      width: MediaQuery.of(context).size.width / 3.93,
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.7,
+        ),
+        itemCount: 26,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            margin: EdgeInsets.all(5),
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              color: rightBookedSeat[index] == txtBookedString
+                  ? Colors.red
+                  : Colors.transparent,
+              border: Border.all(
+                color: Colors.grey,
+              ),
+              borderRadius: BorderRadius.circular(5),
             ),
           );
         },
