@@ -21,14 +21,14 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/AdminHiace",
+      initialRoute: "/aisrplane",
       routes: {
         AdminAirplane.route: (context) => AdminAirplane(),
         "userlogin": (context) => UserLoginPage(),
         "adminlogin": (context) => AdminLoginScreen(),
         "admindashboard": (context) => AdminDashboard(),
         "/ChooseHiaceSeat": (context) => Hiace(),
-        Airplane.route: (context) => Airplane(),
+        "/aisrplane":(context)=>Airplane(),
         "/MeansOfTransportation": (context) => Transportation(),
         "/MeansOfTransportationAdmin": (context) => AdminTransportation(),
         "/AdminCar": (context) => AdminCar(),
