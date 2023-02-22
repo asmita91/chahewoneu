@@ -1,3 +1,4 @@
+import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:flutter/material.dart';
 
 import 'navpages/Homepage.dart';
@@ -59,7 +60,7 @@ class UserNavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Exit'),
-            onTap: () => UserHomePage(),
+            onTap: () => UserLoginPage(),
           ),
           Divider(),
         ],
