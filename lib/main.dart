@@ -25,6 +25,7 @@ import 'package:provider/provider.dart';
 
 import 'AdminScreens/AdminAirplane.dart';
 import 'AdminScreens/AdminDashboard.dart';
+import 'AdminScreens/AdminEvents.dart';
 import 'AdminScreens/AdminRatingReview.dart';
 import 'AdminScreens/AdminTransPage.dart';
 import 'AdminScreens/SplashScreen.dart';
@@ -76,20 +77,17 @@ class Chahewoneu extends StatelessWidget {
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/userDashboard",
+        initialRoute: "/userLogin",
         routes: {
           "/splashScreen": (context) => SplashScreen(),
           "/registration": (context) => RegisterScreen(),
           "/userLogin": (context) => UserLoginPage(),
           "/adminLogin": (context) => AdminLoginScreen(),
           "/userDashboard": (context) => UserHomePage(),
-
           "/adminDashboard": (context) => Home(),
           // "/transportation_dash": (context) => Transportation(),
-
           "/adminDashboard": (context) => AdminDashboard(),
           // "/transportation_dash": (context) => Transportation(),
-
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
           // "/userPayment": (context) => KhaltiPayment(),
@@ -98,10 +96,8 @@ class Chahewoneu extends StatelessWidget {
           "/ChooseAirplaneSeat": (context) => Airplane(),
           // "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
           // "/ChooseBusSeat": (context) => ChooseBusSeat(),
-
           "/ChooseHiaceSeat": (context) => Hiace(),
           "/ChooseBusSeat": (context) => Bus(),
-
           "/UserNavBar": (context) => UserNavBar(),
           "/AdminNavBar": (context) => NavBar(),
           "/Adminhotel": (context) => HotelAddPlace(),
@@ -124,15 +120,14 @@ class Chahewoneu extends StatelessWidget {
           // "/MeansOfTransportation": (context) => Transportation(),
           "/MeansOfTransportationAdmin": (context) => AdminTransportation(),
           "/AdminCar": (context) => AdminCar(),
-
           "/AdminHiace": (context) => AdminHiace(),
           "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
           // "/choosebus": (context) => Bus(),
-
           "/AdminHiace": (context) => AdminHiace(),
           "/choosebus": (context) => Bus(),
           "/Adminplace": (context) => BookingPlace(),
+          "/Adminevents": (context) => EventAdd(),
         },
       ),
     );
