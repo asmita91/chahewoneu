@@ -60,14 +60,14 @@ class PaymentModel extends StatelessWidget {
           "/registration": (context) => RegisterScreen(),
           "/userLogin": (context) => UserLoginPage(),
           "/adminLogin": (context) => AdminLoginScreen(),
-          "/userDashboard": (context) => UserHomePage(),
+          // "/userDashboard": (context) => UserHomePage(),
           "/adminDashboard": (context) => Home(),
           "/transportation_dash": (context) => Transportation(),
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
-          "/userPayment": (context) => KhaltiPayment(),
+          "/userPayment": (context) => Payment(),
           "/adminPayment": (context) => AdminPayment(),
-          "/placeSubPage": (context) => PlaceDescription(text: "Context"),
+          // "/placeSubPage": (context) => PlaceDescription(text: "Context"),
           "/ChooseAirplaneSeat": (context) => Airplane(),
           "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
           "/ChooseBusSeat": (context) => ChooseBusSeat(),
@@ -88,7 +88,7 @@ class Myapp extends StatelessWidget {
         builder: (context, navKey) {
           return MaterialApp(
               debugShowCheckedModeBanner: false,
-              home: KhaltiPayment(),
+              home: Payment(),
               navigatorKey: navKey,
               localizationsDelegates: const [
                 KhaltiLocalizations.delegate,

@@ -18,23 +18,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
 
     return Scaffold(
       drawer: NavBar(),
-      // body: Column(
-      //
-      //     children: [
-        // Container(
-        //   padding: const EdgeInsets.only(top: 30,right: 335),
-        //   margin: const EdgeInsets.only(top: 20),
-        //   child: InkWell(
-        //        child: Icon(
-        //           Icons.menu,
-        //           size: 30,
-        //           color: Colors.black54,
-        //         ),
-        //       onTap: (){
-        //     Navigator.of(context).pushNamed("/sidebar");
-        //   },
-        //   ),
-        // ),
         appBar:AppBar(
           elevation:0,
           backgroundColor: Colors.transparent,
