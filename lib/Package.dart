@@ -1,3 +1,4 @@
+import 'package:chahewoneu/UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'package:chahewoneu/models/People_Model.dart';
 import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'UserScreens/navpages/app_icon.dart';
+import 'ViewModel/auth_viewmodel.dart';
 
 class Package extends StatefulWidget {
   const Package({Key? key}) : super(key: key);
@@ -15,14 +17,30 @@ class Package extends StatefulWidget {
 }
 
 class _PackageState extends State<Package> {
-  FirebaseFirestore db = FirebaseFirestore.instance;
   late PeopleViewModel _peopleViewModel;
+
+  Future<void> submitPackage(AuthViewModel auth) async {
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    Airplane airplane = Airplane();
+    // final data = BookingModel(
+    //     date: DateTime.now().toString(),
+    //   userId: auth.loggedInUser!.userId.toString()
+    //     placeId:,
+    //     people:,
+    //     // rating: "$newRating",
+    //     // review: review.text,
+    //     // userId: auth.loggedInUser!.userId
+    //     );
+    // db.collection("bookings").add(data.toJson()).then((value) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //       SnackBar(content: Text("Package created ")));
+    // });
+  }
 
   @override
   void initState() {
     _peopleViewModel = Provider.of<PeopleViewModel>(context, listen: false);
     _peopleViewModel.getPeople();
-
     super.initState();
   }
 

@@ -15,10 +15,8 @@ class _TransportationState extends State<Transportation> {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       child: Padding(
         padding: const EdgeInsets.all(10),
-
         child: GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
@@ -27,7 +25,7 @@ class _TransportationState extends State<Transportation> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image: AssetImage("Assets/Images/Car.png"),
+                    image: AssetImage("assets/images/Car.png"),
                     fit: BoxFit.cover,
                   )),
               child: Align(alignment: Alignment.bottomCenter, child: PopUp()),
@@ -36,7 +34,7 @@ class _TransportationState extends State<Transportation> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                      image: AssetImage("Assets/Images/bus.png"),
+                      image: AssetImage("assets/images/Bus.png"),
                       fit: BoxFit.cover,
                     )),
                 child: Align(
@@ -57,7 +55,7 @@ class _TransportationState extends State<Transportation> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                      image: AssetImage("Assets/Images/hiace.png"),
+                      image: AssetImage("assets/images/Hiace.png"),
                       fit: BoxFit.cover,
                     )),
                 child: Align(
@@ -78,7 +76,7 @@ class _TransportationState extends State<Transportation> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                      image: AssetImage("Assets/Images/airplane.png"),
+                      image: AssetImage("assets/images/Airplane.png"),
                       fit: BoxFit.cover,
                     )),
                 child: Align(
