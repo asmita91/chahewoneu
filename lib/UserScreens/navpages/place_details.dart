@@ -123,6 +123,7 @@ class MyPageViewController extends StatelessWidget {
             imageLink: place.imageUrl,
             time: place.distanceFromCap,
             price: place.estimatedPrice,
+            placeId: place.placeId,
           ),
         ),
       ],

@@ -1,4 +1,3 @@
-import 'package:chahewoneu/AdminScreens/AdminBookingPlace.dart';
 import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:chahewoneu/AdminScreens/Payment/receivePayment.dart';
 import 'package:chahewoneu/AdminScreens/adminlogin_screen.dart';
@@ -17,7 +16,9 @@ import 'package:chahewoneu/viewmodels/hotel_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
 import 'AdminScreens/SplashScreen.dart';
 import 'AdminScreens/hoteladd.dart';
 import 'Navpages/Home.dart';
@@ -25,12 +26,9 @@ import 'Package.dart';
 import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
-import 'package:get/get.dart';
-
 import 'UserScreens/UserRatingReview.dart';
 import 'UserScreens/userhotel.dart';
 import 'WeatherScreen/weather.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,10 +50,8 @@ class Chahewoneu extends StatelessWidget {
             create: (_) => RatingReviewViewModel()),
         ChangeNotifierProvider<PeopleViewModel>(
             create: (_) => PeopleViewModel()),
-        ChangeNotifierProvider<HotelViewModel>(
-            create: (_) => HotelViewModel()),
-        ChangeNotifierProvider<PlaceViewModel>(
-            create: (_) => PlaceViewModel()),
+        ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
+        ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
       ],
       child: GetMaterialApp(
         title: 'Flutter Demo',
@@ -64,7 +60,7 @@ class Chahewoneu extends StatelessWidget {
         // ),
         initialRoute: "/userDashboard",
         routes: {
-          "/splashScreen": (context)=>SplashScreen(),
+          "/splashScreen": (context) => SplashScreen(),
           "/registration": (context) => RegisterScreen(),
           "/userLogin": (context) => UserLoginPage(),
           "/adminLogin": (context) => AdminLoginScreen(),
