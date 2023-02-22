@@ -48,7 +48,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
         elevation: 0,
 
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home),label:"Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.home),label:"Home",
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.rate_review),label:"Rate and Review"),
           BottomNavigationBarItem(icon: Icon(Icons.notifications ),label: "Notifications"),
           BottomNavigationBarItem(icon: Icon(Icons.person),label:"Admin Profile" ),

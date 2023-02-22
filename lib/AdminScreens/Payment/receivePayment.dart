@@ -32,10 +32,10 @@ class _AdminPaymentState extends State<AdminPayment> {
         appBar: AppBar(
             title: Row(
           children: [
-            AppIcon(icon: Icons.arrow_back),
-            SizedBox(
-              width: 5,
-            ),
+            // AppIcon(icon: Icons.arrow_back),
+            // SizedBox(
+            //   width: 5,
+            // ),
             Text(
               "Payment",
               style: TextStyle(

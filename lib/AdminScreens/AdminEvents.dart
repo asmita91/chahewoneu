@@ -8,10 +8,10 @@ class AdminEvent extends StatefulWidget {
   const  AdminEvent ({super.key});
 
   @override
-  State< AdminEvent > createState() => _HotelPlace ();
+  State< AdminEvent > createState() => _Event ();
 }
 
-class  _HotelPlace  extends State< AdminEvent > {
+class  _Event  extends State< AdminEvent > {
   TextEditingController event = new TextEditingController();
   TextEditingController event_description = new TextEditingController();
   File? pickedImage;

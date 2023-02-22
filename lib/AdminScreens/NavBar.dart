@@ -1,6 +1,8 @@
 import 'package:chahewoneu/Navpages/Home.dart';
 import 'package:flutter/material.dart';
 
+import 'AdminRatingReview.dart';
+
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
 
@@ -36,24 +38,40 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.cloud_circle),
             title: Text('Weather'),
-            onTap: () => null,
+            onTap: () => Navigator.of(context).pushNamed("/Weather"),
           ),
           Divider(),
           ListTile(
             leading: Icon(Icons.payment),
             title: Text('Payment'),
-            onTap: () => null,
+            onTap: () => Navigator.of(context).pushNamed("/adminPayment"),
           ) ,
           Divider(),
 
           ListTile(
             leading: Icon(Icons.rate_review),
             title: Text('Rate and Review'),
-            onTap: () => null,
+            onTap: () => Navigator.of(context).pushNamed("/AdminRatereview"),
           ),
-
           Divider(),
-
+          ListTile(
+            leading: Icon(Icons.hotel),
+            title: Text('Hotel'),
+            onTap: () => Navigator.of(context).pushNamed("/Adminhotel"),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.place),
+            title: Text('Place'),
+            onTap: () => Navigator.of(context).pushNamed("/Adminplace"),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.event),
+            title: Text('Events'),
+            onTap: () => Navigator.of(context).pushNamed("/Adminevents"),
+          ),
+          Divider(),
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Exit'),
