@@ -9,13 +9,15 @@ class CreatePageStack extends StatelessWidget {
   final String imageLink;
   final int time;
   final int price;
+  final String? placeId;
   const CreatePageStack(
       {required this.index,
       required this.placeName,
       required this.placeDescription,
       required this.imageLink,
       required this.time,
-      required this.price});
+      required this.price,
+      this.placeId});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +26,15 @@ class CreatePageStack extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => PlaceDescription(index, placeName,
-                    placeDescription, imageLink, time, price)));
+                builder: (context) => PlaceDescription(
+                      index,
+                      placeName,
+                      placeDescription,
+                      imageLink,
+                      time,
+                      price,
+                      placeId: placeId,
+                    )));
       },
       child: Center(
         child: Container(

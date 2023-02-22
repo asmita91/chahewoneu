@@ -1,13 +1,13 @@
 import 'package:chahewoneu/Constraints/constraint.dart';
-import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
 import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
+import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/People_Model.dart';
+import '../../models/Booking_Model.dart';
 import 'app_column.dart';
 import 'app_icon.dart';
 import 'expandable_text_Widget.dart';
@@ -15,6 +15,7 @@ import 'expandable_text_Widget.dart';
 class PlaceDescription extends StatefulWidget {
   static String route = "PlaceDescription";
   final int? index;
+  final String? placeId;
   final String? placeName;
   final String? placeDescription;
   final String? imageLink;
@@ -22,7 +23,8 @@ class PlaceDescription extends StatefulWidget {
   final int? price;
 
   PlaceDescription(this.index, this.placeName, this.placeDescription,
-      this.imageLink, this.time, this.price);
+      this.imageLink, this.time, this.price,
+      {this.placeId});
 
   @override
   State<PlaceDescription> createState() => _PlaceDescriptionState();
@@ -34,21 +36,36 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
   PageController pageController = PageController(viewportFraction: 0.85);
   int _count = 1;
   Future<void> savePeople() async {
-    FirebaseFirestore db = FirebaseFirestore.instance;
-    final data = PeopleModel(number: _count, userName: "Asm", userId: "1");
-
-    db.collection("peoples").add(data.toJson()).then((value) {
-      print("Added Data with ID: ${value.id}");
+    try {
+      FirebaseFirestore db = FirebaseFirestore.instance;
+      print(widget.placeId);
+      final data = BookingModel(
+        date: DateTime.now().toString(),
+        // userId: _auth.loggedInUser!.userId.toString(),
+        userId: "XVnzERuTCnXjMKNmCdruMm1Qx2X2",
+        placeId: widget.placeId!,
+        people: _count,
+        // rating: "$newRating",
+        // review: review.text,
+        // userId: auth.loggedInUser!.userId
+      );
+      await db.collection("bookings").add(data.toJson()).then((value) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Package created ")));
+      });
+    } catch (e) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("People Added")));
-    });
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
   }
 
+  late AuthViewModel _auth;
   @override
   void initState() {
+    print(widget.placeId);
     _placeViewModel = Provider.of<PlaceViewModel>(context, listen: false);
+    _auth = Provider.of<AuthViewModel>(context, listen: false);
     _placeViewModel.getPlace();
-    print("The Final Place -->${_placeViewModel.getPlace()}");
     super.initState();
     pageController.addListener(() {
       setState(() {
@@ -213,8 +230,8 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed(UserHomePage.route);
                         savePeople();
+                        Navigator.of(context).pushNamed("/transportation_dash");
                       },
                       child: Text("Book Now",
                           style: TextStyle(
