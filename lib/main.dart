@@ -1,8 +1,8 @@
 import 'package:chahewoneu/AdminScreens/AdminDashboard.dart';
+import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
-import 'package:chahewoneu/UserScreens/navpages/UserEditProfile.dart';
-import 'package:chahewoneu/UserScreens/navpages/UserProfile.dart';
+import 'package:chahewoneu/UserScreens/navpages/account_screen.dart';
 import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
 import 'package:chahewoneu/UserScreens/navpages/place_details.dart';
 import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
@@ -15,7 +15,10 @@ import 'package:provider/provider.dart';
 
 import 'AdminScreens/NavBar.dart';
 import 'Navpages/CustomerDetails.dart';
+import 'UserScreens/navpages/ChangePassword.dart';
 import 'UserScreens/navpages/Main_page.dart';
+import 'UserScreens/navpages/edit_profile.dart';
+import 'UserScreens/navpages/email_change.dart';
 import 'ViewModel/GlobalUIViewModel.dart';
 import 'ViewModel/auth_viewmodel.dart';
 
@@ -56,7 +59,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
 
-          initialRoute: "/customer",
+          initialRoute: "/profile",
           routes: {
             UserHomePage.route: (context) => UserHomePage(),
             // UserProfilePage.route:(context)=>UserProfilePage(),
@@ -64,14 +67,22 @@ class MyApp extends StatelessWidget {
             PlaceDescription.route: (context) =>
                 PlaceDescription(null, null, null, null, null, null),
             "/Usersidebar": (context) => UserNavBar(),
+            "/login":(context)=> UserLoginPage(),
             "/mypage": (context) => Mypage(),
             "/searchpage": (context) => SearchPage(),
             "/Mainpage": (context) => MainPage(),
             "/AdminDashboard": (context) => AdminDashboard(),
             "/sidebar": (context) => NavBar(),
-            "/userprofilepage":(context)=>ProfileInfo(),
-            "/usereditprofile":(context)=>UserProfile(),
+            "/email":(context)=> ChangeEmail(),
             "/customer":(context)=> CustomerDetails(name: "sanji", email: "sanji@12gmailcom", phone: "9866622390", address: "Kathmandu"),
+            //profile routes
+            "/email": (BuildContext context) => ChangeEmail(),
+            "/profile":(BuildContext context)=> AccountScreen(),
+            "/yourprofile":(BuildContext context)=> ProfileInfo(),
+            "/change_password":(BuildContext context)=>ChangePassword(),
+
+
+
           },
           // MainPage(),
           // UserLoginPage()

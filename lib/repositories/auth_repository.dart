@@ -21,7 +21,7 @@ class AuthRepository {
       if (response.size != 0) {
         throw Exception("Username already exists");
       }
-      UserCredential uc = await FirebaseService.firebaseAuthe
+      UserCredential uc = await FirebaseService.firebaseAuth
           .createUserWithEmailAndPassword(
           email: user.email!, password: user.password!);
 
@@ -38,7 +38,7 @@ class AuthRepository {
   Future<UserCredential> login(String email, String password) async {
     try {
       print(email);
-      UserCredential uc = await FirebaseService.firebaseAuthe
+      UserCredential uc = await FirebaseService.firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
       print("REPOSITORY " " " + uc.toString());
       return uc;
@@ -63,7 +63,7 @@ class AuthRepository {
 
   Future<bool> resetPassword(String email) async {
     try {
-      var res = await FirebaseService.firebaseAuthe
+      var res = await FirebaseService.firebaseAuth
           .sendPasswordResetEmail(email: email);
       return true;
     } catch (err) {
@@ -73,7 +73,7 @@ class AuthRepository {
 
   Future<void> logout() async {
     try {
-      await FirebaseService.firebaseAuthe.signOut();
+      await FirebaseService.firebaseAuth.signOut();
     } catch (err) {
       rethrow;
     }

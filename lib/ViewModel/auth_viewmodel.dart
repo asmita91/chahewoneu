@@ -8,7 +8,7 @@ import '../repositories/auth_repository.dart';
 
 
 class AuthViewModel with ChangeNotifier{
-  User? _user = FirebaseService.firebaseAuthe.currentUser;
+  User? _user = FirebaseService.firebaseAuth.currentUser;
 
   User? get user => _user;
 
