@@ -59,14 +59,15 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
 
-          initialRoute: "/profile",
+          initialRoute: "/UserHomePage",
           routes: {
-            UserHomePage.route: (context) => UserHomePage(),
+            // UserHomePage.route: (context) => UserHomePage(),
             // UserProfilePage.route:(context)=>UserProfilePage(),
             PlaceDetails.route: (context) => PlaceDetails(),
             PlaceDescription.route: (context) =>
                 PlaceDescription(null, null, null, null, null, null),
             "/Usersidebar": (context) => UserNavBar(),
+            "/UserHomePage":(context)=>UserHomePage(),
             "/login":(context)=> UserLoginPage(),
             "/mypage": (context) => Mypage(),
             "/searchpage": (context) => SearchPage(),
