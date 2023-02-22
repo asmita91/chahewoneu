@@ -1,4 +1,5 @@
 import 'package:chahewoneu/Constraints/constraint.dart';
+import 'package:chahewoneu/UserScreens/Transportation/meansOfTransportation.dart';
 import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
 import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -40,6 +41,8 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
       FirebaseFirestore db = FirebaseFirestore.instance;
       print(widget.placeId);
       final data = BookingModel(
+        id: DateTime.fromMillisecondsSinceEpoch(1234567890123, isUtc: false)
+            .toString(),
         date: DateTime.now().toString(),
         // userId: _auth.loggedInUser!.userId.toString(),
         userId: "XVnzERuTCnXjMKNmCdruMm1Qx2X2",
@@ -52,6 +55,9 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
       await db.collection("bookings").add(data.toJson()).then((value) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text("Package created ")));
+
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => Transportation(data)));
       });
     } catch (e) {
       ScaffoldMessenger.of(context)
@@ -231,7 +237,6 @@ class _PlaceDescriptionState extends State<PlaceDescription> {
                       ),
                       onPressed: () {
                         savePeople();
-                        Navigator.of(context).pushNamed("/transportation_dash");
                       },
                       child: Text("Book Now",
                           style: TextStyle(

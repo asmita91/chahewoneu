@@ -1,4 +1,3 @@
-
 import 'package:chahewoneu/constant/my_constraints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,14 +5,15 @@ import 'package:flutter_flushbar/flutter_flushbar.dart';
 import 'package:intl/intl.dart';
 
 import '../../model/bus_seat.dart';
+import '../../models/Booking_Model.dart';
 import '../../repositories/BusRepo.dart';
 
 bool isSelected = false;
 bool isBooked = false;
 
 class Bus extends StatefulWidget {
-  static String route = "Airplane";
-  Bus({Key? key}) : super(key: key);
+  Bus({Key? key, this.data}) : super(key: key);
+  BookingModel? data;
 
   @override
   State<Bus> createState() => _BusState();
@@ -104,8 +104,12 @@ class _BusState extends State<Bus> {
     } else if ((leftSelectedNumList.isEmpty && rightSelectedNumList.isEmpty)) {
       showToast(context, Colors.red, "Please select seat");
     } else {
-      BusSeat busSeat =
-      BusSeat(selectedDate, "16", alignmentMap);
+      BusSeat busSeat = BusSeat(
+          selectedDate,
+          "19",
+          // auth.loggedInUser!.userId,
+          alignmentMap,
+          widget.data!.id.toString());
       BusRepo().sendBookingDetailsToFirebase(busSeat);
       showToast(context, Colors.green, "Booked Successfully");
     }
@@ -149,7 +153,6 @@ class _BusState extends State<Bus> {
             SizedBox(
               height: 10,
             ),
-
             Row(
               children: [
                 Container(
@@ -167,7 +170,7 @@ class _BusState extends State<Bus> {
                         print(
                             pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
                         String formattedDate =
-                        DateFormat('yyyy-MM-dd').format(pickedDate);
+                            DateFormat('yyyy-MM-dd').format(pickedDate);
                         setState(() {
                           //set output date to TextField value.
                           selectedDate = formattedDate;
@@ -194,7 +197,6 @@ class _BusState extends State<Bus> {
                         letterSpacing: 2)),
               ],
             ),
-
             SizedBox(
               height: 20,
             ),
@@ -346,8 +348,8 @@ class _BusState extends State<Bus> {
                   color: reservedSeat[index] == txtBookedString
                       ? Colors.red
                       : reservedSeat[index] == txtSelectedString
-                      ? Colors.purple
-                      : Colors.transparent,
+                          ? Colors.purple
+                          : Colors.transparent,
                   border: Border.all(
                     color: Colors.grey,
                   ),

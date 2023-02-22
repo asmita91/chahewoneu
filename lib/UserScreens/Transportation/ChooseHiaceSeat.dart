@@ -1,4 +1,3 @@
-
 import 'package:chahewoneu/constant/my_constraints.dart';
 import 'package:chahewoneu/repositories/HiaceRepo.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +5,15 @@ import 'package:flutter_flushbar/flutter_flushbar.dart';
 import 'package:intl/intl.dart';
 
 import '../../model/hiace_seat.dart';
+import '../../models/Booking_Model.dart';
 
 bool isSelected = false;
 bool isBooked = false;
 
 class Hiace extends StatefulWidget {
   static String route = "Hiace";
-  Hiace({Key? key}) : super(key: key);
+  Hiace({Key? key, this.data}) : super(key: key);
+  BookingModel? data;
 
   @override
   State<Hiace> createState() => _HiaceState();
@@ -103,8 +104,8 @@ class _HiaceState extends State<Hiace> {
     } else if ((leftSelectedNumList.isEmpty && rightSelectedNumList.isEmpty)) {
       showToast(context, Colors.red, "Please select seat");
     } else {
-      HiaceSeat hiaceSeat =
-      HiaceSeat(selectedDate, "7", alignmentMap);
+      print("Asmita data ==>${widget.data!}");
+      HiaceSeat hiaceSeat = HiaceSeat(selectedDate, "7", alignmentMap, "1");
       HiaceRepo().sendBookingDetailsToFirebase(hiaceSeat);
       showToast(context, Colors.green, "Booked Successfully");
     }
@@ -148,7 +149,6 @@ class _HiaceState extends State<Hiace> {
             SizedBox(
               height: 10,
             ),
-
             Row(
               children: [
                 Container(
@@ -166,7 +166,7 @@ class _HiaceState extends State<Hiace> {
                         print(
                             pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
                         String formattedDate =
-                        DateFormat('yyyy-MM-dd').format(pickedDate);
+                            DateFormat('yyyy-MM-dd').format(pickedDate);
                         setState(() {
                           //set output date to TextField value.
                           selectedDate = formattedDate;
@@ -193,7 +193,6 @@ class _HiaceState extends State<Hiace> {
                         letterSpacing: 2)),
               ],
             ),
-
             SizedBox(
               height: 20,
             ),
@@ -312,7 +311,6 @@ class _HiaceState extends State<Hiace> {
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
-
         ),
         itemCount: 6,
         itemBuilder: (BuildContext context, int index) {
@@ -344,8 +342,8 @@ class _HiaceState extends State<Hiace> {
                   color: reservedSeat[index] == txtBookedString
                       ? Colors.red
                       : reservedSeat[index] == txtSelectedString
-                      ? Colors.purple
-                      : Colors.transparent,
+                          ? Colors.purple
+                          : Colors.transparent,
                   border: Border.all(
                     color: Colors.grey,
                   ),

@@ -46,6 +46,8 @@ dev_dependencies:
   image_picker: ^0.8.6
   get: ^4.6.5
   build_runner:
+  khalti_flutter:
+  khalti:
 
 
 
