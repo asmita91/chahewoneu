@@ -30,8 +30,9 @@ class _UserHotelScreenState extends State<UserHotelScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // search bar
-            Text("SERACH"),
+            SizedBox(
+              height: 20,
+            ),
             StreamBuilder(
                 stream: hotel,
                 builder: (context,
@@ -55,7 +56,7 @@ class _UserHotelScreenState extends State<UserHotelScreen> {
                                     height: 80,
                                     width: 310, fit: BoxFit.cover,) :
                                   Container(
-                                    height: 80,
+                                    height: 180,
                                     width: 310,
                                     decoration: BoxDecoration(
                                         color: Colors.grey,
@@ -69,7 +70,7 @@ class _UserHotelScreenState extends State<UserHotelScreen> {
                                         )),
                                   ),
                                   Container(
-                                    height: 80,
+                                    height: 100,
                                     width: 310,
                                     decoration: BoxDecoration(
                                         color: Color(0xfff1f1f1),
@@ -84,7 +85,10 @@ class _UserHotelScreenState extends State<UserHotelScreen> {
                                         children: [
                                           Text(
                                             hotel.hotelName.toString(),
-                                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
                                           ),
                                           Row(
                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +106,7 @@ class _UserHotelScreenState extends State<UserHotelScreen> {
                                                     Text(
                                                       hotel.location.toString(),
                                                       style: TextStyle(
-                                                        fontSize: 15,
+                                                        fontSize: 20,
                                                         color: Colors.black,
                                                         fontWeight: FontWeight.w300,
                                                       ),

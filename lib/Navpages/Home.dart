@@ -75,7 +75,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
                 Expanded(child: PlaceDetails()),
                 Text(" "),
             Text(" "),
-            Text(" "),
                 Expanded(child: UserHotelScreen()),
             Text(" ")
           ]),
@@ -84,31 +83,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
     );
   }
 }
-
-// class CircleTabIndicator extends Decoration{
-//   final Color color;
-//   double radius;
-//   CircleTabIndicator({required this.color, required this.radius});
-//   @override
-//   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-//     // TODO: implement createBoxPainter
-//     return _CirclePainter(color: color, radius:radius);
-//     // throw UnimplementedError();
-//   }
-//
-// }
-// class _CirclePainter extends BoxPainter{
-//   final Color color;
-//   double radius;
-//   _CirclePainter({required this.color, required this.radius});
-//
-//   @override
-//   void paint(Canvas canvas,
-//       Offset offset,
-//       ImageConfiguration configuration) {
-//   }
-//
-// }
 class CircleTabIndicator extends Decoration {
   final Color colors;
   double radius;
