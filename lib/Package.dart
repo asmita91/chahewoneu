@@ -1,4 +1,3 @@
-import 'package:chahewoneu/UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'package:chahewoneu/models/People_Model.dart';
 import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -21,7 +20,6 @@ class _PackageState extends State<Package> {
 
   Future<void> submitPackage(AuthViewModel auth) async {
     FirebaseFirestore db = FirebaseFirestore.instance;
-    Airplane airplane = Airplane();
     // final data = BookingModel(
     //     date: DateTime.now().toString(),
     //   userId: auth.loggedInUser!.userId.toString()
@@ -91,9 +89,7 @@ class _PackageState extends State<Package> {
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "No of people booked: ${people.number}",
-                          ),
+                          Text("hi"),
                           Text("Add other contents here"),
                           Text("Add other contents here"),
                           Text("Add other contents here"),

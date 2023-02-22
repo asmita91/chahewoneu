@@ -1,15 +1,9 @@
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
-import 'package:chahewoneu/UserScreens/navpages/Main_page.dart';
-import 'package:chahewoneu/UserScreens/navpages/bar_page.dart';
-import 'package:chahewoneu/UserScreens/navpages/my_page.dart';
-import 'package:chahewoneu/UserScreens/navpages/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../Colors.dart';
-import '../../Navpages/ProfilePage.dart';
 import '../userhotel.dart';
-import 'UserProfile.dart';
 import 'place_details.dart';
 // import 'meansOfTransportation.dart';
 
@@ -81,7 +75,6 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
                         colors: AppColor.HomePage, radius: 4),
                     tabs: [
                       Tab(text: "Places"),
-                      Tab(text: "Booking"),
                       Tab(text: "Hotel"),
                     ],
                   ),
@@ -95,7 +88,6 @@ class _PlacesState extends State<UserHomePage> with TickerProviderStateMixin {
                 controller: _tabController,
                 children: [
                   Expanded(child: PlaceDetails()),
-                  Text("hi"),
                   Expanded(child: UserHotelScreen()),
                 ],
                 // Transportation(),

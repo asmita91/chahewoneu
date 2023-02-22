@@ -1,17 +1,21 @@
 import 'package:chahewoneu/constant/my_constraints.dart';
 import 'package:chahewoneu/model/aeroplane_seat.dart';
+import 'package:chahewoneu/models/Booking_Model.dart';
 import 'package:chahewoneu/repositories/AirplaneRepo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_flushbar/flutter_flushbar.dart';
 import 'package:intl/intl.dart';
 
+import '../../ViewModel/auth_viewmodel.dart';
+
 bool isSelected = false;
 bool isBooked = false;
 
 class Airplane extends StatefulWidget {
   static String route = "Airplane";
-  Airplane({Key? key}) : super(key: key);
+  Airplane({Key? key, this.data}) : super(key: key);
+  BookingModel? data;
 
   @override
   State<Airplane> createState() => _AirplaneState();
@@ -33,7 +37,6 @@ class _AirplaneState extends State<Airplane> {
   void initState() {
     initSeatValueToMap(leftSelectedSeat);
     initSeatValueToMap(rightSelectedSeat);
-
     super.initState();
   }
 
@@ -66,7 +69,7 @@ class _AirplaneState extends State<Airplane> {
     }
   }
 
-  void setSelectedToBooked() {
+  void setSelectedToBooked(AuthViewModel auth) {
     leftBookedSeat = leftSelectedSeat;
     rightBookedSeat = rightSelectedSeat;
     Map<String, List<int>> alignmentMap = {};
@@ -102,8 +105,13 @@ class _AirplaneState extends State<Airplane> {
     } else if ((leftSelectedNumList.isEmpty && rightSelectedNumList.isEmpty)) {
       showToast(context, Colors.red, "Please select seat");
     } else {
-      AeroplaneSeat aeroplaneSeat =
-          AeroplaneSeat(selectedDate, "19", alignmentMap);
+      AeroplaneSeat aeroplaneSeat = AeroplaneSeat(
+          selectedDate,
+          "19",
+          // auth.loggedInUser!.userId,
+          alignmentMap,
+          widget.data!.id.toString());
+      print(aeroplaneSeat.toJson());
       AirplaneRepo().sendBookingDetailsToFirebase(aeroplaneSeat);
       showToast(context, Colors.green, "Booked Successfully");
     }
@@ -147,7 +155,6 @@ class _AirplaneState extends State<Airplane> {
             SizedBox(
               height: 10,
             ),
-
             Row(
               children: [
                 Container(
@@ -165,7 +172,7 @@ class _AirplaneState extends State<Airplane> {
                         print(
                             pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
                         String formattedDate =
-                        DateFormat('yyyy-MM-dd').format(pickedDate);
+                            DateFormat('yyyy-MM-dd').format(pickedDate);
                         setState(() {
                           //set output date to TextField value.
                           selectedDate = formattedDate;
@@ -192,8 +199,6 @@ class _AirplaneState extends State<Airplane> {
                         letterSpacing: 2)),
               ],
             ),
-            //////sanjeeeeeeeeelaaaaaaaaaa addddddddd hereeeeeeeeeeeeeeee
-
             SizedBox(
               height: 20,
             ),
@@ -294,7 +299,7 @@ class _AirplaneState extends State<Airplane> {
             ),
             ElevatedButton(
               onPressed: () {
-                setSelectedToBooked();
+                setSelectedToBooked(AuthViewModel());
               },
               child: Text("Book"),
             ),

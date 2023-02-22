@@ -1,20 +1,17 @@
-
-
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'bus_seat.g.dart';
 
 @JsonSerializable()
-class BusSeat{
+class BusSeat {
   String? bookedDate;
   String? userId;
+  String? bookingId;
   Map<String, List<int>>? seat;
 
+  BusSeat(this.bookedDate, this.userId, this.seat, this.bookingId);
+  factory BusSeat.fromJson(Map<String, dynamic> json) =>
+      _$BusSeatFromJson(json);
 
-  BusSeat(this.bookedDate, this.userId, this.seat);
-  factory BusSeat.fromJson(Map<String,dynamic>json)=>_$BusSeatFromJson(json);
-
-  Map<String,dynamic> toJson()=> _$BusSeatToJson(this);
-
+  Map<String, dynamic> toJson() => _$BusSeatToJson(this);
 }

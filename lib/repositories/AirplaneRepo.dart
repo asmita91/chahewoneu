@@ -28,8 +28,12 @@ class AirplaneRepo with ChangeNotifier {
   Future<void> sendBookingDetailsToFirebase(AeroplaneSeat seat) async {
     var students = await FirebaseService.db.collection('airplanes');
     return students
-        .add(
-            {"date": seat.bookedDate, "userId": seat.userId, "seat": seat.seat})
+        .add({
+          "date": seat.bookedDate,
+          "userId": seat.userId,
+          "seat": seat.seat,
+          "bookingId": seat.bookingId
+        })
         .then((value) => print("Seat has been booked"))
         .catchError((error) => print("Something went wrong"));
   }

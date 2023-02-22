@@ -1,5 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'aeroplane_seat.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
 
 AeroplaneSeat _$AeroplaneSeatFromJson(Map<String, dynamic> json) =>
     AeroplaneSeat(
@@ -9,11 +14,13 @@ AeroplaneSeat _$AeroplaneSeatFromJson(Map<String, dynamic> json) =>
         (k, e) =>
             MapEntry(k, (e as List<dynamic>).map((e) => e as int).toList()),
       ),
+      json['bookingId'] as String?,
     );
 
 Map<String, dynamic> _$AeroplaneSeatToJson(AeroplaneSeat instance) =>
     <String, dynamic>{
       'bookedDate': instance.bookedDate,
       'userId': instance.userId,
+      'bookingId': instance.bookingId,
       'seat': instance.seat,
     };
