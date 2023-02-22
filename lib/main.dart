@@ -15,6 +15,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
+import 'UserScreens/Transportation/date_Picker.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,4 +36,23 @@ Future<void> main() async {
         "/AdminHiace":(context)=>AdminHiace(),
         "/choosebus":(context)=>Bus(),
       }));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // primarySwatch: Colors.deepPurple,
+        brightness: Brightness.dark
+      ),
+
+      home: DatePicker(),
+    );
+  }
 }
