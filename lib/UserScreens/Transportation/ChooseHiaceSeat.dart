@@ -314,7 +314,7 @@ class _HiaceState extends State<Hiace> {
           crossAxisCount: 1,
 
         ),
-        itemCount: 6,
+        itemCount: 7,
         itemBuilder: (BuildContext context, int index) {
           return Visibility(
             visible: true,
