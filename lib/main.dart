@@ -65,8 +65,6 @@ class Chahewoneu extends StatelessWidget {
 
         ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
         ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
-        // ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
-
         ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
         ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
         ChangeNotifierProvider<PaymentViewModel>(
@@ -77,27 +75,23 @@ class Chahewoneu extends StatelessWidget {
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/userLogin",
+        initialRoute: "/userDashboard",
         routes: {
           "/splashScreen": (context) => SplashScreen(),
           "/registration": (context) => RegisterScreen(),
           "/userLogin": (context) => UserLoginPage(),
           "/adminLogin": (context) => AdminLoginScreen(),
           "/userDashboard": (context) => UserHomePage(),
+
           "/adminDashboard": (context) => Home(),
-          // "/transportation_dash": (context) => Transportation(),
           "/adminDashboard": (context) => AdminDashboard(),
-          // "/transportation_dash": (context) => Transportation(),
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
-          // "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
-          // "/placeSubPage": (context) => PlaceDescription(text: "Context"),
           "/ChooseAirplaneSeat": (context) => Airplane(),
-          // "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
-          // "/ChooseBusSeat": (context) => ChooseBusSeat(),
           "/ChooseHiaceSeat": (context) => Hiace(),
           "/ChooseBusSeat": (context) => Bus(),
+
           "/UserNavBar": (context) => UserNavBar(),
           "/AdminNavBar": (context) => NavBar(),
           "/Adminhotel": (context) => HotelAddPlace(),
@@ -111,23 +105,24 @@ class Chahewoneu extends StatelessWidget {
           "userlogin": (context) => UserLoginPage(),
           "adminlogin": (context) => AdminLoginScreen(),
           "admindashboard": (context) => AdminDashboard(),
-          "/airplane": (context) => Airplane(),
-          "/hiace": (context) => Hiace(),
-          "/bus": (context) => Bus(),
+          // "/Airplane": (context) => Airplane(),
+          // "/Hiace": (context) => Hiace(),
+          // "/Bus": (context) => Bus(),
           "/profile": (context) => UserProfile(),
           // "/ChooseHiaceSeat": (context) => Hiace(),
           // "/airplane": (context) => Airplane(),
           // "/MeansOfTransportation": (context) => Transportation(),
           "/MeansOfTransportationAdmin": (context) => AdminTransportation(),
           "/AdminCar": (context) => AdminCar(),
+
           "/AdminHiace": (context) => AdminHiace(),
           "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
           // "/choosebus": (context) => Bus(),
+
           "/AdminHiace": (context) => AdminHiace(),
           "/choosebus": (context) => Bus(),
           "/Adminplace": (context) => BookingPlace(),
-          "/Adminevents": (context) => EventAdd(),
         },
       ),
     );
