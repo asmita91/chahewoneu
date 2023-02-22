@@ -65,7 +65,7 @@ class PaymentModel extends StatelessWidget {
           "/transportation_dash": (context) => Transportation(),
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
-          "/userPayment": (context) => Payment(),
+          "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
           // "/placeSubPage": (context) => PlaceDescription(text: "Context"),
           "/ChooseAirplaneSeat": (context) => Airplane(),
@@ -88,7 +88,7 @@ class Myapp extends StatelessWidget {
         builder: (context, navKey) {
           return MaterialApp(
               debugShowCheckedModeBanner: false,
-              home: Payment(),
+              home: KhaltiPayment(),
               navigatorKey: navKey,
               localizationsDelegates: const [
                 KhaltiLocalizations.delegate,
