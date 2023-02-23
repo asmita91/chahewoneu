@@ -26,18 +26,21 @@ import 'package:provider/provider.dart';
 
 import 'AdminScreens/AdminAirplane.dart';
 import 'AdminScreens/AdminDashboard.dart';
+import 'AdminScreens/AdminEditProfile.dart';
 import 'AdminScreens/AdminEvents.dart';
 import 'AdminScreens/AdminRatingReview.dart';
 import 'AdminScreens/AdminTransPage.dart';
 import 'AdminScreens/SplashScreen.dart';
 import 'AdminScreens/hoteladd.dart';
 import 'Navpages/Home.dart';
+import 'Navpages/ProfilePage.dart';
 import 'UserScreens/Payment/KhaltiTest.dart';
 import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'UserScreens/Transportation/ChooseBusSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
 import 'UserScreens/UserRatingReview.dart';
+import 'UserScreens/usereditprofile.dart';
 import 'UserScreens/userevent.dart';
 import 'UserScreens/userhotel.dart';
 import 'WeatherScreen/weather.dart';
@@ -80,18 +83,22 @@ class Chahewoneu extends StatelessWidget {
       ],
       child: GetMaterialApp(
         title: 'Chahewoneu',
+        debugShowCheckedModeBanner: false,
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/UserEvent",
+        initialRoute: "/userDashboard",
         routes: {
           "/splashScreen": (context) => SplashScreen(),
           "/registration": (context) => RegisterScreen(),
           "/userLogin": (context) => UserLoginPage(),
-          "/adminLogin": (context) => AdminLoginScreen(),
+
+          "/useredit": (context) => WeatherScreen(),
+
+
           "/userDashboard": (context) => UserHomePage(),
 
-          "/adminDashboard": (context) => Home(),
+          "/adminDashboard": (context) => AdminProfilePage(),
           // "/adminDashboard": (context) => AdminDashboard(),
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
@@ -111,7 +118,7 @@ class Chahewoneu extends StatelessWidget {
           "/AdminRatereview": (context) => AdminRatingReview(),
           AdminAirplane.route: (context) => AdminAirplane(),
           "userlogin": (context) => UserLoginPage(),
-          "adminlogin": (context) => AdminLoginScreen(),
+          "/adminlogin": (context) => AdminLoginScreen(),
           "admindashboard": (context) => AdminDashboard(),
           // "/Airplane": (context) => Airplane(),
           // "/Hiace": (context) => Hiace(),
@@ -131,7 +138,8 @@ class Chahewoneu extends StatelessWidget {
           "/AdminHiace": (context) => AdminHiace(),
           "/choosebus": (context) => Bus(),
           "/Adminplace": (context) => BookingPlace(),
-          "/UserEvent": (context) => UserEventScreen(),
+          "/UserEvent": (context) => AdminRatingReview(),
+          "/AdminPlace": (context) => BookingPlace(),
         },
       ),
     );
