@@ -43,8 +43,10 @@ class _UserEventScreenState extends State<UserEventScreen> {
 
                   if (snapshot.hasError) return Text("Error");
                   return Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: ListView(
+                      margin: EdgeInsets.only(right: 20),
+                  child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
                         children: [
                           ...snapshot.data!.docs.map((document) {
                             EventModel event = document.data();
@@ -148,9 +150,8 @@ class _UserEventScreenState extends State<UserEventScreen> {
                             );
                           }),
                         ],
-
-
                     ),
+                  ),
                   );
 
                 }

@@ -15,6 +15,7 @@ import 'package:chahewoneu/ViewModel/GlobalUIViewModel.dart';
 import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
 import 'package:chahewoneu/viewmodels/People_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/authenti_viewmodel.dart';
+import 'package:chahewoneu/viewmodels/event_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/hotel_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/payment_viewmodel.dart';
 import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
@@ -37,6 +38,7 @@ import 'UserScreens/Transportation/ChooseBusSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
 import 'UserScreens/UserRatingReview.dart';
+import 'UserScreens/userevent.dart';
 import 'UserScreens/userhotel.dart';
 import 'WeatherScreen/weather.dart';
 
@@ -55,27 +57,33 @@ class Chahewoneu extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider<AuthViewModel>(
+            create: (_) => AuthViewModel()),
         ChangeNotifierProvider<GlobalUIViewModel>(
             create: (_) => GlobalUIViewModel()),
         ChangeNotifierProvider<RatingReviewViewModel>(
             create: (_) => RatingReviewViewModel()),
         ChangeNotifierProvider<PeopleViewModel>(
             create: (_) => PeopleViewModel()),
-
-        ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
-        ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
-        ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
-        ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
+        ChangeNotifierProvider<HotelViewModel>(
+            create: (_) => HotelViewModel()),
+        ChangeNotifierProvider<PlaceViewModel>(
+            create: (_) => PlaceViewModel()),
+        ChangeNotifierProvider<HotelViewModel>(
+            create: (_) => HotelViewModel()),
+        ChangeNotifierProvider<PlaceViewModel>(
+            create: (_) => PlaceViewModel()),
         ChangeNotifierProvider<PaymentViewModel>(
             create: (_) => PaymentViewModel()),
+        ChangeNotifierProvider<EventViewModel>(
+            create: (_) => EventViewModel()),
       ],
       child: GetMaterialApp(
-        title: 'Flutter Demo',
+        title: 'Chahewoneu',
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/userDashboard",
+        initialRoute: "/UserEvent",
         routes: {
           "/splashScreen": (context) => SplashScreen(),
           "/registration": (context) => RegisterScreen(),
@@ -84,7 +92,7 @@ class Chahewoneu extends StatelessWidget {
           "/userDashboard": (context) => UserHomePage(),
 
           "/adminDashboard": (context) => Home(),
-          "/adminDashboard": (context) => AdminDashboard(),
+          // "/adminDashboard": (context) => AdminDashboard(),
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
           "/adminPayment": (context) => AdminPayment(),
@@ -123,6 +131,7 @@ class Chahewoneu extends StatelessWidget {
           "/AdminHiace": (context) => AdminHiace(),
           "/choosebus": (context) => Bus(),
           "/Adminplace": (context) => BookingPlace(),
+          "/UserEvent": (context) => UserEventScreen(),
         },
       ),
     );

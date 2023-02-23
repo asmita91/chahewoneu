@@ -23,7 +23,8 @@ class HotelRepository{
   }
 
 
-  Future<void> addHotel(HotelModel data) async {
+  Future<bool> addHotel(HotelModel data) async {
     await ref.add(data);
+    return true;
   }
 }

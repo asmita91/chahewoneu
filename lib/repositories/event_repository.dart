@@ -21,8 +21,9 @@ class EventRepository{
     DocumentSnapshot<EventModel> response = await ref.doc(id).get();
     return response.data();
   }
-  Future<void> addEvent(EventModel data) async {
+  Future<bool> addEvent(EventModel data) async {
     await ref.add(data);
+    return true;
   }
 }
 
