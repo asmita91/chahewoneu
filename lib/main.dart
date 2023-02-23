@@ -9,7 +9,7 @@ import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:chahewoneu/UserScreens/hoteldescription.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
-import 'package:chahewoneu/UserScreens/navpages/UserEditProfile.dart';
+// import 'package:chahewoneu/UserScreens/navpages/UserEditProfile.dart';
 import 'package:chahewoneu/UserScreens/register_screen.dart';
 import 'package:chahewoneu/ViewModel/GlobalUIViewModel.dart';
 import 'package:chahewoneu/ViewModel/PlaceViewModel.dart';
@@ -108,7 +108,7 @@ class Chahewoneu extends StatelessWidget {
           // "/Airplane": (context) => Airplane(),
           // "/Hiace": (context) => Hiace(),
           // "/Bus": (context) => Bus(),
-          "/profile": (context) => UserProfile(),
+          // "/profile": (context) => UserProfile(),
           // "/ChooseHiaceSeat": (context) => Hiace(),
           // "/airplane": (context) => Airplane(),
           // "/MeansOfTransportation": (context) => Transportation(),
