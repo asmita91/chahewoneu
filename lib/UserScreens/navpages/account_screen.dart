@@ -173,24 +173,6 @@ class _AccountScreenState extends State<AccountScreen> {
               },
             ),
             divider(),
-            // ListTile(
-            //   leading: Container(
-            //     child: Icon(Icons.location_city, color: Colors.orange),
-            //     height: 30,
-            //     width: 30,
-            //     decoration: BoxDecoration(
-            //       color: Colors.orange.withOpacity(0.09),
-            //       borderRadius: BorderRadius.circular(18),
-            //     ),
-            //   ),
-            //   title: Text("Change your address",
-            //       style: TextStyle(fontWeight: FontWeight.w700)),
-            //   trailing:
-            //       Icon(Icons.arrow_forward_ios, color: Colors.purple, size: 20),
-            //   onTap: () {
-            //     Navigator.of(context).pushNamed("/change_address");
-            //   },
-            // ),
           ],
         ),
       ),

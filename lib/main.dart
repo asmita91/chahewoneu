@@ -22,6 +22,7 @@ import 'package:chahewoneu/viewmodels/ratingreview_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:khalti_flutter/khalti_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'AdminScreens/AdminAirplane.dart';
@@ -38,6 +39,10 @@ import 'UserScreens/Transportation/ChooseBusSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
 import 'UserScreens/UserRatingReview.dart';
+import 'UserScreens/navpages/ChangePassword.dart';
+import 'UserScreens/navpages/UserProfile.dart';
+import 'UserScreens/navpages/account_screen.dart';
+import 'UserScreens/navpages/email_change.dart';
 import 'UserScreens/userevent.dart';
 import 'UserScreens/userhotel.dart';
 import 'WeatherScreen/weather.dart';
@@ -84,7 +89,7 @@ class Chahewoneu extends StatelessWidget {
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/UserEvent",
+        initialRoute: "/profile",
         routes: {
           "/splashScreen": (context) => SplashScreen(),
           "/registration": (context) => RegisterScreen(),
@@ -125,7 +130,7 @@ class Chahewoneu extends StatelessWidget {
           "/AdminCar": (context) => AdminCar(),
 
           "/AdminHiace": (context) => AdminHiace(),
-          "/userPayment": (context) => KhaltiPayment(),
+          "/userPayment": (context) => KhaltiTest(),
           "/adminPayment": (context) => AdminPayment(),
           // "/choosebus": (context) => Bus(),
 
@@ -133,6 +138,17 @@ class Chahewoneu extends StatelessWidget {
           "/choosebus": (context) => Bus(),
           "/Adminplace": (context) => BookingPlace(),
           "/UserEvent": (context) => UserEventScreen(),
+
+
+          //profile routes
+
+          "/email": (BuildContext context) => ChangeEmail(),
+          "/profile":(BuildContext context)=> AccountScreen(),
+          "/yourprofile":(BuildContext context)=> ProfileInfo(),
+          "/change_password":(BuildContext context)=>ChangePassword(),
+
+
+
         },
       ),
     );
@@ -171,22 +187,22 @@ class Chahewoneu extends StatelessWidget {
 //       overlays: [SystemUiOverlay.bottom]);
 // }
 
-// class Myapp extends StatelessWidget {
-//   const Myapp({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return KhaltiScope(
-//         publicKey: 'test_public_key_5a22ad67e707441b8362fc7bed556a8d',
-//         enabledDebugging: true,
-//         builder: (context, navKey) {
-//           return MaterialApp(
-//               debugShowCheckedModeBanner: false,
-//               home: KhaltiPayment(),
-//               navigatorKey: navKey,
-//               localizationsDelegates: const [
-//                 KhaltiLocalizations.delegate,
-//               ]);
-//         });
-//   }
-// }
+class Myapp extends StatelessWidget {
+  const Myapp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return KhaltiScope(
+        publicKey: 'test_public_key_5a22ad67e707441b8362fc7bed556a8d',
+        enabledDebugging: true,
+        builder: (context, navKey) {
+          return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: KhaltiTest(),
+              navigatorKey: navKey,
+              localizationsDelegates: const [
+                KhaltiLocalizations.delegate,
+              ]);
+        });
+  }
+}
