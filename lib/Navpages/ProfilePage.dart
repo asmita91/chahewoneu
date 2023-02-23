@@ -93,10 +93,12 @@ class AdminProfilePage extends StatelessWidget {
 
               ProfileMenuWidget(title: "User Details",
                 icon: LineAwesomeIcons.user_check,onPress: (){
-                Navigator.pushNamed(context, "/CustomerDetails");
+                Navigator.pushNamed(context, "/customer");
                 },),
               ProfileMenuWidget(title: "Payment Details",
-                icon: LineAwesomeIcons.money_bill,onPress: (){},),
+                icon: LineAwesomeIcons.money_bill,onPress: (){
+                // Navigator.pushNamed(context, )
+                },),
               ProfileMenuWidget(title: "Logout",
                 textColor: Colors.red,
                 icon: LineAwesomeIcons.alternate_sign_out,

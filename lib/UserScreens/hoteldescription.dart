@@ -5,9 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../models/Hotel_Model.dart';
 import '../viewmodels/hotel_viewmodel.dart';
-import 'navpages/app_column.dart';
-import 'navpages/app_icon.dart';
-import 'navpages/expandable_text_Widget.dart';
 class HotelDescription extends StatefulWidget {
   const HotelDescription({Key? key}) : super(key: key);
 
@@ -102,7 +99,7 @@ class _HotelDescriptionState extends State<HotelDescription> {
                                                       hotel.location.toString(),
                                                       style: TextStyle(
                                                         fontSize: 15,
-                                                        color: Colors.black,
+                                                        color: Color(0xff262626),
                                                         fontWeight: FontWeight.w300,
                                                       ),
                                                     ),
