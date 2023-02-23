@@ -78,6 +78,7 @@ import 'ViewModel/People_viewmodel.dart';
 import 'ViewModel/PlaceViewModel.dart';
 import 'ViewModel/auth_viewmodel.dart';
 import 'WeatherScreen/weather.dart';
+import 'package:get/get.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
