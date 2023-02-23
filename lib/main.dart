@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => AuthViewModel()),
           ChangeNotifierProvider<PlaceViewModel>(
               create: (_) => PlaceViewModel()),
+          ChangeNotifierProvider<AuthViewModel>(create:(_)=>AuthViewModel()),
 
 
         ],
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
 
-          initialRoute: "/UserHomePage",
+          initialRoute: "/profile",
           routes: {
             // UserHomePage.route: (context) => UserHomePage(),
             // UserProfilePage.route:(context)=>UserProfilePage(),
