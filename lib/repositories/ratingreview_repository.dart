@@ -25,8 +25,9 @@ class RatingReviewRepository{
     return response.data();
   }
 
-  Future<void> addRatingReview(RatingReviewModel data) async {
+  Future<bool> addRatingReview(RatingReviewModel data) async {
     await ref.add(data);
+    return true;
   }
 
 }

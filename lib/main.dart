@@ -131,7 +131,7 @@ class Chahewoneu extends StatelessWidget {
           "/AdminCar": (context) => AdminCar(),
 
           "/AdminHiace": (context) => AdminHiace(),
-          "/userPayment": (context) => KhaltiPayment(),
+          // "/userPayment": (context) => KhaltiPayment(),
           "/adminPayment": (context) => AdminPayment(),
           // "/choosebus": (context) => Bus(),
 
