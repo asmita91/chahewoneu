@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../models/UserModel.dart';
 import '../viewmodels/authenti_viewmodel.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
   @override
@@ -21,29 +22,32 @@ class _RegisterScreen extends State<RegisterScreen> {
       changePaswordState = !changePaswordState;
     });
   }
+
   Widget showVisibilityIcon(bool showPassword) {
     return showPassword == changePaswordState
         ? InkWell(
-        onTap: () {
-          setState(() {
-            changePaswordState = !changePaswordState;
-          });
-        },
-        child: Icon(Icons.key))
+            onTap: () {
+              setState(() {
+                changePaswordState = !changePaswordState;
+              });
+            },
+            child: Icon(Icons.key))
         : InkWell(
-        onTap: () {
-          setState(() {
-            changePaswordState = !changePaswordState;
-          });
-        },
-        child: Icon(Icons.key_off));
+            onTap: () {
+              setState(() {
+                changePaswordState = !changePaswordState;
+              });
+            },
+            child: Icon(Icons.key_off));
   }
+
   hintStyle() {
     TextStyle(
       fontWeight: FontWeight.bold,
       color: Colors.black,
     );
   }
+
   outlineForInputField() {
     OutlineInputBorder(
         borderSide: BorderSide(width: 2, color: Colors.white),
@@ -55,34 +59,37 @@ class _RegisterScreen extends State<RegisterScreen> {
     super.initState();
   }
 
-  void register() async{
-    if(_formkey.currentState == null || !_formkey.currentState!.validate()){
+  void register() async {
+    if (_formkey.currentState == null || !_formkey.currentState!.validate()) {
       return;
     }
-    try{
-      await _authen.register(
-          UserModel(
-              username: username.text,
-              email: email.text,
-              password: password.text,
-          )).then((value) {
+    try {
+      await _authen
+          .register(UserModel(
+        username: username.text,
+        email: email.text,
+        password: password.text,
+      ))
+          .then((value) {
         Navigator.of(context).pushReplacementNamed("/userLogin");
-      })
-          .catchError((e){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+      }).catchError((e) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.message.toString())));
       });
-    }catch(err){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+    } catch (err) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(err.toString())));
     }
   }
+
   final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/register.jpg'), fit: BoxFit.cover)
-      ),
+              image: AssetImage('Assets/Images/register.jpg'),
+              fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
@@ -106,14 +113,15 @@ class _RegisterScreen extends State<RegisterScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextFormField(
-                            controller:username,
+                            controller: username,
                             decoration: InputDecoration(
                               label: Text("username"),
                               hintText: "Please enter your username",
                               prefixIcon: Icon(Icons.man),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  width: 1,color: Colors.white,
+                                  width: 1,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -129,14 +137,17 @@ class _RegisterScreen extends State<RegisterScreen> {
                                 return "Email is required";
                               }
                               if (!RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                   .hasMatch(value)) {
-                                return "Please enter valid email";                               }
-                              return null;                             },
+                                return "Please enter valid email";
+                              }
+                              return null;
+                            },
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  width: 1,color: Colors.white,
+                                  width: 1,
+                                  color: Colors.white,
                                 ),
                               ),
                               prefixIcon: Icon(
@@ -155,24 +166,27 @@ class _RegisterScreen extends State<RegisterScreen> {
                             controller: password,
                             validator: (String? value) {
                               if (value == null || value.isEmpty) {
-                                return "password is required";                               }
+                                return "password is required";
+                              }
                               if (value.length < 8 || value.length > 10) {
-                                return "enter password of 8 to 10 characters";                               }
+                                return "enter password of 8 to 10 characters";
+                              }
                               return null; // null return garyo vane chai pass vako ho
                             },
                             obscureText: !changePaswordState,
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    width: 1,color: Colors.white,
+                                    width: 1,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 prefixIcon:
-                                Icon(Icons.password, color: Colors.black),
+                                    Icon(Icons.password, color: Colors.black),
                                 hintText: "Password",
                                 hintStyle: hintStyle(),
                                 suffixIcon:
-                                showVisibilityIcon(changePaswordState)),
+                                    showVisibilityIcon(changePaswordState)),
                             // validator: Validators(),
                           ),
                           SizedBox(
@@ -183,24 +197,27 @@ class _RegisterScreen extends State<RegisterScreen> {
                             controller: confirmpassword,
                             validator: (String? value) {
                               if (value == null || value.isEmpty) {
-                                return "password is required";                               }
+                                return "password is required";
+                              }
                               if (value.length < 8 || value.length > 10) {
-                                return "enter password of 8 to 10 characters";                               }
+                                return "enter password of 8 to 10 characters";
+                              }
                               return null; // null return garyo vane chai pass vako ho
                             },
                             obscureText: !changePaswordState,
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    width: 1,color: Colors.white,
+                                    width: 1,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 prefixIcon:
-                                Icon(Icons.password, color: Colors.black),
+                                    Icon(Icons.password, color: Colors.black),
                                 hintText: "Confirm Password",
                                 hintStyle: hintStyle(),
                                 suffixIcon:
-                                showVisibilityIcon(changePaswordState)),
+                                    showVisibilityIcon(changePaswordState)),
                             // validator: Validators(),
                           ),
                           SizedBox(
@@ -220,13 +237,13 @@ class _RegisterScreen extends State<RegisterScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,                           ),
+                            height: 10,
+                          ),
                           Container(
                             margin: EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-
                               children: [
                                 InkWell(
                                   child: Text(
@@ -236,19 +253,18 @@ class _RegisterScreen extends State<RegisterScreen> {
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white70),
                                   ),
-                                  onTap: (){
+                                  onTap: () {
                                     setState(() {
-                                      Navigator.of(context).pushReplacementNamed("/userLogin");
+                                      Navigator.of(context)
+                                          .pushReplacementNamed("/userLogin");
                                     });
                                   },
                                 ),
-                            ],
-
+                              ],
                             ),
                           ),
                         ]),
-                  )
-              ),
+                  )),
             ],
           ),
         ),

@@ -21,6 +21,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
       changePaswordState = !changePaswordState;
     });
   }
+
   Widget showVisibilityIcon(bool showPassword) {
     return showPassword == changePaswordState
         ? InkWell(
@@ -38,42 +39,49 @@ class _UserLoginPageState extends State<UserLoginPage> {
             },
             child: Icon(Icons.remove_red_eye));
   }
+
   hintStyle() {
     const TextStyle(
       fontWeight: FontWeight.bold,
-      color: Colors.black,
+      color: Colors.white,
       fontSize: 20,
     );
   }
+
   outlineForInputField() {
     OutlineInputBorder(
         borderSide: BorderSide(width: 2, color: Colors.white),
         borderRadius: BorderRadius.circular(20));
   }
+
   styleOfText() {
     TextStyle(
-      color: Colors.white70,
+      color: Colors.white,
       fontSize: 18,
     );
   }
+
   late AuthViewModel _authen;
 
   void login() async {
     try {
       await _authen.login(email.text, password.text).then((value) {
-        if(_authen.loggedInUser!.fcmToken!="ADMIN"){
+        if (_authen.loggedInUser!.fcmToken != "ADMIN") {
           Navigator.of(context).pushReplacementNamed('/adminDashboard');
-        }else{
+        } else {
           Navigator.of(context).pushReplacementNamed('/userDashboard');
         }
         // Navigator.of(context).pushReplacementNamed('/userDashboard');
       }).catchError((e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.message.toString())));
       });
     } catch (err) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(err.toString())));
     }
   }
+
   @override
   void initState() {
     _authen = Provider.of<AuthViewModel>(context, listen: false);
@@ -85,7 +93,8 @@ class _UserLoginPageState extends State<UserLoginPage> {
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/admin login.jpg'), fit: BoxFit.cover)),
+                image: AssetImage('Assets/Images/userlogin.avif'),
+                fit: BoxFit.cover)),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Form(
@@ -186,7 +195,31 @@ class _UserLoginPageState extends State<UserLoginPage> {
                             ),
                           ],
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Are you new? Create an account ",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          InkWell(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed("/registration");
+                              },
+                              child: Text(
+                                "Sign up",
+                                style: TextStyle(color: Colors.blue),
+                              ))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                     ],
                   )),
             ),

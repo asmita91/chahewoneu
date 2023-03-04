@@ -26,22 +26,16 @@ import 'package:provider/provider.dart';
 
 import 'AdminScreens/AdminAirplane.dart';
 import 'AdminScreens/AdminDashboard.dart';
-import 'AdminScreens/AdminEditProfile.dart';
-import 'AdminScreens/AdminEvents.dart';
 import 'AdminScreens/AdminRatingReview.dart';
 import 'AdminScreens/AdminTransPage.dart';
 import 'AdminScreens/SplashScreen.dart';
 import 'AdminScreens/hoteladd.dart';
-import 'Navpages/Home.dart';
 import 'Navpages/ProfilePage.dart';
-import 'UserScreens/Payment/KhaltiTest.dart';
 import 'UserScreens/Transportation/ChooseAirplaneSeat.dart';
 import 'UserScreens/Transportation/ChooseBusSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
 import 'UserScreens/UserRatingReview.dart';
-import 'UserScreens/usereditprofile.dart';
-import 'UserScreens/userevent.dart';
 import 'UserScreens/userhotel.dart';
 import 'WeatherScreen/weather.dart';
 
@@ -60,26 +54,20 @@ class Chahewoneu extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthViewModel>(
-            create: (_) => AuthViewModel()),
+        ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
         ChangeNotifierProvider<GlobalUIViewModel>(
             create: (_) => GlobalUIViewModel()),
         ChangeNotifierProvider<RatingReviewViewModel>(
             create: (_) => RatingReviewViewModel()),
         ChangeNotifierProvider<PeopleViewModel>(
             create: (_) => PeopleViewModel()),
-        ChangeNotifierProvider<HotelViewModel>(
-            create: (_) => HotelViewModel()),
-        ChangeNotifierProvider<PlaceViewModel>(
-            create: (_) => PlaceViewModel()),
-        ChangeNotifierProvider<HotelViewModel>(
-            create: (_) => HotelViewModel()),
-        ChangeNotifierProvider<PlaceViewModel>(
-            create: (_) => PlaceViewModel()),
+        ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
+        ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
+        ChangeNotifierProvider<HotelViewModel>(create: (_) => HotelViewModel()),
+        ChangeNotifierProvider<PlaceViewModel>(create: (_) => PlaceViewModel()),
         ChangeNotifierProvider<PaymentViewModel>(
             create: (_) => PaymentViewModel()),
-        ChangeNotifierProvider<EventViewModel>(
-            create: (_) => EventViewModel()),
+        ChangeNotifierProvider<EventViewModel>(create: (_) => EventViewModel()),
       ],
       child: GetMaterialApp(
         title: 'Chahewoneu',
@@ -87,14 +75,13 @@ class Chahewoneu extends StatelessWidget {
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/userDashboard",
+        initialRoute: "/splashScreen",
         routes: {
           "/splashScreen": (context) => SplashScreen(),
           "/registration": (context) => RegisterScreen(),
           "/userLogin": (context) => UserLoginPage(),
 
           "/useredit": (context) => WeatherScreen(),
-
 
           "/userDashboard": (context) => UserHomePage(),
 

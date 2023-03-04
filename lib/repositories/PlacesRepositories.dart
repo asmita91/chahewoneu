@@ -36,4 +36,9 @@ class PlaceRepository with ChangeNotifier {
     await placeRef.add(data);
     return true;
   }
+
+  Future<void> editPlace(Place_Model data, String id) async {
+    var response = await placeRef.doc(id).set(data);
+    return response;
+  }
 }

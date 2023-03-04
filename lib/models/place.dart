@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:convert';
-
 
 class Place_Model {
   // String userId;
@@ -11,7 +9,6 @@ class Place_Model {
   int distanceFromCap;
   String imagepath;
   String imageUrl;
-
 
   Place_Model({
     // required this.userId,
