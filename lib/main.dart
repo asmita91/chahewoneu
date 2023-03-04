@@ -8,7 +8,10 @@ import 'package:chahewoneu/UserScreens/ForgetPassword.dart';
 import 'package:chahewoneu/UserScreens/UserLogin.dart';
 import 'package:chahewoneu/UserScreens/User_NavBar.dart';
 import 'package:chahewoneu/UserScreens/hoteldescription.dart';
+import 'package:chahewoneu/UserScreens/navpages/ChangePassword.dart';
 import 'package:chahewoneu/UserScreens/navpages/Homepage.dart';
+import 'package:chahewoneu/UserScreens/navpages/account_screen.dart';
+import 'package:chahewoneu/UserScreens/navpages/email_change.dart';
 // import 'package:chahewoneu/UserScreens/navpages/UserEditProfile.dart';
 import 'package:chahewoneu/UserScreens/register_screen.dart';
 import 'package:chahewoneu/ViewModel/GlobalUIViewModel.dart';
@@ -26,8 +29,7 @@ import 'package:provider/provider.dart';
 
 import 'AdminScreens/AdminAirplane.dart';
 import 'AdminScreens/AdminDashboard.dart';
-import 'AdminScreens/AdminEditProfile.dart';
-import 'AdminScreens/AdminEvents.dart';
+
 import 'AdminScreens/AdminRatingReview.dart';
 import 'AdminScreens/AdminTransPage.dart';
 import 'AdminScreens/SplashScreen.dart';
@@ -40,6 +42,7 @@ import 'UserScreens/Transportation/ChooseBusSeat.dart';
 import 'UserScreens/Transportation/ChooseHiaceSeat.dart';
 import 'UserScreens/Transportation/PopUpMenu.dart';
 import 'UserScreens/UserRatingReview.dart';
+import 'UserScreens/navpages/UserProfile.dart';
 import 'UserScreens/usereditprofile.dart';
 import 'UserScreens/userevent.dart';
 import 'UserScreens/userhotel.dart';
@@ -87,7 +90,7 @@ class Chahewoneu extends StatelessWidget {
         // theme: ThemeData(
         //   primarySwatch: Colors.red,
         // ),
-        initialRoute: "/userDashboard",
+        initialRoute: "/splashScreen",
         routes: {
           "/splashScreen": (context) => SplashScreen(),
           "/registration": (context) => RegisterScreen(),
@@ -98,7 +101,7 @@ class Chahewoneu extends StatelessWidget {
 
           "/userDashboard": (context) => UserHomePage(),
 
-          "/adminDashboard": (context) => AdminProfilePage(),
+          "/adminDashboard": (context) => Home(),
           // "/adminDashboard": (context) => AdminDashboard(),
           "/car_popup": (context) => PopUp(),
           "/forgotPassword": (context) => ForgetPasswordPage(),
@@ -140,60 +143,15 @@ class Chahewoneu extends StatelessWidget {
           "/Adminplace": (context) => BookingPlace(),
           "/UserEvent": (context) => AdminRatingReview(),
           "/AdminPlace": (context) => BookingPlace(),
+          "/userPayment":(context)=> KhaltiTest(),
+
+          //for profile
+          "/email":(BuildContext context)=> ChangeEmail(),
+          "/profile":(BuildContext context)=> AccountScreen(),
+          "/yourprofile":(BuildContext context)=> ProfileInfo(),
+          "/change_password":(BuildContext context)=> ChangePassword(),
         },
       ),
     );
   }
 }
-
-// void main() {
-//   runApp(MultiProvider(
-//     providers: [
-//       ChangeNotifierProvider(create: (_) => AuthViewModel() ),
-//       ChangeNotifierProvider(create: (_) => RatingReviewViewModel() ),
-//     ],
-//     child: MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       initialRoute: "/registration",
-//       routes: {
-//         // "/splashScreen": (context)=>SplashScreen();
-//         "/registration": (context) => RegisterScreen(),
-//         "/userLogin": (context) => UserLoginPage(),
-//         "/adminLogin": (context) => AdminLoginScreen(),
-//         "/userDashboard": (context) => UserHomePage(),
-//         "/adminDashboard": (context) => Home(),
-//         "/transportation_dash": (context) => Transportation(),
-//         "/car_popup": (context) => PopUp(),
-//         "/forgotPassword": (context) => ForgetPasswordPage(),
-//         "/userPayment": (context) => KhaltiPayment(),
-//         "/adminPayment": (context) => AdminPayment(),
-//         "/placeSubPage": (context) => PlaceDescription(text: "Context"),
-//         "/ChooseAirplaneSeat": (context) => Airplane(),
-//         "/ChooseHiaceSeat": (context) => ChooseHiaceSeat(),
-//         "/ChooseBusSeat": (context) => ChooseBusSeat(),
-//       },
-//     ),
-//   ));
-//   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-//       overlays: [SystemUiOverlay.bottom]);
-// }
-
-// class Myapp extends StatelessWidget {
-//   const Myapp({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return KhaltiScope(
-//         publicKey: 'test_public_key_5a22ad67e707441b8362fc7bed556a8d',
-//         enabledDebugging: true,
-//         builder: (context, navKey) {
-//           return MaterialApp(
-//               debugShowCheckedModeBanner: false,
-//               home: KhaltiPayment(),
-//               navigatorKey: navKey,
-//               localizationsDelegates: const [
-//                 KhaltiLocalizations.delegate,
-//               ]);
-//         });
-//   }
-// }

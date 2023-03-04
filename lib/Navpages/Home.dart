@@ -2,6 +2,7 @@ import 'package:chahewoneu/AdminScreens/NavBar.dart';
 import 'package:flutter/material.dart';
 import '../../Colors.dart';
 import '../UserScreens/navpages/place_details.dart';
+import '../UserScreens/userevent.dart';
 import '../UserScreens/userhotel.dart';
 
 
@@ -62,7 +63,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
               tabs: [
                 Tab(text: "Places"),
                 Tab(text: "Events"),
-                Tab(text: "Booking"),
                 Tab(text: "Hotel"),
                 Tab(text: "Transportation")
               ]),
@@ -73,8 +73,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
           child: TabBarView(controller: tabController,
               children: [
                 Expanded(child: PlaceDetails()),
-                Text(" "),
-            Text(" "),
+                Expanded(child: UserEventScreen()),
                 Expanded(child: UserHotelScreen()),
             Text(" ")
           ]),

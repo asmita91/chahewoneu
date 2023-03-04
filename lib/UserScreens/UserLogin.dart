@@ -61,12 +61,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
   void login() async {
     try {
       await _authen.login(email.text, password.text).then((value) {
-        if(_authen.loggedInUser!.fcmToken!="ADMIN"){
-          Navigator.of(context).pushReplacementNamed('/adminDashboard');
-        }else{
-          Navigator.of(context).pushReplacementNamed('/userDashboard');
-        }
-        // Navigator.of(context).pushReplacementNamed('/userDashboard');
+        Navigator.of(context).pushReplacementNamed('/userDashboard');
       }).catchError((e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
       });
@@ -85,7 +80,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/admin login.jpg'), fit: BoxFit.cover)),
+                image: AssetImage('Assets/Images/admin login.jpg'), fit: BoxFit.cover)),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Form(
@@ -183,6 +178,13 @@ class _UserLoginPageState extends State<UserLoginPage> {
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white70),
+                            ),
+                            Text(
+                              "Register here?",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blueGrey),
                             ),
                           ],
                         ),

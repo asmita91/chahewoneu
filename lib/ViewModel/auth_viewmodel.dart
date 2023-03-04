@@ -70,7 +70,9 @@ class AuthViewModel with ChangeNotifier{
       await AuthRepository().editEmail(user: user, userId: userId);
       // await AuthRepository().getUserDetail(_user!.uid);
       notifyListeners();
-    } catch (e) {}
+    } catch (e) {
+
+    }
   }
 
 
